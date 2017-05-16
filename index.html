@@ -1,0 +1,31 @@
+---
+# You don't need to edit this file, it's empty on purpose.
+# Edit theme's home layout instead if you wanna make some changes
+# See: https://jekyllrb.com/docs/themes/#overriding-theme-defaults
+layout: default
+---
+<div>
+  <p>Welcome to the SCTA Community Page. The community posts articles here to help
+  people at all levels understand how to contribute and benefit from the SCTA.
+  Whether you're interested in preparing an edition of a scholastic
+  text for print, web, or both, or are looking to build a new application using
+  the SCTA APIs, or are interested in using the SCTA for corpus and linguistic analysis,
+  you'll find articles here to help get you started.</p>
+</div>
+<div>
+  <h2>Recent Articles</h2>
+  <ul>
+    {% for post in site.posts %}
+      <li>
+        <span class="post-meta">{{ post.date | date: "%b %-d, %Y" }}</span>
+          <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
+          {% if post.author %}
+            <br/> By <span class="post-auth">{{post.author}}</span>
+          {% endif %}
+          {% if post.description %}
+            <br/> <span class="post-desc">{{post.description}}</span>
+          {% endif %}
+      </li>
+    {% endfor %}
+  </ul>
+</div>
