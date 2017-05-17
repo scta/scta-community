@@ -5,9 +5,6 @@ date:   2017-05-17 08:25:00 +0100
 author: Michael S. Christensen
 ---
 
-
-# Digital text encoding and editing: Getting started
-
 Creating critical text editions has always been associated with a high mental
 effort. The scholarly aspects of text editing are inherently challenging, but it
 is not a law of nature that the practical sides of the endeavour cannot be
@@ -298,9 +295,12 @@ transcription types.
 These diplomatic transcriptions can then be collated in order to establish the
 critical text (similar to the one already shown an excerpt of above). We are
 working on solutions that can assist during the collation process. See an early
-stage example of a script that might be helpful here:
-https://github.com/stenskjaer/collator. To see an example of a full critical
-file, see https://github.com/mldac/da-49-l1q1/blob/master/da-49-l1q1.xml.
+stage example of a script that might be helpful
+here:
+[https://github.com/stenskjaer/collator](https://github.com/stenskjaer/collator).
+To get an idea of how a full critical file can look like,
+see
+[this example](https://github.com/mldac/da-49-l1q1/blob/master/da-49-l1q1.xml).
 
 But when it comes down to it, collation is still a painstaking process of
 comparing two or more versions of a texts. Even if you use the script mentioned
