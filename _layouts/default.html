@@ -15,18 +15,34 @@
     <div class="wrapper">
       <header>
         <h1>{{ site.title }}</h1>
+        <h3><a href="/">Community Home</a></h3>
+        <h3><a href="http://scta.info">Back to SCTA Home</a></h3>
+        <hr/>
         <h3><a href="/pages/contributing">Contributing</a></h3>
         <h3><a href="/pages/building-apps">Building New Applications</a></h3>
         <h3><a href="/pages/licensing">Rights and Licensing</a></h3>
         <h3><a href="/pages/faq">FAQs</a></h3>
+        <hr/>
+        <div>
+          <h2>Recent Articles</h2>
 
-
-
-
-
-
-
+            {% for post in site.posts %}
+              <div>
+                <span class="post-meta">{{ post.date | date: "%b %-d, %Y" }}</span>
+                  <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
+                  {% if post.author %}
+                    <br/> By <span class="post-auth">{{post.author}}</span>
+                  {% endif %}
+                  {% if post.description %}
+                    <br/> <span class="post-desc">{{post.description}}</span>
+                  {% endif %}
+                  <br/>
+                  <br/>
+              </div>
+            {% endfor %}
+        </div>
       </header>
+
       <section>
 
       {{ content }}
