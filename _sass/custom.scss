@@ -1,0 +1,13 @@
+@media only screen and (max-width: 960px) {
+  #recent {
+    display: none;
+  }
+  .navbar{
+    display: flex;
+    justify-content: flex-start;
+  }
+  .navbar h3{
+    padding: 0 2px 0 0;
+    margin: 5px;
+  }
+}
