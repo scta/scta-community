@@ -3,6 +3,7 @@ layout: post
 title:  Contributing Transcriptions to the SCTA
 date:   2017-10-20
 author: Jeffrey C. Witt
+category: tutorial
 ---
 
 If you want to transcribe a text that can be aggregated by the SCTA,

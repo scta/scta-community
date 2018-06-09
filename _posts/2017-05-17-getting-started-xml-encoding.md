@@ -3,6 +3,7 @@ layout: post
 title:  Digital text encoding and editing – Getting started
 date:   2017-05-17 08:25:00 +0100
 author: Michael S. Christensen
+category: tutorial
 ---
 
 Creating critical text editions has always been associated with a high mental
