@@ -39,11 +39,11 @@ This data can also be re-used and re-combined in other viewers, such as the text
 
 You can view this yourself at: [http://scta.lombardpress.org/b1-d3-qun](http://scta.lombardpress.org/b1-d3-qun)
 
-Finally, using Linked Data Notifications and the [Mirador LDN Plugin]((https://github.com/jeffreycwitt/mirador-ldn-plugin)), institutions that make these images available, can allow their users to choose to import SCTA content into their viewing experience.
+Finally, using Linked Data Notifications and the [Mirador LDN Plugin](https://github.com/jeffreycwitt/mirador-ldn-plugin), institutions that make these images available, can allow their users to choose to import SCTA content into their viewing experience.
 
 ![maz-lbp](/assets/images/sorb-notification.png)
 ![sorb-lbp](/assets/images/sorb-ldn-imported.png)
 
-To learn more about IIIF and Linked Data Notifications, see [https://github.com/jeffreycwitt/mirador-ldn-plugin](https://github.com/jeffreycwitt/mirador-ldn-plugin)
+To learn more about IIIF and [Linked Data Notifications](https://www.w3.org/TR/ldn/), see [https://github.com/jeffreycwitt/mirador-ldn-plugin](https://github.com/jeffreycwitt/mirador-ldn-plugin)
 
 Again, special thanks are due to the [Bibliothèque Mazarine](http://mazarinum.bibliotheque-mazarine.fr/), the [Bibliothèque de la Sorbonne](http://www.bibliotheque.sorbonne.fr/biu/) and the [Vatican Library](https://digi.vatlib.it/) for digitizing these manuscripts and making them available via IIIF. Without the efforts of these institutions and the individuals working there, the promise of IIIF would remain a mere potentiality. Thanks also to Régis Robineau at Biblissima for helping facilitating contact with the Mazarine and Sorbonne libraries and his work on the Mirador-LDN plugin.
