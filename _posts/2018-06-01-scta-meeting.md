@@ -2,8 +2,10 @@
 layout: post
 title:  "The 2nd Annual SCTA Community Meeting: The Digital Future of Scholasticism"
 date:   2018-06-01
+eventStart: 2018-06-29
 author: Jeffrey C. Witt
 category: event
+description: "Storing, linking, displaying and reusing scholastic data with the Scholastic Commentaries and Texts Archive"
 ---
 
 ## The 2nd Annual SCTA Community Meeting
