@@ -17,4 +17,4 @@ description: "A workshop for the development of standards used by the Scholastic
 
 When: Monday, June 25th to Thursday June 28th, 2018
 
-![/assets/images/SCTA-Friday-Showcase-flyer-v2.jpg](assets/images/SCTA-Mon-Thur-flyer-v.png)
+![/assets/images/SCTA-Mon-Thurs-flyer.jpg](/assets/images/SCTA-Mon-Thur-flyer.png)
