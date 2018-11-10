@@ -1,4 +1,23 @@
 ---
 layout: page
 ---
-<h1>Community Policies</h1>
+<h1>Policies</h1>
+
+<div>
+{% for post in site.posts %}
+{% if post.category == "policy" %}
+  <div>
+    <span class="post-meta">{{ post.date | date: "%b %-d, %Y" }}</span>
+      <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
+      {% if post.author %}
+        <br/> By <span class="post-auth">{{post.author}}</span>
+      {% endif %}
+      {% if post.description %}
+        <br/> <span class="post-desc">{{post.description}}</span>
+      {% endif %}
+      <br/>
+      <br/>
+  </div>
+  {% endif %}
+{% endfor %}
+</div>
