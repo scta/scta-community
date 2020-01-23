@@ -1,12 +1,12 @@
 ---
 layout: page
 title:  SCTA RDF Schema Properties
-date: 2020-01-22
+date: 2020-01-23
 description: SCTA RDF Schema Doc Properties
 category: docs-data-schema
 ---
 
-Extracted from official github repo [https://github.com/scta/scta-rdf-schema](https://github.com/scta/scta-rdf-schema) on 2020-01-22
+Extracted from official github repo [https://github.com/scta/scta-rdf-schema](https://github.com/scta/scta-rdf-schema) on 2020-01-23
 
 # Property List
 

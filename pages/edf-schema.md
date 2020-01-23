@@ -1,12 +1,12 @@
 ---
 layout: page
 title:  EDF Schema
-date: 2020-01-22
+date: 2020-01-23
 description: EDF Schema Doc
 category: docs-data-schema
 ---
 
-Extracted from official github repo [https://github.com/scta/edf-schema](https://github.com/scta/edf-schema) on 2020-01-22
+Extracted from official github repo [https://github.com/scta/edf-schema](https://github.com/scta/edf-schema) on 2020-01-23
 
 # Introduction
 

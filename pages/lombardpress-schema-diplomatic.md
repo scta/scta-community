@@ -1,12 +1,12 @@
 ---
 layout: page
 title:  LombardPress Diplomatic
-date: 2020-01-22
+date: 2020-01-23
 description: LombardPress Diplomatic
 category: docs-data-schema
 ---
 
-Extracted from official github repo [https://github.com/lombardpress/lombardpress-schema](https://github.com/scta/lombardpress/lombardpress-schema) on 2020-01-22
+Extracted from official github repo [https://github.com/lombardpress/lombardpress-schema](https://github.com/scta/lombardpress/lombardpress-schema) on 2020-01-23
 
 ---
 layout: page

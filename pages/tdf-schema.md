@@ -1,12 +1,12 @@
 ---
 layout: page
 title:  TDF Schema
-date: 2020-01-22
+date: 2020-01-23
 description: TDF Schema Doc
 category: docs-data-schema
 ---
 
-Extracted from official github repo [https://github.com/scta/tdf-schema](https://github.com/scta/tdf-schema) on 2020-01-22
+Extracted from official github repo [https://github.com/scta/tdf-schema](https://github.com/scta/tdf-schema) on 2020-01-23
 
 # Transcription Description File Schema
 

@@ -1,12 +1,12 @@
 ---
 layout: page
 title:  SCTA RDF Schema Classes
-date: 2020-01-22
+date: 2020-01-23
 description: SCTA RDF Schema Doc Classes
 category: docs-data-schema
 ---
 
-Extracted from official github repo [https://github.com/scta/scta-rdf-schema](https://github.com/scta/scta-rdf-schema) on 2020-01-22
+Extracted from official github repo [https://github.com/scta/scta-rdf-schema](https://github.com/scta/scta-rdf-schema) on 2020-01-23
 
 # Resource Types
 
@@ -62,7 +62,7 @@ A super class for expressions, manifestations, and transcriptions
 
 ## textItem Resources Chart
 
-![View visualization](images/SCTASCHEMA-Viz.png)
+![View visualization](https://s3.amazonaws.com/lum-faculty-jcwitt-public/SCTASCHEMA-Viz.png)
 
 | ----- | [Expression](#expression) | [Manifestation](#manifestation) | [Transcription](#transcription) |
 | ---------- | ---------- | ------------- | ------------- |
@@ -250,7 +250,7 @@ textItem class and a structure type
 
 A super class for materialResource subclasses
 
-![View visualization](images/SurfaceVisualization.png)
+![View visualization](https://s3.amazonaws.com/lum-faculty-jcwitt-public/SurfaceVisualization.png)
 
 | MaterialManifestation | MatieralItem |
 | ---------- | ---------- |

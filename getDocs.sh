@@ -88,3 +88,19 @@ Extracted from official github repo [https://github.com/lombardpress/lombardpres
 "> pages/lombardpress-schema-diplomatic.md
 
 wget -qO- https://raw.githubusercontent.com/lombardpress/lombardpress-schema/master/docs/diplomatic.md >> pages/lombardpress-schema-diplomatic.md
+
+
+## lombardpress schema diplomatic
+UpdateDate=`date +"%Y-%m-%d"`
+echo "---
+layout: page
+title:  Cdf Schema
+date: $UpdateDate
+description: Codex Description File Schema
+category: docs-data-schema
+---
+
+Extracted from official github repo [https://github.com/scta/cdf-schema](https://github.com/scta/cdf-schema) on $UpdateDate
+"> pages/cdf-schema.md
+
+wget -qO- https://raw.githubusercontent.com/scta/cdf-schema/master/readme.md >> pages/cdf-schema.md
