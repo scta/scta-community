@@ -1,22 +1,74 @@
 ---
 layout: page
 ---
-<h1>Documentation</h1>
+<h1>Docs</h1>
 <div>
-{% for post in site.posts %}
-{% if post.category == "docs" %}
-  <div>
-    <span class="post-meta">{{ post.date | date: "%b %-d, %Y" }}</span>
-      <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
-      {% if post.author %}
-        <br/> By <span class="post-auth">{{post.author}}</span>
+  <h2>General Docs</h2>
+  {% for page in site.pages %}
+  {% if page.title == "Technical Overview" %}
+    <div>
+
+        <a class="post-link" href="{{ page.url | prepend: site.baseurl }}">{{ page.title }}</a>
+        {% if page.author %}
+          <br/> By <span class="post-auth">{{page.author}}</span>
+        {% endif %}
+        {% if page.description %}
+          <br/> <span class="post-desc">{{page.description}}</span>
+        {% endif %}
+        <br/>
+        <br/>
+    </div>
+    {% endif %}
+  {% endfor %}
+  <h2>Data Schemas</h2>
+  {% for page in site.pages %}
+  {% if page.category == "docs-data-schema" %}
+    <div>
+
+
+        <a class="post-link" href="{{ page.url | prepend: site.baseurl }}">{{ page.title }}</a>
+        {% if page.author %}
+          <br/> By <span class="post-auth">{{page.author}}</span>
+        {% endif %}
+        {% if page.description %}
+          <br/> <span class="post-desc">{{page.description}}</span>
+        {% endif %}
+        <br/>
+        <br/>
+    </div>
+    {% endif %}
+    {% endfor %}
+    <h2>Miscellaneous</h2>
+    {% for page in site.pages %}
+    {% if page.category == "docs-misc" %}
+      <div>
+          <a class="post-link" href="{{ page.url | prepend: site.baseurl }}">{{ page.title }}</a>
+          {% if page.author %}
+            <br/> By <span class="post-auth">{{page.author}}</span>
+          {% endif %}
+          {% if page.description %}
+            <br/> <span class="post-desc">{{page.description}}</span>
+          {% endif %}
+          <br/>
+          <br/>
+      </div>
       {% endif %}
-      {% if post.description %}
-        <br/> <span class="post-desc">{{post.description}}</span>
+      {% endfor %}
+      <h2>Tutorials</h2>
+      {% for page in site.pages %}
+      {% if page.category == "docs-tutorials" %}
+      <div>
+          <a class="post-link" href="{{ page.url | prepend: site.baseurl }}">{{ page.title }}</a>
+          {% if page.author %}
+            <br/> By <span class="post-auth">{{page.author}}</span>
+          {% endif %}
+          {% if page.description %}
+            <br/> <span class="post-desc">{{page.description}}</span>
+          {% endif %}
+          <br/>
+          <br/>
+      </div>
       {% endif %}
-      <br/>
-      <br/>
-  </div>
-  {% endif %}
-{% endfor %}
+      {% endfor %}
+
 </div>
