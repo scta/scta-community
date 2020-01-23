@@ -24,7 +24,7 @@ description: EDF Schema Doc
 category: docs-data-schema
 ---
 
-Extracted from official github repo [https://github.com/scta/edf-schema](https://github.com/scta/tdf-schema) on $UpdateDate
+Extracted from official github repo [https://github.com/scta/edf-schema](https://github.com/scta/edf-schema) on $UpdateDate
 "> pages/edf-schema.md
 
 wget -qO- https://raw.githubusercontent.com/scta/edf-schema/master/docs_source/project-desc-file.md >> pages/edf-schema.md
@@ -39,7 +39,7 @@ description: SCTA RDF Schema Doc Classes
 category: docs-data-schema
 ---
 
-Extracted from official github repo [https://github.com/scta/edf-schema](https://github.com/scta/scta-rdf-schema) on $UpdateDate
+Extracted from official github repo [https://github.com/scta/scta-rdf-schema](https://github.com/scta/scta-rdf-schema) on $UpdateDate
 "> pages/scta-rdf-schema-classes.md
 
 wget -qO- https://raw.githubusercontent.com/scta/scta-rdf-schema/master/docs_source/scta-rdf-schema.md >> pages/scta-rdf-schema-classes.md
@@ -54,7 +54,7 @@ description: SCTA RDF Schema Doc Properties
 category: docs-data-schema
 ---
 
-Extracted from official github repo [https://github.com/scta/edf-schema](https://github.com/scta/scta-rdf-schema) on $UpdateDate
+Extracted from official github repo [https://github.com/scta/scta-rdf-schema](https://github.com/scta/scta-rdf-schema) on $UpdateDate
 "> pages/scta-rdf-schema-properties.md
 
 wget -qO- https://raw.githubusercontent.com/scta/scta-rdf-schema/master/docs_source/properties-list.md >> pages/scta-rdf-schema-properties.md
@@ -69,7 +69,7 @@ description: LombardPress Critical
 category: docs-data-schema
 ---
 
-Extracted from official github repo [https://github.com/scta/edf-schema](https://github.com/scta/scta-rdf-schema) on $UpdateDate
+Extracted from official github repo [https://github.com/lombardpress/lombardpress-schema](https://github.com/lombardpress/lombardpress-schema) on $UpdateDate
 "> pages/lombardpress-schema-critical.md
 
 wget -qO- https://raw.githubusercontent.com/lombardpress/lombardpress-schema/master/docs/critical.md >> pages/lombardpress-schema-critical.md
@@ -84,7 +84,7 @@ description: LombardPress Diplomatic
 category: docs-data-schema
 ---
 
-Extracted from official github repo [https://github.com/scta/edf-schema](https://github.com/scta/scta-rdf-schema) on $UpdateDate
+Extracted from official github repo [https://github.com/lombardpress/lombardpress-schema](https://github.com/scta/lombardpress/lombardpress-schema) on $UpdateDate
 "> pages/lombardpress-schema-diplomatic.md
 
 wget -qO- https://raw.githubusercontent.com/lombardpress/lombardpress-schema/master/docs/diplomatic.md >> pages/lombardpress-schema-diplomatic.md

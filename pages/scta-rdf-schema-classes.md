@@ -6,7 +6,7 @@ description: SCTA RDF Schema Doc Classes
 category: docs-data-schema
 ---
 
-Extracted from official github repo [https://github.com/scta/edf-schema](https://github.com/scta/scta-rdf-schema) on 2020-01-22
+Extracted from official github repo [https://github.com/scta/scta-rdf-schema](https://github.com/scta/scta-rdf-schema) on 2020-01-22
 
 # Resource Types
 
