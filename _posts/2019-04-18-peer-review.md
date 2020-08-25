@@ -2,7 +2,7 @@
 layout: post
 title:  "Peer Review"
 date:   2019-04-18
-author: Jeffrey C. Witt
+#author: Jeffrey C. Witt
 category: policy
 description: "Peer Review for SCTA aggregated contributions"
 permalink: policy/peer-review
