@@ -19,10 +19,18 @@ To make a correction:
 4. write a message about the change made
 5. then follow the github instructions to submit the pull request
 
+Consider the image example below: 
+
+![image]({{site.assets_url}}sctaLbpTextCorrection.gif)
+
 If the correction is more involved and difficult to make directly to the source text, or if the problem needs more deliberation and consideration, you can create a github issue. 
 
 1. Simply click on the "create GitHub issues" link
 2. Then in the issue, describe the problem and where in the text it occurs.
+
+Consider the image example below: 
+
+![image]({{site.assets_url}}sctaLbp_createIssue.png)
 
 These kinds of issues should be focused on the text as "data" (e.g. transcription corrections, text markup, text hierarchy corrections)
 
