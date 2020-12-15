@@ -41,7 +41,7 @@ permalink: "policy/membership"
 * **SCTA International Association Member**
   * Association membership is intended for institution consumers of SCTA data (libraries, museums etc.)
   * As opposed to requiring a subscription costs to pay-walled database, SCTA makes its data open to libraries and other institutional consumers, with the expectation that libraries will recognize that open data is replacing pay-walled data, but still needs to be financially supported (See for example the Stanford Encyclopedia of Philosophy Model) https://plato.stanford.edu/support/sepia.html)
-  * Membership in the SCTA International Association is $500 a year
+  * Membership in the SCTA International Association is an adjusted rate depending on institutional size (usually between $50 and $250 a year)
   * Benefits
     * Privileged access to the SCTA OAI-PMH database.
     * SCTA-IA Membership acknowledgement on the SCTA webpage
