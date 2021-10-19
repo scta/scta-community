@@ -7,7 +7,9 @@ description: "A running list of members and other acknowledgements"
 permalink: members
 ---
 
-# Contributing Projects (Past and Present) (Membership Status: Supporting Contributor (Group))
+# Contributing Projects (Past and Present) 
+
+(Membership Status: Supporting Contributor (Group))
 
 * The Digital Auctores Project 
   * 2021-2026
