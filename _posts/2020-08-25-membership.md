@@ -40,13 +40,26 @@ permalink: "policy/membership"
 
 * **SCTA International Association Member**
   * Association membership is intended for institution consumers of SCTA data (libraries, museums etc.)
-  * As opposed to requiring a subscription costs to pay-walled database, SCTA makes its data open to libraries and other institutional consumers, with the expectation that libraries will recognize that open data is replacing pay-walled data, but still needs to be financially supported (See for example the Stanford Encyclopedia of Philosophy Model) https://plato.stanford.edu/support/sepia.html)
+  * As opposed to requiring a subscription costs to pay-walled database, SCTA makes its data open to libraries and other institutional consumers, with the expectation that libraries will recognize that open data is replacing pay-walled data, but still needs to be financially supported (See for example the Stanford Encyclopedia of Philosophy Model) [https://plato.stanford.edu/support/sepia.html](https://plato.stanford.edu/support/sepia.html)).
+  For other similar kinds of membership see the "Programming Historian" Institutional Partner Program [https://programminghistorian.org/en/ipp](https://programminghistorian.org/en/ipp)[]
   * Membership in the SCTA International Association is an adjusted rate depending on institutional size (usually between $50 and $250 a year)
   * Benefits
-    * Privileged access to the SCTA OAI-PMH database.
+    * Access and support in using the SCTA OAI-PMH API (and other APIs of interest).
     * SCTA-IA Membership acknowledgement on the SCTA webpage
     * IP address based banners on the SCTA site and select affiliated SCTA data consuming websites. 
       * When users visit the SCTA site or select affiliated SCTA data consuming web from an IP address associated with SCTA-IA membership a banner will appear notifying patrons of the libraries support.
+    * Ad hoc advice and privileged technology support from our team when faculty from a member institution need help either producing or consuming SCTA data.
+      * Data creation tutorials; access to privileged education and training material
+      * One on one consultations about preparing editions or constructing new data visualization (websites, print outputs, etc) from SCTA data.
+      * Custom API upon requests or support
+      * Custom data dumps upon request
+    * Prioritization of data creation requests for SCTA relevant resources held by the member institution. For example:
+      * Prioritizing transcriptions of manuscripts/codices held by a member institution
+      * Prioritizing IIIF RangeLists, AnnotationsLists, etc for manuscripts/codices held by a member institution
+    * An invitation to any general meeting as an advisory member (one individual per Partner).
+      * Prioritization of feedback, issue, bug/feature request
+    * An annual breakdown of expenditure.
+
 
 # Example of membership fees would be used to support operational costs
 
