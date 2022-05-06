@@ -1,0 +1,152 @@
+I"�<h1 id="instructions">Instructions</h1>
+<ul>
+  <li>Go to Visual Studio Code</li>
+  <li>Open Up the Venice Manuscript File for the Rubric File you want
+    <ul>
+      <li>Venice Code is cod-pu6y7</li>
+    </ul>
+  </li>
+  <li>Command Shift S
+    <ul>
+      <li>then Rename the file with the code for the manuscript you want</li>
+      <li>Rename the file as
+        <ul>
+          <li>_bHY6yh with the corresponding number</li>
+          <li>Save it</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>Open the file you edit; you will need to edit these aspects right away, keep the tags as 
+they are, <code class="language-plaintext highlighter-rouge">&lt;tag/&gt;</code></li>
+  <li>Edit the title to include the manuscript you are using
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">&lt;title&gt;Rubrica 3&lt;/title&gt;</code></li>
+      <li>When it was edited it should look something like this, but with the corresponding 
+title to your manuscripts
+        <ul>
+          <li><code class="language-plaintext highlighter-rouge">&lt;title&gt;Rubrica 3 [Krakow, lat 700 III Transcription]&lt;/title&gt;</code></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>The Name</li>
+</ul>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;respStmt&gt;
+&lt;name ref="#jeffreycwitt"&gt;Jeffrey C. Witt&lt;/name&gt;
+  &lt;resp&gt;Transcription Editor&lt;/resp&gt;
+  &lt;resp&gt;TEI Encoder&lt;/resp&gt;
+  &lt;/respStmt&gt;
+</code></pre></div></div>
+<ul>
+  <li>Add your own name but keep Dr. Witt’s as well, like so</li>
+</ul>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;respStmt&gt;
+   &lt;name ref="#jeffreycwitt"&gt;Jeffrey C. Witt&lt;/name&gt;
+   &lt;resp&gt;Transcription Editor&lt;/resp&gt;
+   &lt;resp&gt;TEI Encoder&lt;/resp&gt;
+&lt;/respStmt&gt;
+&lt;respStmt&gt;
+  &lt;name&gt;Katrina Vander Ahe&lt;/name&gt;
+  &lt;resp&gt;Transcription Editor&lt;/resp&gt;
+  &lt;resp&gt;TEI Encoder&lt;/resp&gt;
+&lt;/respStmt&gt;
+</code></pre></div></div>
+<ul>
+  <li>Edit the title again,</li>
+</ul>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;title&gt;Rubrica 3&lt;/title&gt;
+&lt;date when="2021-05-18"&gt;May 18, 2021&lt;/date&gt;
+</code></pre></div></div>
+
+<ul>
+  <li>Should like this</li>
+</ul>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;title&gt;Rubrica 3 [Krakow, lat 700 III Transcription]&lt;/title&gt;
+&lt;date when="2021-05-18"&gt;May 5, 2022&lt;/date&gt;
+</code></pre></div></div>
+
+<ul>
+  <li>Edit the witness</li>
+</ul>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;listWit&gt;
+&lt;witness xml:id="V" n="cod-pu6y7d"&gt;Venice 1505&lt;/witness&gt;
+&lt;/listWit&gt;
+</code></pre></div></div>
+
+<ul>
+  <li>New Witness should reflect the new manuscript</li>
+</ul>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;listWit&gt;
+&lt;witness xml:id="K" n="cod-pu6y7d"&gt;Krakow, Biblioteka Jagiellonska, MS lat. 700 III (CC.VIII.25)&lt;/witness&gt;
+&lt;/listWit&gt;
+</code></pre></div></div>
+<ul>
+  <li>Edit page number and column to reflect where the rubric starts in the new manuscript,
+    <ul>
+      <li>This will also effect the ed=”#V”, in your line breaks as the letter will need to change to reflect the new manuscript</li>
+    </ul>
+  </li>
+</ul>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;div xml:id="starts-on"&gt;
+&lt;pb ed="#V" n="1-v"/&gt;
+&lt;cb ed="#V" n="a"/&gt;
+</code></pre></div></div>
+
+<ul>
+  <li>The new page number and column should look like this</li>
+</ul>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;pb ed="#K" n="7-r"/&gt;
+&lt;cb ed="#K" n="b"/&gt;
+</code></pre></div></div>
+
+<ul>
+  <li>Next to edit the line breaks
+    <ul>
+      <li>These will vary from manuscript to and as such, the existing line breaks will need 
+to be removed.</li>
+      <li>Go into finder and select Find, command F
+        <ul>
+          <li>Input this code <code class="language-plaintext highlighter-rouge">&lt;lb ed=”#V” [^/]*/&gt;</code></li>
+          <li>Leave the Replace section blank and select the highlighted (in the picture) button to clear all line breaks.</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<p><img src="https://s3.amazonaws.com/lum-faculty-jcwitt-public/searchExample1.png" alt="image" /></p>
+
+<ul>
+  <li>Next, remove slashes and pilcrows, as they may appear in different places in the new 
+manuscript.
+    <ul>
+      <li>Just follow this photo to remove slashes and repeat the same process with the
+        <ul>
+          <li>Be very careful with slash. We only want to delete the virgula (“/”) in the text. No the slashes in any of the XML. If you can do this with “find and replace” great. But if you cannot do this without affecting the XML, it will be better to do this by hand.</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<p><img src="https://s3.amazonaws.com/lum-faculty-jcwitt-public/searchExample2.png" alt="image" /></p>
+
+<ul>
+  <li>Search for the pilcrow without the bracket included and replace.</li>
+</ul>
+
+<p><img src="https://s3.amazonaws.com/lum-faculty-jcwitt-public/searchExample3.png" alt="image" /></p>
+
+<ul>
+  <li>By doing all of this, the file should be ready to use</li>
+</ul>
+:ET

@@ -1,0 +1,1330 @@
+I"0v<p>Extracted from official github repo <a href="https://github.com/scta/scta-rdf-schema">https://github.com/scta/scta-rdf-schema</a> on 2020-01-23</p>
+
+<h1 id="property-list">Property List</h1>
+
+<h1 id="a">A</h1>
+
+<ul>
+  <li>
+    <p>sctap:abbreviates</p>
+  </li>
+  <li>sctap:availableExpressionType
+    <ul>
+      <li>Domain
+        <ul>
+          <li>sctar:expressionType</li>
+        </ul>
+      </li>
+      <li>Range
+        <ul>
+          <li>sctar:expressionType</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>role:AUT
+    <ul>
+      <li>Domain
+        <ul>
+          <li>sctar:expression</li>
+          <li>sctar:manifestation</li>
+          <li>sctar:transcription</li>
+        </ul>
+      </li>
+      <li>Range
+        <ul>
+          <li>sctar:person</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h1 id="b">B</h1>
+
+<h1 id="c">C</h1>
+
+<ul>
+  <li>
+    <p>sctap:canvasPagedType</p>
+  </li>
+  <li>
+    <p>sctap:copies</p>
+  </li>
+  <li>sctap:citation (not used)</li>
+  <li>sctap:creationDate
+    <ul>
+      <li>I’m not sure this is being used</li>
+    </ul>
+  </li>
+  <li>sctap:contributor
+    <ul>
+      <li>Domain
+        <ul>
+          <li>sctar:expression</li>
+          <li>sctar:manifestation</li>
+          <li>sctar:transcription</li>
+        </ul>
+      </li>
+      <li>Range
+        <ul>
+          <li>sctar:person</li>
+        </ul>
+      </li>
+      <li>Note
+        <ul>
+          <li>range could be changed to blank node which then indicates a sctar:person plus other kinds of information like the nature and scope of the contribution etc.</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h1 id="d">D</h1>
+
+<ul>
+  <li>dc:description
+    <ul>
+      <li>Domain (object type)
+        <ul>
+          <li>global</li>
+        </ul>
+      </li>
+      <li>Range (predicate type)
+        <ul>
+          <li>“string”</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h1 id="e">E</h1>
+
+<ul>
+  <li>role:editor
+    <ul>
+      <li>Domain
+        <ul>
+          <li>sctar:manifestation</li>
+        </ul>
+      </li>
+      <li>Range
+        <ul>
+          <li>sctar:person</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>sctap:expressionType
+    <ul>
+      <li>Domain
+        <ul>
+          <li>sctar:expression</li>
+        </ul>
+      </li>
+      <li>Range
+        <ul>
+          <li>sctar:expressionType</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h1 id="h">H</h1>
+
+<ul>
+  <li>sctap:hasAncestor
+    <ul>
+      <li>Domain
+        <ul>
+          <li>sctar:transcription</li>
+        </ul>
+      </li>
+      <li>Range
+        <ul>
+          <li>sctar:transcription</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>sctap:hasCanonicalCodexItem
+    <ul>
+      <li>Domain
+        <ul>
+          <li>sctar:codex</li>
+        </ul>
+      </li>
+      <li>Range
+        <ul>
+          <li>sctar:codexItem</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>sctap:hasCanonicalManifestation
+    <ul>
+      <li>Domain
+        <ul>
+          <li>sctar:expression</li>
+        </ul>
+      </li>
+      <li>Range
+        <ul>
+          <li>sctar:manifestation</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>sctap:hasCanonicalTranscription
+    <ul>
+      <li>Domain
+        <ul>
+          <li>sctar:manifestation</li>
+        </ul>
+      </li>
+      <li>Range
+        <ul>
+          <li>sctar:transcription</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <p>sctap:hasCodexItem</p>
+  </li>
+  <li>sctap:hasDescendant
+    <ul>
+      <li>Domain
+        <ul>
+          <li>sctar:transcription</li>
+        </ul>
+      </li>
+      <li>Range
+        <ul>
+          <li>sctar:transcription</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>sctap:hasManifestation
+    <ul>
+      <li>Domain
+        <ul>
+          <li>sctar:expression</li>
+        </ul>
+      </li>
+      <li>Range
+        <ul>
+          <li>sctar:manifestation</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>sctap:hasOfficialManifest
+    <ul>
+      <li>Domain
+        <ul>
+          <li>sctar:codexItem</li>
+        </ul>
+      </li>
+      <li>Range
+        <ul>
+          <li>sc:Manifest</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>dc:hasPart
+    <ul>
+      <li>Domain
+        <ul>
+          <li>scta:workGroup
+            <ul>
+              <li>Range
+                <ul>
+                  <li>sctar:workGroup</li>
+                  <li>sctar:work</li>
+                  <li>sctar:expression</li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li>scta:work
+            <ul>
+              <li>Range
+                <ul>
+                  <li>sctar:expression</li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li>scta:expression (where structureType != structureBlock)
+            <ul>
+              <li>Range
+                <ul>
+                  <li>sctar:expression</li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li>scta:manifestation (where structureType != structureBlock)
+            <ul>
+              <li>Range
+                <ul>
+                  <li>sctar:manifestation</li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li>scta:transcription (where structureType != structureBlock)
+            <ul>
+              <li>Range
+                <ul>
+                  <li>sctar:transcription</li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li>Range
+        <ul>
+          <li>sctar:workGroup</li>
+          <li>sctar:work</li>
+          <li>sctar:expression</li>
+          <li>scta:manifestation</li>
+          <li>scta:transcription</li>
+        </ul>
+      </li>
+      <li>Notes
+        <ul>
+          <li>does this actually just have a global domain and range?</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>sctap:hasPredecessor
+    <ul>
+      <li>Domain
+        <ul>
+          <li>sctar:transcription</li>
+        </ul>
+      </li>
+      <li>Range
+        <ul>
+          <li>sctar:transcription</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>sctap:hasStructureBlock
+    <ul>
+      <li>Domain
+        <ul>
+          <li>sctar:expression (where structureType = structureItem or structureDivision)
+            <ul>
+              <li>Range
+                <ul>
+                  <li>sctar:expression (where structureType=structureBlock)</li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li>sctar:manifestation (where structureType = structureItem or structureDivision)
+            <ul>
+              <li>Range
+                <ul>
+                  <li>sctar:manifestation (where structureType=structureBlock)</li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li>sctar:transcription (where structureType = structureItem or structureDivision)
+            <ul>
+              <li>Range
+                <ul>
+                  <li>sctar:transcription (where structureType=structureBlock)</li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li>Range
+        <ul>
+          <li>sctar:expression (where structureType=structureBlock)</li>
+          <li>sctar:manifestation (where structureType=structureBlock)</li>
+          <li>sctar:transcription (where structureType=structureBlock)</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>sctap:hasStructureDivision
+    <ul>
+      <li>Domain
+        <ul>
+          <li>sctar:expression (where structureType = structureItem or structureDivision)
+            <ul>
+              <li>Range
+                <ul>
+                  <li>sctar:expression (where structureType=structureDivision)</li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li>sctar:manifestation (where structureType = structureItem or structureDivision)
+            <ul>
+              <li>Range
+                <ul>
+                  <li>sctar:manifestation (where structureType=structureDivision)</li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li>sctar:transcription (where structureType = structureItem or structureDivision)
+            <ul>
+              <li>Range
+                <ul>
+                  <li>sctar:transcription (where structureType=structureDivision)</li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li>Range
+        <ul>
+          <li>sctar:expression (where structureType=structureDivision)</li>
+          <li>sctar:manifestation (where structureType=structureDivision)</li>
+          <li>sctar:transcription (where structureType=structureDivision)</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>sctap:hasStructureElement
+    <ul>
+      <li>Domain
+        <ul>
+          <li>sctar:expression (where structureType = structureBlock)
+            <ul>
+              <li>Range
+                <ul>
+                  <li>sctar:expression (where structureType=structureElement)</li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li>sctar:manifestation (where structureType = structureBlock)
+            <ul>
+              <li>Range
+                <ul>
+                  <li>sctar:manifestation (where structureType=structureElement)</li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li>sctar:transcription (where structureType = structureBlock)
+            <ul>
+              <li>Range
+                <ul>
+                  <li>sctar:transcription (where structureType=structureElement)</li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li>Range
+        <ul>
+          <li>sctar:expression (where structureType=structureElement)</li>
+          <li>sctar:manifestation (where structureType=structureElement)</li>
+          <li>sctar:transcription (where structureType=structureElement)</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>sctap:hasStructureItem
+    <ul>
+      <li>Domain
+        <ul>
+          <li>sctar:expression (where structureType = structureCollection)
+            <ul>
+              <li>Range
+                <ul>
+                  <li>sctar:expression (where structureType=structureItem)</li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li>sctar:manifestation (where structureType = structureCollection)
+            <ul>
+              <li>Range
+                <ul>
+                  <li>sctar:manifestation (where structureType=structureItem)</li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li>sctar:transcription (where structureType = structureCollection)
+            <ul>
+              <li>Range
+                <ul>
+                  <li>sctar:transcription (where structureType=structureItem)</li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li>Range
+        <ul>
+          <li>sctar:expression (where structureType=structureItem)</li>
+          <li>sctar:manifestation (where structureType=structureItem)</li>
+          <li>sctar:transcription (where structureType=structureItem)</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>sctap:hasSuccessor
+    <ul>
+      <li>Domain
+        <ul>
+          <li>sctar:transcription</li>
+        </ul>
+      </li>
+      <li>Range
+        <ul>
+          <li>sctar:transcription</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>sctap:hasSurface
+    <ul>
+      <li>Domain
+        <ul>
+          <li>Codex, Quire, Folio</li>
+        </ul>
+      </li>
+      <li>Range
+        <ul>
+          <li>Surface</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>sctap:hasTranscription
+    <ul>
+      <li>Domain
+        <ul>
+          <li>sctar:manifestation</li>
+        </ul>
+      </li>
+      <li>Range
+        <ul>
+          <li>sctar:transcription</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <p>sctap:hasXML</p>
+  </li>
+  <li>
+    <p>sctap:hasDocument</p>
+  </li>
+  <li>hasSlug
+    <ul>
+      <li>used in manifestation level (not sure if this is needed)</li>
+      <li>hasn’t this be replaced by shortId</li>
+    </ul>
+  </li>
+  <li>sctap:hash
+    <ul>
+      <li>Domain
+        <ul>
+          <li>sctar:transcription</li>
+        </ul>
+      </li>
+      <li>Range
+        <ul>
+          <li>“string”</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h1 id="i">I</h1>
+
+<ul>
+  <li>ldp:inbox
+    <ul>
+      <li>Domain
+        <ul>
+          <li>Global</li>
+        </ul>
+      </li>
+      <li>Range
+        <ul>
+          <li>url</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>sctap:ipfsHash
+    <ul>
+      <li>Domain
+        <ul>
+          <li>sctar:transcription</li>
+        </ul>
+      </li>
+      <li>Range
+        <ul>
+          <li>“string”</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>sctap:isCodexItemOf
+    <ul>
+      <li>Domain
+        <ul>
+          <li>sctar:codexItem</li>
+        </ul>
+      </li>
+      <li>Range
+        <ul>
+          <li>sctar:codex</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>sctap:isHeadTranscription
+    <ul>
+      <li>Domain
+        <ul>
+          <li>sctar:transcription</li>
+        </ul>
+      </li>
+      <li>Range
+        <ul>
+          <li>string (“true”)</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>sctap:isManifestationOf
+    <ul>
+      <li>Domain
+        <ul>
+          <li>sctar:manifestation</li>
+        </ul>
+      </li>
+      <li>Range
+        <ul>
+          <li>sctar:expression</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>sctap:isMemberOf
+    <ul>
+      <li>Domain
+        <ul>
+          <li>sctar:workGroup (where level !=1)
+            <ul>
+              <li>Range
+                <ul>
+                  <li>sctar:workGroup</li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li>sctar:work
+            <ul>
+              <li>Range
+                <ul>
+                  <li>sctar:workGroup</li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li>sctar:expression (where level != 1)
+            <ul>
+              <li>Range
+                <ul>
+                  <li>sctar:expression (where level != 1)</li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li>sctar:expression (where level = 1)
+            <ul>
+              <li>Range
+                <ul>
+                  <li>sctar:work</li>
+                  <li>sctar:workGroup</li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li>sctar:manifestation (where level != 1)
+            <ul>
+              <li>Range:
+                <ul>
+                  <li>sctar:manifestation</li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li>sctar:transcription (where level != 1)
+            <ul>
+              <li>Range:
+                <ul>
+                  <li>sctar:transcription</li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li>Range
+        <ul>
+          <li>sctar:workGroup</li>
+          <li>sctar:work</li>
+          <li>sctar:expression</li>
+          <li>sctar:manifestation</li>
+          <li>sctar:transcription</li>
+        </ul>
+      </li>
+      <li>Notes
+        <ul>
+          <li>Note that manifestations and transcriptions are not allowed to be members of workGroups or works. If one wants to find all manifestations in a work group, they should ask for all expression that are members of a work group and then find all manifestations of those expressions</li>
+          <li>toplevel expressions are allowed to be a member of workgroups and works because they are both level 1 of expression hierarchy and lowest level of the group hierarchy. (workGroup-&gt;work-&gt;expression, and topLevelCollection-&gt;collection-item-div-block-element)</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>sctap:isOnSurface
+    <ul>
+      <li>Domain
+        <ul>
+          <li>Manifestation (item, block, element)</li>
+        </ul>
+      </li>
+      <li>Range
+        <ul>
+          <li>Surface</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>sctap:isOnZone
+    <ul>
+      <li>Domain
+        <ul>
+          <li>Manifestation</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>sctap:isPartOfSurface
+    <ul>
+      <li>Domain
+        <ul>
+          <li>Zone</li>
+        </ul>
+      </li>
+      <li>Range
+        <ul>
+          <li>Surface</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>sctap:isTranscriptionOf
+    <ul>
+      <li>Domain
+        <ul>
+          <li>sctar:transcription</li>
+        </ul>
+      </li>
+      <li>Range
+        <ul>
+          <li>sctar:transcription</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>sctap:isPartOfStructureBlock
+    <ul>
+      <li>Domain
+        <ul>
+          <li>sctar:expression (where structureType=structureElement)
+            <ul>
+              <li>Range
+                <ul>
+                  <li>sctar:expression (where structureType=structureBlock)</li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li>sctar:manifestation (where structureType=structureElement)
+            <ul>
+              <li>Range
+                <ul>
+                  <li>sctar:manifestation (where structureType=structureBlock)</li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li>sctar:transcription (where structureType=structureElement)
+            <ul>
+              <li>Range
+                <ul>
+                  <li>sctar:transcription (where structureType=structureBlock)</li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li>Range
+        <ul>
+          <li>sctar:expression (where structureType=structureBlock)</li>
+          <li>sctar:manifestation (where structureType=structureBlock)</li>
+          <li>sctar:transcription (where structureType=structureBlock)</li>
+        </ul>
+      </li>
+      <li>Note
+        <ul>
+          <li>this seem redundant with dc:isPart of unless structureElement is not always a direct child of structureBlock. Perhaps if a quote has another quote as part then this would be needed. But right now all structureElements are reduced to a flat list that are the direct children of structureBlock, so dc:isPartOf would always give the same result as isPartOfStructureBlock</li>
+        </ul>
+      </li>
+      <li>Candidate for Revision
+        <ul>
+          <li>Proposed changes
+            <ul>
+              <li>Keep but document that this is identical to dc:hasPart at this level</li>
+              <li>or Delete</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>sctap:isPartOfStructureItem
+    <ul>
+      <li>Domain
+        <ul>
+          <li>sctar:expression (where structureType=structureBlock or structureElement)
+            <ul>
+              <li>Range
+                <ul>
+                  <li>sctar:expression (where structureType=structureItem)</li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li>sctar:manifestation (where structureType=structureBlock or structureElement)
+            <ul>
+              <li>Range
+                <ul>
+                  <li>sctar:manifestation (where structureType=structureItem)</li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li>sctar:transcription (where structureType=structureBlock or structureElement)
+            <ul>
+              <li>Range
+                <ul>
+                  <li>sctar:transcription (where structureType=structureItem)</li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li>Range
+        <ul>
+          <li>sctar:expression (where structureType=structureItem)</li>
+          <li>sctar:manifestation (where structureType=structureItem)</li>
+          <li>sctar:transcription (where structureType=structureItem)</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>sctap:isPartOfTopLevelExpression
+    <ul>
+      <li>Domain
+        <ul>
+          <li>sctar:expression</li>
+        </ul>
+      </li>
+      <li>Range
+        <ul>
+          <li>sctar:expression (where structureType=structureCollection and level=1)</li>
+        </ul>
+      </li>
+      <li>Notes
+        <ul>
+          <li>this a short cut property, any query could get here by asking for an expression that is level 1. But this property gives a direct reference to the topLevelExpression by pointing to the resource. Finding the same resource requires a two step query: Find an expression that the current node is a memberOf then give me the expression that has a level one</li>
+          <li>the designation of “expression” also seems necessary since it is will be assumed that we are looking for a top level expression when the subject of the property is an expression</li>
+        </ul>
+      </li>
+      <li>Candidate for Revision
+        <ul>
+          <li>Proposed Change
+            <ul>
+              <li>sctap:isPartOfTopLevelCollection, where range (expression, manifestation, transcription) is determined by the domain.</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>sctap:isPartOfTopLevelManifestation
+    <ul>
+      <li>Domain
+        <ul>
+          <li>sctar:manifestation</li>
+        </ul>
+      </li>
+      <li>Range
+        <ul>
+          <li>sctar:manifestation (where structureType=structureCollection and level=1)</li>
+        </ul>
+      </li>
+      <li>Notes
+        <ul>
+          <li>see Notes for sctap:isPartOfTopLevelExpression</li>
+        </ul>
+      </li>
+      <li>Candidate for Revision
+        <ul>
+          <li>Proposed Change
+            <ul>
+              <li>sctap:isPartOfTopLevelCollection</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>sctap:isPartOfTopLevelTranscription
+    <ul>
+      <li>Domain
+        <ul>
+          <li>sctar:transcription</li>
+        </ul>
+      </li>
+      <li>Range
+        <ul>
+          <li>sctar:transcription (where structureType=structureCollection and level=1)</li>
+        </ul>
+      </li>
+      <li>Notes
+        <ul>
+          <li>see Notes for sctap:isPartOfTopLevelExpression</li>
+        </ul>
+      </li>
+      <li>Candidate for Revision
+        <ul>
+          <li>Proposed Change
+            <ul>
+              <li>sctap:isPartOfTopLevelCollection</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>dc:isPartOf
+    <ul>
+      <li>Domain
+        <ul>
+          <li>scta:workGroup (where workGroup != top level work group is not a top level workGroup)
+            <ul>
+              <li>Range
+                <ul>
+                  <li>sctar:workGroup</li>
+                  <li>sctar:work</li>
+                  <li>sctar:expression</li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li>scta:work
+            <ul>
+              <li>Range
+                <ul>
+                  <li>sctar:expression</li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li>scta:expression
+            <ul>
+              <li>Range
+                <ul>
+                  <li>sctar:expression</li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li>scta:manifestation
+            <ul>
+              <li>Range
+                <ul>
+                  <li>sctar:manifestation</li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li>scta:transcription
+            <ul>
+              <li>Range
+                <ul>
+                  <li>sctar:transcription</li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li>Range
+        <ul>
+          <li>sctar:workGroup</li>
+          <li>sctar:work</li>
+          <li>sctar:expression</li>
+          <li>scta:manifestation</li>
+          <li>scta:transcription</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>sctap:isVersionDefault
+    <ul>
+      <li>Domain
+        <ul>
+          <li>sctar:transcription</li>
+        </ul>
+      </li>
+      <li>Range
+        <ul>
+          <li>string (“true”)</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h1 id="l">L</h1>
+
+<ul>
+  <li>sctap:level
+    <ul>
+      <li>Domain
+        <ul>
+          <li>sctar:expression</li>
+          <li>sctar:manifestation</li>
+          <li>sctar:transcription</li>
+          <li>(could also apply to workGroup and work, but work would be the lowest level, as topLevelExpress has level 1)</li>
+        </ul>
+      </li>
+      <li>Range
+        <ul>
+          <li>integer</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>sctap:longTitle</li>
+</ul>
+
+<h1 id="m">M</h1>
+
+<ul>
+  <li>sctap:materialObjectType (not sure this is used)</li>
+  <li>sctap:manifestationType
+    <ul>
+      <li>Domain (object type)
+        <ul>
+          <li>sctar:manifestation</li>
+        </ul>
+      </li>
+      <li>Range (predicate type)
+        <ul>
+          <li>sctar:manifestationType</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h1 id="n">N</h1>
+
+<ul>
+  <li>sctap:next</li>
+  <li>Domain</li>
+  <li>sctar:expression (structureType != topLevel Collection )
+    <ul>
+      <li>Range
+        <ul>
+          <li>sctar:expression</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>sctar:manifestation (structureType != topLevel Collection )
+    <ul>
+      <li>Range
+        <ul>
+          <li>sctar:manifestation</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>sctar:transcription (structureType != topLevel Collection )
+    <ul>
+      <li>Range
+        <ul>
+          <li>sctar:transcription</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>sctar:surface
+    <ul>
+      <li>Range
+        <ul>
+          <li>sctar:surface</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>Notes/Questions
+    <ul>
+      <li>would something with structureType=structureElement takes next and previous???</li>
+    </ul>
+  </li>
+</ul>
+
+<h1 id="o">O</h1>
+
+<h1 id="p">P</h1>
+
+<ul>
+  <li>sctap:plaintext
+    <ul>
+      <li>Domain
+        <ul>
+          <li>sctar:transcription</li>
+        </ul>
+      </li>
+      <li>Range
+        <ul>
+          <li>url</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h1 id="s">S</h1>
+
+<ul>
+  <li>sctap:status
+currently being at expression level
+but I think it should apply only to transcription level
+    <ul>
+      <li>Domain
+        <ul>
+          <li>sctar:transcription</li>
+        </ul>
+      </li>
+      <li>Range
+        <ul>
+          <li>“string”: “draft”</li>
+          <li>“string”: “private-draft”</li>
+          <li>“string”: “reviewed”</li>
+          <li>“string”: “not-started”</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>sctap:structureType
+    <ul>
+      <li>Domain (object type)
+        <ul>
+          <li>sctar:expression</li>
+          <li>sctar:manifestation</li>
+          <li>sctar:transcription</li>
+          <li>(role of work is unclear)</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>sctap:shortId
+    <ul>
+      <li>sctap:sectionOrderNumber</li>
+      <li>Domain
+        <ul>
+          <li>sctar:expression</li>
+        </ul>
+      </li>
+      <li>Range
+        <ul>
+          <li>integer</li>
+        </ul>
+      </li>
+      <li>Notes
+        <ul>
+          <li>Should the domain only be expression. I think so. If so, should “level” be restricted to expression as well.</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h1 id="t">T</h1>
+
+<ul>
+  <li>sctap:totalOrderNumber
+    <ul>
+      <li>Domain
+        <ul>
+          <li>sctar:expression</li>
+        </ul>
+      </li>
+      <li>Range
+        <ul>
+          <li>integer</li>
+        </ul>
+      </li>
+      <li>Notes
+        <ul>
+          <li>Should the domain only be expression. I think so. If so, should “level” be restricted to expression as well.</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>dc:title
+    <ul>
+      <li>Domain (object type)
+        <ul>
+          <li>global</li>
+        </ul>
+      </li>
+      <li>Range (predicate type)
+        <ul>
+          <li>“string”</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>sctap:transcriptionType
+    <ul>
+      <li>Domain (object type)
+        <ul>
+          <li>sctar:transcription</li>
+        </ul>
+      </li>
+      <li>Range (predicate type)
+        <ul>
+          <li>sctar:transcriptionType</li>
+          <li>or Literal, “critical”, “translation”, “diplomatic”</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>rdf:type
+    <ul>
+      <li>Domain (object type)
+        <ul>
+          <li>global</li>
+        </ul>
+      </li>
+      <li>Range (predicate type)
+        <ul>
+          <li>“string”</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h1 id="u">U</h1>
+
+<h1 id="v">V</h1>
+
+<ul>
+  <li>sctap:versionLabel
+    <ul>
+      <li>Domain
+        <ul>
+          <li>sctar:transcription</li>
+        </ul>
+      </li>
+      <li>Range
+        <ul>
+          <li>“string”</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>sctap:versionNo
+    <ul>
+      <li>Domain
+        <ul>
+          <li>sctar:transcription</li>
+        </ul>
+      </li>
+      <li>Range
+        <ul>
+          <li>“string”</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>sctap:versionOrderNumber
+    <ul>
+      <li>Domain
+        <ul>
+          <li>sctar:transcription</li>
+        </ul>
+      </li>
+      <li>Range
+        <ul>
+          <li>“string”</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h1 id="w">W</h1>
+
+<h1 id="z">Z</h1>
+
+<ul>
+  <li>zoneType
+    <ul>
+      <li>Domain
+        <ul>
+          <li>sctar:zone</li>
+        </ul>
+      </li>
+      <li>Range
+        <ul>
+          <li>sctar:zoneType</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+:ET

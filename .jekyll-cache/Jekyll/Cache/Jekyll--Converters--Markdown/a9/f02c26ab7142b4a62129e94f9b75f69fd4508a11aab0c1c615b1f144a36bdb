@@ -1,0 +1,81 @@
+I"l<p>Extracted from official github repo <a href="https://github.com/scta/cdf-schema">https://github.com/scta/cdf-schema</a> on 2020-01-23</p>
+
+<h1 id="codex-description-file-schema">Codex Description File Schema</h1>
+
+<p>This is a repository for the schema for Codex Description Files,
+maintained by the SCTA community <a href="http://scta.info">http://scta.info</a></p>
+
+<p>The CDF-SCHEMA is used to associate describe a Codex Manifestation, individual Codex Ideas as well as map the Surface Manifestations and Surface Items within a given codex.</p>
+
+<h1 id="description">Description</h1>
+
+<h2 id="codex">codex</h2>
+
+<p>A transcription file begins with a <code class="language-plaintext highlighter-rouge">&lt;codex&gt;</code> as the root element, which takes a <code class="language-plaintext highlighter-rouge">&lt;head&gt;</code> and <code class="language-plaintext highlighter-rouge">&lt;surfaces&gt;</code> element.</p>
+
+<h2 id="head">head</h2>
+
+<p>The header includes basic information about the codex and its codex item</p>
+
+<ul>
+  <li>Children of <code class="language-plaintext highlighter-rouge">&lt;head&gt;</code> <strong>MUST</strong> be listed in the following order</li>
+  <li>It <strong>MUST</strong> include a <code class="language-plaintext highlighter-rouge">&lt;type&gt;</code> indicating whether the codex is <code class="language-plaintext highlighter-rouge">manuscript</code> or <code class="language-plaintext highlighter-rouge">book</code></li>
+  <li>It <strong>MUST</strong> include a <code class="language-plaintext highlighter-rouge">&lt;short&gt;</code> id (See id naming conventions docs)</li>
+  <li>It <strong>MUST</strong> include a <code class="language-plaintext highlighter-rouge">&lt;title&gt;</code></li>
+  <li>It <strong>MAY</strong> include an option <code class="language-plaintext highlighter-rouge">&lt;initial&gt;</code>. (This is depreciated and is discouraged)</li>
+  <li>It <strong>MAY</strong> include a place, which as of now is a conventional string that indicates the geographical origin of the codex.</li>
+  <li>It <strong>MAY</strong> include a date, which as of now is a conventional string that indicates the temporal origin of the codex.</li>
+  <li>It <strong>MAY</strong> include a human readable prose description.</li>
+  <li>It <strong>MUST</strong> include a <code class="language-plaintext highlighter-rouge">&lt;hastItems&gt;</code> child.</li>
+</ul>
+
+<h2 id="hasitems">hasItems</h2>
+
+<p>The hasItems element is designed to indicate a list of item instances of a given codex manifestation. In the case of a codex type manuscript, there should only be one <code class="language-plaintext highlighter-rouge">item</code> as a child of the <code class="language-plaintext highlighter-rouge">hasItems</code> element. In the case of a printed codex, there may be many, one for each item printed from the codex manifestation (or type setting)</p>
+
+<ul>
+  <li>It <strong>MUST</strong> contain one or more <code class="language-plaintext highlighter-rouge">&lt;item&gt;</code> element.</li>
+</ul>
+
+<h2 id="item">item</h2>
+
+<p>An <code class="language-plaintext highlighter-rouge">item</code> describes a given item instance of a codex manifestation.</p>
+
+<ul>
+  <li>It <strong>MAY</strong> have a <code class="language-plaintext highlighter-rouge">&lt;label&gt;</code></li>
+  <li>It <strong>MUST</strong> have a <code class="language-plaintext highlighter-rouge">&lt;canonical&gt;</code> of value true or false; true if it should be used as the default item for this codex manifestation, otherwise it should be false.</li>
+  <li>It <strong>MUST</strong> have a <code class="language-plaintext highlighter-rouge">&lt;shortid&gt;</code></li>
+  <li>It <strong>MAY</strong> have a <code class="language-plaintext highlighter-rouge">&lt;holdingInstitution&gt;</code></li>
+  <li>It <strong>MAY</strong> have a <code class="language-plaintext highlighter-rouge">&lt;callNumber&gt;</code></li>
+  <li>It <strong>MAY</strong> have a <code class="language-plaintext highlighter-rouge">&lt;canvasBase&gt;</code></li>
+  <li>It <strong>MAY</strong> have a <code class="language-plaintext highlighter-rouge">&lt;manifestOfficial&gt;</code></li>
+</ul>
+
+<h2 id="surfaces">Surfaces</h2>
+
+<ul>
+  <li>It <strong>MAY</strong> have one or more <code class="language-plaintext highlighter-rouge">&lt;surface&gt;</code> elements</li>
+</ul>
+
+<h2 id="surface">Surface</h2>
+
+<ul>
+  <li>It <strong>MUST</strong> have a <code class="language-plaintext highlighter-rouge">&lt;shortid&gt;</code></li>
+  <li>It <strong>MUST</strong> have a <code class="language-plaintext highlighter-rouge">&lt;label&gt;</code></li>
+  <li>It <strong>MUST</strong> have a <code class="language-plaintext highlighter-rouge">&lt;hasISurfaces&gt;</code></li>
+</ul>
+
+<h2 id="hasisurfaces">hasISurfaces</h2>
+
+<ul>
+  <li>It <strong>MUST</strong> have one or more <code class="language-plaintext highlighter-rouge">&lt;ISurface&gt;</code></li>
+</ul>
+
+<h2 id="isurface">ISurface</h2>
+
+<ul>
+  <li>It <strong>MUST</strong> have a <code class="language-plaintext highlighter-rouge">&lt;shortId&gt;</code></li>
+  <li>It <strong>MUST</strong> have a <code class="language-plaintext highlighter-rouge">&lt;canonical&gt;</code> of value true or false; true if it should be used as the default ISurface for this Surface manifestation, otherwise it should be false.</li>
+  <li>It <strong>MUST</strong> have a <code class="language-plaintext highlighter-rouge">&lt;canvasslug&gt;</code></li>
+</ul>
+:ET

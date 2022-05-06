@@ -1,0 +1,42 @@
+I"`<p><a href="http://scta.info">The international image interoperability framework (IIIF)</a> creates the potential for amazing trans-institutional collections and seamless user experiences: experiences that are the result of real time aggregation of data sets produced by institutions, librarians, and researchers scattered through the world.</p>
+
+<p>While IIIF creates this potential, it is only actualized through the additional hard work of institutions to build the systems and infrastructures needed to deliver their content according to the stipulations of the IIIF specification.</p>
+
+<p>In this post I want to say thank you to the <a href="http://mazarinum.bibliotheque-mazarine.fr/">Bibliothèque Mazarine</a>, the <a href="http://www.bibliotheque.sorbonne.fr/biu/">Bibliothèque de la Sorbonne</a>, and the <a href="https://digi.vatlib.it/">Vatican Library</a> for this work and to point to a great example of how their efforts can be used to create new possibilities for scholarship.</p>
+
+<p>Adam Wodeham’s <em>Ordinatio</em> is an incredibly important text to the history of philosophy and theology. Today, efforts are underway to make that text available at every dimension of the editorial process, from critical edition, to diplomatic transcriptions, to easy consultation of manuscript images.</p>
+
+<p>Until now, the four manuscripts of this text have been scattered throughout the world. To consult them, one needed to travel from Spain to France to Rome.</p>
+
+<p>With the aid of IIIF and participating institutions, we have been able to bring all these of these witness together in a single viewer, to consult and compare side by side. Moreover, through the on-going efforts of the <a href="http://scta.info">Scholastic Commentaries and Texts Archive</a> and contributing editors, we are able to bring alongside these images supplemental material such as navigational aids and diplomatic transcriptions to enhance the viewing experience.</p>
+
+<p>Below is a screen shot of these four manuscripts brought together in the Mirador Viewer.</p>
+
+<p><img src="/assets/images/mirador-with-four-mss.png" alt="mirador-with-four-msw" /></p>
+
+<p><img src="/assets/images/mirador-with-four-mss2.png" alt="mirador-with-four-mss2" /></p>
+
+<p>You can experience this for your self here: <a href="http://mirador.scta.info/?resourceid=wodehamordinatio">http://mirador.scta.info/?resourceid=wodehamordinatio</a></p>
+
+<p>Leveraging the power of Linked Data, the SCTA is able to connect additional scholarly data to these images, detailed tables of contents and diplomatic transcriptions that enrich the viewing experience of these images.</p>
+
+<p><img src="/assets/images/maz-sorb-toc.png" alt="maz-sorb-toc" /></p>
+
+<p><img src="/assets/images/maz-transcriptions.png" alt="maz-transcription" /></p>
+
+<p>This data can also be re-used and re-combined in other viewers, such as the text focused LombardPress Viewer</p>
+
+<p><img src="/assets/images/maz-lbp-example.png" alt="maz-lbp" />
+<img src="/assets/images/sorb-lbp.png" alt="sorb-lbp" /></p>
+
+<p>You can view this yourself at: <a href="http://scta.lombardpress.org/b1-d3-qun">http://scta.lombardpress.org/b1-d3-qun</a></p>
+
+<p>Finally, using Linked Data Notifications and the <a href="https://github.com/jeffreycwitt/mirador-ldn-plugin">Mirador LDN Plugin</a>, institutions that make these images available, can allow their users to choose to import SCTA content into their viewing experience.</p>
+
+<p><img src="/assets/images/sorb-notification.png" alt="maz-lbp" />
+<img src="/assets/images/sorb-ldn-imported.png" alt="sorb-lbp" /></p>
+
+<p>To learn more about IIIF and <a href="https://www.w3.org/TR/ldn/">Linked Data Notifications</a>, see <a href="https://github.com/jeffreycwitt/mirador-ldn-plugin">https://github.com/jeffreycwitt/mirador-ldn-plugin</a></p>
+
+<p>Again, special thanks are due to the <a href="http://mazarinum.bibliotheque-mazarine.fr/">Bibliothèque Mazarine</a>, the <a href="http://www.bibliotheque.sorbonne.fr/biu/">Bibliothèque de la Sorbonne</a> and the <a href="https://digi.vatlib.it/">Vatican Library</a> for digitizing these manuscripts and making them available via IIIF. Without the efforts of these institutions and the individuals working there, the promise of IIIF would remain a mere potentiality. Thanks also to Régis Robineau at Biblissima for helping facilitating contact with the Mazarine and Sorbonne libraries and his work on the Mirador-LDN plugin.</p>
+:ET

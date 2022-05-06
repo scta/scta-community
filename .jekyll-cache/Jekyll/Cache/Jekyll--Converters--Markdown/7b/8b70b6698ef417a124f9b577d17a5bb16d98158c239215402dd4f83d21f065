@@ -1,0 +1,1030 @@
+I"�<p>Extracted from official github repo <a href="https://github.com/scta/lombardpress/lombardpress-schema">https://github.com/lombardpress/lombardpress-schema</a> on 2020-01-23</p>
+
+<hr />
+<p>layout: page
+title:  “Lombard Press Schema 1.0.0 - Diplomatic Transcription Guidelines”
+date:   2016-07-15
+categories: schema
+—</p>
+<h1 id="lombardpress-diplomatic-transcription-guidelines">LombardPress Diplomatic Transcription Guidelines</h1>
+
+<p>Editors:</p>
+
+<ul>
+  <li>Jeffrey C. Witt (Loyola University Maryland)</li>
+  <li>Michael Stenskjær Christensen (University of Copenhagen)</li>
+  <li>Nicolas Vaughan (Universidad de los Andes)</li>
+</ul>
+
+<p>Document Status: Draft</p>
+
+<h1 id="outline">Outline</h1>
+
+<ul>
+  <li><a href="#preamble">Preamble</a></li>
+  <li><a href="#teiheader">teiHeader</a>
+    <ul>
+      <li><a href="#filedesc">fileDesc</a>
+        <ul>
+          <li><a href="#titlestmt">titleStmt</a></li>
+          <li><a href="#editionstmt">editionStmt</a></li>
+          <li><a href="#publicationstmt">publicationStmt</a></li>
+          <li><a href="#sourcedesc">sourceDesc</a></li>
+        </ul>
+      </li>
+      <li><a href="#encodingdesc">encodingDesc</a></li>
+      <li><a href="#revisiondesc">revisionDesc</a></li>
+    </ul>
+  </li>
+  <li><a href="#text">text</a>
+    <ul>
+      <li><a href="#front">front</a></li>
+      <li><a href="#body">body</a></li>
+      <li><a href="#div">div</a></li>
+      <li><a href="#head">head</a></li>
+      <li><a href="#p">p</a></li>
+    </ul>
+  </li>
+  <li><a href="#editorial-emendations">Editorial Emendations</a>
+    <ul>
+      <li><a href="#expansions">Expansions</a></li>
+      <li><a href="#corrections">Corrections</a></li>
+      <li><a href="#normalizations">Normalizations</a></li>
+    </ul>
+  </li>
+  <li><a href="#unclear-and-illegible-readings">Unclear and Illegible Readings</a></li>
+  <li><a href="#scribal-corrections">Scribal Corrections</a></li>
+  <li><a href="#references-and-quotations">References and Quotations</a></li>
+  <li><a href="#punctuation">Punctuation</a></li>
+  <li><a href="#milestones">Milestones</a></li>
+  <li><a href="#marginalia">Marginalia</a></li>
+</ul>
+
+<h1 id="preamble">Preamble</h1>
+
+<p>The goal of the LombardPress Diplomatic Transcription specification is to offer a set of guidelines for the markup of medieval scholastic commentaries and texts that conform as much as possible to existing standards. In the case of diplomatic transcriptions, this means following as closely as possible the <a href="https://sourceforge.net/p/epidoc/wiki/Home/">EpiDoc</a> specification. In most cases, we aim only to expand the EpiDoc specifications and offer a detailed list of available attributes and attribute values. Where specifications are not stated, the EpiDoc guidelines should be followed. Where EpiDoc does not state a specification, the more general <a href="http://tei-c.org">TEI</a> specification should be followed.</p>
+
+<h1 id="teiheader">teiHeader</h1>
+
+<h2 id="filedesc">fileDesc</h2>
+
+<h3 id="description">Description</h3>
+
+<p>The <code class="language-plaintext highlighter-rouge">fileDesc</code> contains the full bibliographic description of an electronic file.</p>
+
+<h3 id="rules">Rules</h3>
+
+<ol>
+  <li><code class="language-plaintext highlighter-rouge">fileDesc</code> <strong>MUST</strong> contain <code class="language-plaintext highlighter-rouge">titleStmt</code>.</li>
+  <li><code class="language-plaintext highlighter-rouge">fileDesc</code> <strong>MUST</strong> contain <code class="language-plaintext highlighter-rouge">editionStmt</code>.</li>
+  <li><code class="language-plaintext highlighter-rouge">fileDesc</code> <strong>MUST</strong> contain <code class="language-plaintext highlighter-rouge">publicationStmt</code>.</li>
+</ol>
+
+<h3 id="titlestmt">titleStmt</h3>
+
+<h4 id="description-1">Description</h4>
+
+<p>The <code class="language-plaintext highlighter-rouge">titleStmt</code> determines the bibliographical information of the encoded file.</p>
+
+<h4 id="rules-1">Rules</h4>
+
+<ol>
+  <li><code class="language-plaintext highlighter-rouge">titleStmt</code> <strong>MUST</strong> have a <code class="language-plaintext highlighter-rouge">title</code>.</li>
+  <li><code class="language-plaintext highlighter-rouge">titleStmt</code> <strong>MUST</strong> have an <code class="language-plaintext highlighter-rouge">author</code>.</li>
+  <li><code class="language-plaintext highlighter-rouge">titleStmt</code> <strong>SHOULD</strong> have an <code class="language-plaintext highlighter-rouge">editor</code>.</li>
+  <li><code class="language-plaintext highlighter-rouge">titleStmt</code> <strong>MAY</strong> have <code class="language-plaintext highlighter-rouge">responseStmt</code>.</li>
+</ol>
+
+<h4 id="examples">Examples</h4>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;titleStmt&gt;</span>
+  <span class="nt">&lt;title&gt;</span>Dicta super librum De anima<span class="nt">&lt;/title&gt;</span>
+  <span class="nt">&lt;author&gt;</span>Simon Magister<span class="nt">&lt;/author&gt;</span>
+    <span class="nt">&lt;editor&gt;</span>Michael Stenskjær Christensen<span class="nt">&lt;/editor&gt;</span>
+  <span class="nt">&lt;respStmt&gt;</span>
+    <span class="nt">&lt;name</span> <span class="na">xml:id=</span><span class="s">"comments-JJ"</span><span class="nt">&gt;</span>John Johnson<span class="nt">&lt;/name&gt;</span>
+    <span class="nt">&lt;resp&gt;</span>Editorial suggestions<span class="nt">&lt;/resp&gt;</span>
+  <span class="nt">&lt;/respStmt&gt;</span>
+<span class="nt">&lt;/titleStmt&gt;</span>
+</code></pre></div></div>
+
+<h3 id="editionstmt">editionStmt</h3>
+
+<h4 id="description-2">Description</h4>
+
+<p><code class="language-plaintext highlighter-rouge">editionStmt</code> indicates the edition of the document within the context of its source history.</p>
+
+<h4 id="rules-2">Rules</h4>
+
+<ol>
+  <li><code class="language-plaintext highlighter-rouge">editionStmt</code> <strong>MUST</strong> contain an <code class="language-plaintext highlighter-rouge">edition</code> element.</li>
+  <li><code class="language-plaintext highlighter-rouge">edition@n</code> <strong>MUST</strong> be <code class="language-plaintext highlighter-rouge">n=X.X.X-dev</code>; usually, when starting a new document it should be listed as <code class="language-plaintext highlighter-rouge">n=0.0.0-dev</code>.</li>
+  <li><code class="language-plaintext highlighter-rouge">edition</code> <strong>MUST</strong> contain a <code class="language-plaintext highlighter-rouge">date</code> element.</li>
+  <li>The <code class="language-plaintext highlighter-rouge">date</code> that is the child of <code class="language-plaintext highlighter-rouge">edition</code> <strong>MUST</strong> include a machine-formatted <code class="language-plaintext highlighter-rouge">@when</code> attribute corresponding to the date in the text node.</li>
+  <li><code class="language-plaintext highlighter-rouge">edition</code> <strong>SHOULD NOT</strong> contain any other children besides the date.</li>
+</ol>
+
+<h4 id="examples-1">Examples</h4>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;editionStmt&gt;</span>
+  <span class="nt">&lt;edition</span> <span class="na">n=</span><span class="s">"0.0.0-dev"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;date</span> <span class="na">when=</span><span class="s">"2016-06-18"</span><span class="nt">&gt;</span>June 18, 2016<span class="nt">&lt;/date&gt;</span>
+  <span class="nt">&lt;/edition&gt;</span>
+<span class="nt">&lt;/editionStmt&gt;</span>
+</code></pre></div></div>
+
+<h3 id="publicationstmt">publicationStmt</h3>
+
+<h4 id="description-3">Description</h4>
+
+<p><code class="language-plaintext highlighter-rouge">publicationStmt</code> indicates the authority supporting this edition (usually a sponsoring or funding research group). It should also list the license and availability of the text.</p>
+
+<h4 id="rules-3">Rules</h4>
+
+<ol>
+  <li><code class="language-plaintext highlighter-rouge">publicationStmt</code> <strong>MUST</strong> have EITHER <code class="language-plaintext highlighter-rouge">authority</code> and <code class="language-plaintext highlighter-rouge">availability</code> elements as children OR a general <code class="language-plaintext highlighter-rouge">p</code> element.
+    <ul>
+      <li>We highly encourage using <code class="language-plaintext highlighter-rouge">authority</code> and <code class="language-plaintext highlighter-rouge">availability</code> to identify the entity that makes the creation of the current document possible. See examples below.</li>
+    </ul>
+  </li>
+  <li><code class="language-plaintext highlighter-rouge">p</code> <strong>MAY</strong> contain a <code class="language-plaintext highlighter-rouge">ref</code> to provide an external link to the authority-like entity.</li>
+  <li><code class="language-plaintext highlighter-rouge">authority</code> <strong>MAY</strong> contain a <code class="language-plaintext highlighter-rouge">ref</code> to provide an external link to the authority entity.</li>
+  <li><code class="language-plaintext highlighter-rouge">availability</code> <strong>SHOULD</strong> contain <code class="language-plaintext highlighter-rouge">@status</code>.</li>
+  <li><code class="language-plaintext highlighter-rouge">availability</code> <strong>SHOULD</strong> contain a <code class="language-plaintext highlighter-rouge">p</code> describing the license under which the edition is published.</li>
+</ol>
+
+<h4 id="examples-2">Examples</h4>
+
+<h5 id="example-1">Example 1</h5>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;publicationStmt&gt;</span>
+  <span class="nt">&lt;authority&gt;</span>Scholastic Commentaries and Texts Archive Project<span class="nt">&lt;/authority&gt;</span>
+  <span class="nt">&lt;availability</span> <span class="na">status=</span><span class="s">"free"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;p&gt;</span>Published under a <span class="nt">&lt;ref</span> <span class="na">target=</span><span class="s">"http://creativecommons.org/licenses/by-nc-nd/3.0/"</span><span class="nt">&gt;</span>Creative Commons Attribution-NonCommercial-NoDerivs 3.0 License<span class="nt">&lt;/ref&gt;&lt;/p&gt;</span>
+  <span class="nt">&lt;/availability&gt;</span>
+<span class="nt">&lt;/publicationStmt&gt;</span>
+</code></pre></div></div>
+
+<h5 id="example-2">Example 2</h5>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;publicationStmt&gt;</span>
+  <span class="nt">&lt;authority&gt;</span>
+    <span class="nt">&lt;ref</span> <span class="na">target=</span><span class="s">"http://representationandreality.gu.se"</span><span class="nt">&gt;</span>
+      Representation and Reality: Historical and Contemporary Perspectives on the Aristotelian Tradition
+    <span class="nt">&lt;/ref&gt;</span>
+  <span class="nt">&lt;/authority&gt;</span>
+  <span class="nt">&lt;availability</span> <span class="na">status=</span><span class="s">"free"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;p&gt;</span>Published under a <span class="nt">&lt;ref</span> <span class="na">target=</span><span class="s">"http://creativecommons.org/licenses/by-nc-nd/3.0/"</span><span class="nt">&gt;</span>Creative Commons Attribution-NonCommercial-NoDerivs 3.0 License<span class="nt">&lt;/ref&gt;&lt;/p&gt;</span>
+  <span class="nt">&lt;/availability&gt;</span>
+<span class="nt">&lt;/publicationStmt&gt;</span>
+</code></pre></div></div>
+
+<h5 id="example-3">Example 3</h5>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;publicationStmt&gt;</span>
+  <span class="nt">&lt;authority&gt;</span>
+    <span class="nt">&lt;ref</span> <span class="na">target=</span><span class="s">"http://petrushispanusproject.po"</span><span class="nt">&gt;</span>Petrus Hispanus Project<span class="nt">&lt;/ref&gt;&lt;/authority&gt;</span>
+  <span class="nt">&lt;availability</span> <span class="na">status=</span><span class="s">"free"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;p&gt;</span>Published under a <span class="nt">&lt;ref</span> <span class="na">target=</span><span class="s">"http://creativecommons.org/licenses/by-nc-nd/3.0/"</span><span class="nt">&gt;</span>Creative Commons Attribution-NonCommercial-NoDerivs 3.0 License<span class="nt">&lt;/ref&gt;&lt;/p&gt;</span>
+  <span class="nt">&lt;/availability&gt;</span>
+<span class="nt">&lt;/publicationStmt&gt;</span>
+</code></pre></div></div>
+
+<h3 id="sourcedesc">sourceDesc</h3>
+
+<p><code class="language-plaintext highlighter-rouge">sourceDesc</code> should list the witnesses and sources used to construct the edition.</p>
+
+<h4 id="description-4">Description</h4>
+
+<h4 id="rules-4">Rules</h4>
+
+<ol>
+  <li><code class="language-plaintext highlighter-rouge">sourceDesc</code> <strong>MUST</strong> contain either a <code class="language-plaintext highlighter-rouge">listWit</code> or <code class="language-plaintext highlighter-rouge">listBibl</code>, but NOT both.</li>
+  <li><code class="language-plaintext highlighter-rouge">listWit</code> <strong>MUST</strong> contain only one <code class="language-plaintext highlighter-rouge">wit</code>.</li>
+  <li><code class="language-plaintext highlighter-rouge">listBibl</code> <strong>MUST</strong> contain only one <code class="language-plaintext highlighter-rouge">bibl</code>.</li>
+  <li><code class="language-plaintext highlighter-rouge">witness</code> <strong>MUST</strong> have a <code class="language-plaintext highlighter-rouge">@xml:id</code>.</li>
+  <li><code class="language-plaintext highlighter-rouge">witness</code> <strong>SHOULD</strong> have a <code class="language-plaintext highlighter-rouge">n</code> giving a short id of the witness.
+    <ul>
+      <li>The value of <code class="language-plaintext highlighter-rouge">@n</code> <strong>SHOULD</strong> correspond to the short id for the manuscript or codex in the SCTA database. If the value is not known, leave it out. It will be added later during processing.</li>
+    </ul>
+  </li>
+  <li>For adding <code class="language-plaintext highlighter-rouge">handDesc</code>, follow TEI guidelines.</li>
+</ol>
+
+<h4 id="examples-3">Examples</h4>
+
+<h5 id="example-1-1">Example 1</h5>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;listWit&gt;</span>
+  <span class="nt">&lt;witness</span> <span class="na">xml:id=</span><span class="s">"P"</span> <span class="na">n=</span><span class="s">"bnf15705"</span><span class="nt">&gt;</span>Paris, Lat 15705<span class="nt">&lt;/witness&gt;</span>
+<span class="nt">&lt;/listWit&gt;</span>
+</code></pre></div></div>
+
+<h4 id="example-2-1">Example 2</h4>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;listBibl&gt;</span>
+  <span class="nt">&lt;bibl</span> <span class="na">xml:id=</span><span class="s">"Q"</span> <span class="na">n=</span><span class="s">"quaracchi1924"</span><span class="nt">&gt;</span>Quaracchi 1924 Edition<span class="nt">&lt;/bibl&gt;</span>
+<span class="nt">&lt;/listBibl&gt;</span>
+</code></pre></div></div>
+
+<h4 id="example-3-1">Example 3</h4>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;listWit&gt;</span>
+  <span class="nt">&lt;witness</span> <span class="na">xml:id=</span><span class="s">"P"</span> <span class="na">n=</span><span class="s">"bnf15705"</span><span class="nt">&gt;</span>Paris, Lat 15705
+    <span class="nt">&lt;msDesc&gt;</span>
+      <span class="nt">&lt;physDesc&gt;</span>
+        <span class="nt">&lt;handDesc</span> <span class="na">hands=</span><span class="s">"2"</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;handNote</span> <span class="na">sameAs=</span><span class="s">'#P'</span><span class="nt">&gt;</span>This is the main hand of the text. German hand of the XIIIc with an inclination toward particularly complex majuscules.<span class="nt">&lt;/handNote&gt;</span>
+          <span class="nt">&lt;handNote</span> <span class="na">xml:id=</span><span class="s">"#P1"</span><span class="nt">&gt;</span>Flemish hand of the XVc written in mauve ink. Used for minor corrections.<span class="nt">&lt;/handNote&gt;</span>
+        <span class="nt">&lt;/handDesc&gt;</span>
+      <span class="nt">&lt;/physDesc&gt;</span>
+    <span class="nt">&lt;/msDesc&gt;</span>
+  <span class="nt">&lt;/witness&gt;</span>
+<span class="nt">&lt;/listWit&gt;</span>
+</code></pre></div></div>
+
+<h2 id="encodingdesc">encodingDesc</h2>
+
+<h3 id="description-5">Description</h3>
+
+<p><code class="language-plaintext highlighter-rouge">encodingDesc</code> provides details about the encoding methods used in the text and the schema followed. In a diplomatic edition the <code class="language-plaintext highlighter-rouge">encodingDesc</code> only serves to declare which schema the edition should be validated against.</p>
+
+<h3 id="rules-5">Rules</h3>
+
+<ol>
+  <li><code class="language-plaintext highlighter-rouge">encodingDesc</code> <strong>MUST</strong> be stated.</li>
+  <li><code class="language-plaintext highlighter-rouge">encodingDesc</code> <strong>MAY NOT</strong> contain <code class="language-plaintext highlighter-rouge">variantEncoding</code>.</li>
+  <li><code class="language-plaintext highlighter-rouge">encodingDesc</code> <strong>MUST</strong> contain a <code class="language-plaintext highlighter-rouge">schemaRef</code>.</li>
+  <li><code class="language-plaintext highlighter-rouge">schemaRef</code> <strong>MUST</strong> contain a <code class="language-plaintext highlighter-rouge">@url</code> that points to the URL of the LBP schema.</li>
+  <li><code class="language-plaintext highlighter-rouge">schemaRef</code> <strong>MUST</strong> contain an <code class="language-plaintext highlighter-rouge">@n</code> pointing to the version number of the LBP schema.</li>
+  <li><code class="language-plaintext highlighter-rouge">encodingDesc</code> <strong>MAY</strong> take an <code class="language-plaintext highlighter-rouge">editorialDecl</code> that contains a <code class="language-plaintext highlighter-rouge">p</code> with a prose description of the guidelines followed in the preparation of this edition.</li>
+</ol>
+
+<h3 id="examples-4">Examples</h3>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;encodingDesc&gt;</span>
+  <span class="nt">&lt;schemaRef</span>
+    <span class="na">n=</span><span class="s">"lbp-diplomatic-1.0.0"</span>
+    <span class="na">url=</span><span class="s">"https://raw.githubusercontent.com/lombardpress/lombardpress-schema/master/src/diplomatic.rng"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;/schemaRef&gt;</span>
+  <span class="nt">&lt;editorialDecl&gt;</span>
+    <span class="nt">&lt;p&gt;</span>Encoding of this text has followed the recommendations of the LombardPress 1.0.0 guidelines for a diplomatic edition<span class="nt">&lt;/p&gt;</span>
+  <span class="nt">&lt;/editorialDecl&gt;</span>
+<span class="nt">&lt;/encodingDesc&gt;</span>
+</code></pre></div></div>
+
+<h2 id="revisiondesc">revisionDesc</h2>
+
+<h3 id="description-6">Description</h3>
+
+<p>The <code class="language-plaintext highlighter-rouge">revisionDesc</code> contains a description of the current and previous versions of the current edition.
+The individual editor would usually not be responsible for maintaining the <code class="language-plaintext highlighter-rouge">revisionDesc</code>, as it should (ideally) be generated as part of the publication workflow.</p>
+
+<h3 id="rules-6">Rules</h3>
+
+<ol>
+  <li><code class="language-plaintext highlighter-rouge">revisionDesc</code> <strong>MUST</strong> be stated.</li>
+  <li><code class="language-plaintext highlighter-rouge">revisionDesc</code> <strong>MUST</strong> contain <code class="language-plaintext highlighter-rouge">@status</code>.</li>
+  <li><code class="language-plaintext highlighter-rouge">revisionDesc</code> <strong>MUST</strong> contain <code class="language-plaintext highlighter-rouge">listChange</code>.</li>
+  <li><code class="language-plaintext highlighter-rouge">listChange</code> <strong>MUST</strong> contain at least one <code class="language-plaintext highlighter-rouge">change</code>.</li>
+  <li><code class="language-plaintext highlighter-rouge">change</code> <strong>MUST</strong> contain <code class="language-plaintext highlighter-rouge">@when</code>.</li>
+  <li><code class="language-plaintext highlighter-rouge">change</code> <strong>MUST</strong> contain <code class="language-plaintext highlighter-rouge">@status</code>. Possible values of the attribute are:
+    <ul>
+      <li>private-draft</li>
+      <li>public-draft (alias: draft)</li>
+      <li>out-for-review</li>
+      <li>peer-reviewed (alias: published)</li>
+    </ul>
+  </li>
+  <li><code class="language-plaintext highlighter-rouge">change</code> <strong>MUST</strong> contain <code class="language-plaintext highlighter-rouge">@n</code>.</li>
+  <li><code class="language-plaintext highlighter-rouge">change</code> <strong>MUST</strong> contain either <code class="language-plaintext highlighter-rouge">@corresp</code> pointing to a description of the change or a <code class="language-plaintext highlighter-rouge">p</code> describing the change.</li>
+</ol>
+
+<h3 id="examples-5">Examples</h3>
+
+<h4 id="example-1-2">Example 1</h4>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;revisionDesc</span> <span class="na">status=</span><span class="s">"draft"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;listChange&gt;</span>
+    <span class="nt">&lt;change</span> <span class="na">when=</span><span class="s">"2015-11-11"</span> <span class="na">status=</span><span class="s">"draft"</span> <span class="na">n=</span><span class="s">"0.0.0"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;p&gt;</span>Created file for the first time.<span class="nt">&lt;/p&gt;</span>
+    <span class="nt">&lt;/change&gt;</span>
+  <span class="nt">&lt;/listChange&gt;</span>
+<span class="nt">&lt;/revisionDesc&gt;</span>
+
+</code></pre></div></div>
+
+<h4 id="example-2-2">Example 2</h4>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;revisionDesc</span> <span class="na">status=</span><span class="s">"draft"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;listChange&gt;</span>
+    <span class="nt">&lt;change</span> <span class="na">when=</span><span class="s">"2015-12-24"</span> <span class="na">status=</span><span class="s">"draft"</span> <span class="na">n=</span><span class="s">"0.1.0"</span> <span class="na">corresp=</span><span class="s">"versionlog.xml#v0.1.0"</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;change</span> <span class="na">when=</span><span class="s">"2015-11-11"</span> <span class="na">status=</span><span class="s">"draft"</span> <span class="na">n=</span><span class="s">"0.0.0"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;p&gt;</span>Created file for the first time<span class="nt">&lt;/p&gt;</span>
+    <span class="nt">&lt;/change&gt;</span>
+  <span class="nt">&lt;/listChange&gt;</span>
+<span class="nt">&lt;/revisionDesc&gt;</span>
+</code></pre></div></div>
+
+<h1 id="text">text</h1>
+
+<h2 id="description-7">Description</h2>
+
+<p><code class="language-plaintext highlighter-rouge">text</code> is the main wrapper of the edition and sibling to the <code class="language-plaintext highlighter-rouge">teiHeader</code>.</p>
+
+<h2 id="rules-7">Rules</h2>
+
+<ol>
+  <li><code class="language-plaintext highlighter-rouge">text</code> <strong>SHOULD</strong> take an <code class="language-plaintext highlighter-rouge">@type</code> attribute the value of which is “diplomatic”.
+    <ul>
+      <li>The possible values for <code class="language-plaintext highlighter-rouge">text@type</code> are:</li>
+    </ul>
+    <ul>
+      <li>critical</li>
+      <li>diplomatic</li>
+      <li>translation</li>
+    </ul>
+  </li>
+  <li><code class="language-plaintext highlighter-rouge">text</code> <strong>SHOULD</strong> take an <code class="language-plaintext highlighter-rouge">@xml:lang</code> attribute indicating the dominant language of the edition, usually <code class="language-plaintext highlighter-rouge">la</code> for “latin”.</li>
+</ol>
+
+<h2 id="front">front</h2>
+
+<h3 id="description-8">Description</h3>
+
+<p><code class="language-plaintext highlighter-rouge">front</code> is used to make prefatory declarations about the text. For now that only includes the starting location of the text in the witness.</p>
+
+<h3 id="rules-8">Rules</h3>
+
+<ol>
+  <li><code class="language-plaintext highlighter-rouge">front</code> <strong>MUST</strong> take a <code class="language-plaintext highlighter-rouge">div</code> with the <code class="language-plaintext highlighter-rouge">xml:id="starts-on"</code>.
+    <ul>
+      <li>The content of this div should only be <code class="language-plaintext highlighter-rouge">pb</code>, <code class="language-plaintext highlighter-rouge">cb</code>, and <code class="language-plaintext highlighter-rouge">lb</code> elements indicating the page, column, and line on which the text begins in the different witnesses. For the encoding of <code class="language-plaintext highlighter-rouge">pb</code>, <code class="language-plaintext highlighter-rouge">cb</code> and <code class="language-plaintext highlighter-rouge">lb</code> see <a href="#milestones">the relevant section below</a>.</li>
+    </ul>
+  </li>
+</ol>
+
+<h3 id="examples-6">Examples</h3>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;front&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">xml:id=</span><span class="s">"starts-on"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;pb</span> <span class="na">ed=</span><span class="s">"#V"</span> <span class="na">n=</span><span class="s">"5-r"</span><span class="nt">/&gt;&lt;cb</span> <span class="na">ed=</span><span class="s">"#V"</span> <span class="na">n=</span><span class="s">"b"</span><span class="nt">/&gt;&lt;lb</span> <span class="na">ed=</span><span class="s">"#V"</span> <span class="na">n=</span><span class="s">"13"</span><span class="nt">/&gt;</span> <span class="c">&lt;!-- V5rb --&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/front&gt;</span>
+</code></pre></div></div>
+
+<h2 id="body">body</h2>
+
+<h3 id="description-9">Description</h3>
+
+<p><code class="language-plaintext highlighter-rouge">body</code> is the primary wrapper of the edited text.</p>
+
+<h3 id="rules-9">Rules</h3>
+
+<ol>
+  <li><code class="language-plaintext highlighter-rouge">body</code> <strong>MUST</strong> immediately follow <code class="language-plaintext highlighter-rouge">front</code>.</li>
+  <li><code class="language-plaintext highlighter-rouge">body</code> <strong>MUST</strong> take a <code class="language-plaintext highlighter-rouge">div</code> as an immediate child.</li>
+</ol>
+
+<h2 id="div">div</h2>
+
+<h3 id="description-10">Description</h3>
+
+<p><code class="language-plaintext highlighter-rouge">div</code> is the fundamental section unit of an edition.</p>
+
+<h3 id="rules-10">Rules</h3>
+
+<ol>
+  <li>There <strong>MUST</strong> be one <code class="language-plaintext highlighter-rouge">div</code> in each edition as a direct child of <code class="language-plaintext highlighter-rouge">body</code>.</li>
+  <li><code class="language-plaintext highlighter-rouge">div</code> <strong>MAY</strong> only contain <code class="language-plaintext highlighter-rouge">head</code> and <code class="language-plaintext highlighter-rouge">p</code> as children.</li>
+  <li><code class="language-plaintext highlighter-rouge">div</code> <strong>MAY NOT</strong> contain any text nodes as direct children.</li>
+</ol>
+
+<h2 id="head">head</h2>
+
+<p><code class="language-plaintext highlighter-rouge">head</code> is the wrapper heading declaration for a <code class="language-plaintext highlighter-rouge">div</code>.</p>
+
+<h3 id="rules-11">Rules</h3>
+
+<ol>
+  <li><code class="language-plaintext highlighter-rouge">head</code> <strong>MUST</strong> be an immediate child of a <code class="language-plaintext highlighter-rouge">div</code>.</li>
+  <li><code class="language-plaintext highlighter-rouge">head</code> <strong>MUST</strong> precede <code class="language-plaintext highlighter-rouge">p</code> elements in parent <code class="language-plaintext highlighter-rouge">div</code>.</li>
+  <li><code class="language-plaintext highlighter-rouge">head</code> <strong>MAY</strong> take an <code class="language-plaintext highlighter-rouge">@type</code> attribute.
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">@type</code> values include:</li>
+    </ul>
+    <ul>
+      <li>subtitle</li>
+      <li>question-title</li>
+    </ul>
+  </li>
+</ol>
+
+<h2 id="p">p</h2>
+
+<h3 id="description-11">Description</h3>
+
+<p><code class="language-plaintext highlighter-rouge">p</code> (along with <code class="language-plaintext highlighter-rouge">head</code>) is the wrapper of all text nodes within the <code class="language-plaintext highlighter-rouge">body</code> element.</p>
+
+<h3 id="rules-12">Rules</h3>
+
+<ol>
+  <li>All text nodes of the edition, other than those that are descendants of the <code class="language-plaintext highlighter-rouge">head</code> element, <strong>MUST</strong> be descendants of a <code class="language-plaintext highlighter-rouge">p</code> element.</li>
+  <li><code class="language-plaintext highlighter-rouge">p</code> <strong>MUST</strong> be an immediate child of a <code class="language-plaintext highlighter-rouge">div</code>.</li>
+</ol>
+
+<h1 id="editorial-emendations">Editorial Emendations</h1>
+
+<h2 id="expansions">Expansions</h2>
+
+<h3 id="description-12">Description</h3>
+
+<p>If it is not a priority to encode every abbreviation and expansion, the editor might want to indicate several possible expansions in cases of doubt.</p>
+
+<p>See the examples below for the relation between <code class="language-plaintext highlighter-rouge">ex</code> and <code class="language-plaintext highlighter-rouge">expan</code>. Generally <code class="language-plaintext highlighter-rouge">ex</code> only gives the content that is added by the editor while <code class="language-plaintext highlighter-rouge">expan</code> gives the whole word, including the characters that constitute the abbreviation.</p>
+
+<h3 id="rules-13">Rules</h3>
+
+<ol>
+  <li><code class="language-plaintext highlighter-rouge">expan</code> <strong>MUST</strong> include an <code class="language-plaintext highlighter-rouge">abbr</code> and at least one <code class="language-plaintext highlighter-rouge">ex</code> as children.</li>
+  <li><code class="language-plaintext highlighter-rouge">abbr</code> not contained within a <code class="language-plaintext highlighter-rouge">expan</code> <strong>MUST</strong> be wrapped in a <code class="language-plaintext highlighter-rouge">choice</code> element.</li>
+  <li>If more than one <code class="language-plaintext highlighter-rouge">ex</code> is present, they <strong>MUST</strong> be wrapped in a <code class="language-plaintext highlighter-rouge">choice</code> element.</li>
+  <li>If more than one <code class="language-plaintext highlighter-rouge">expan</code> is present, they <strong>MUST</strong> be wrapped in a <code class="language-plaintext highlighter-rouge">choice</code> element.</li>
+</ol>
+
+<p>In the examples below, option 2 is preferred in cases dealing with characters glyphs that stand for an entire word.</p>
+
+<h3 id="examples-7">Examples</h3>
+
+<p>Option 1</p>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;expan&gt;</span>
+  <span class="nt">&lt;abbr&gt;</span>Aug<span class="nt">&lt;/abbr&gt;</span>
+  <span class="nt">&lt;choice&gt;</span>
+    <span class="nt">&lt;ex</span> <span class="na">cert=</span><span class="s">"high"</span><span class="nt">&gt;</span>ustinus<span class="nt">&lt;/ex&gt;</span>
+    <span class="nt">&lt;ex</span> <span class="na">cert=</span><span class="s">"low"</span><span class="nt">&gt;</span>usta<span class="nt">&lt;/ex&gt;</span>
+  <span class="nt">&lt;/choice&gt;</span>
+<span class="nt">&lt;/expan&gt;</span>
+</code></pre></div></div>
+
+<p>Option 2</p>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;choice&gt;</span>
+  <span class="nt">&lt;abbr&gt;</span>Aug<span class="nt">&lt;/abbr&gt;</span>
+  <span class="nt">&lt;choice&gt;</span>
+    <span class="nt">&lt;expan</span> <span class="na">cert=</span><span class="s">"high"</span><span class="nt">&gt;</span>Augustinus<span class="nt">&lt;/expan&gt;</span>
+    <span class="nt">&lt;expan</span> <span class="na">cert=</span><span class="s">"low"</span><span class="nt">&gt;</span>Augusta<span class="nt">&lt;/expan&gt;</span>
+  <span class="nt">&lt;/choice&gt;</span>
+<span class="nt">&lt;/choice&gt;</span>
+</code></pre></div></div>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;choice&gt;</span>
+  <span class="nt">&lt;abbr&gt;</span>sᵈ<span class="nt">&lt;/abbr&gt;</span>
+  <span class="nt">&lt;expan&gt;</span>sicud<span class="nt">&lt;/expan&gt;</span>
+<span class="nt">&lt;/choice&gt;</span>
+</code></pre></div></div>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;choice&gt;</span>
+  <span class="nt">&lt;abbr&gt;</span>sᵈ<span class="nt">&lt;/abbr&gt;</span>
+  <span class="nt">&lt;expan&gt;</span>
+    <span class="nt">&lt;choice&gt;</span>
+      <span class="nt">&lt;orig&gt;</span>sicud<span class="nt">&lt;/orig&gt;</span>
+      <span class="nt">&lt;reg&gt;</span>sicut<span class="nt">&lt;/reg&gt;</span>
+    <span class="nt">&lt;/choice&gt;</span>
+  <span class="nt">&lt;/expan&gt;</span>
+<span class="nt">&lt;/choice&gt;</span>
+</code></pre></div></div>
+
+<h2 id="corrections">Corrections</h2>
+
+<h3 id="description-13">Description</h3>
+
+<p>Corrections mark places where an erroneous word has been marked as present in the text alongside its corrected form.</p>
+
+<h3 id="rules-14">Rules</h3>
+
+<ol>
+  <li>The form to be corrected <strong>MUST</strong> first be wrapped in a <code class="language-plaintext highlighter-rouge">choice</code> element.</li>
+  <li>The form to be corrected <strong>MUST</strong> be wrapped in a <code class="language-plaintext highlighter-rouge">sic</code> element which is a child of <code class="language-plaintext highlighter-rouge">choice</code>.</li>
+  <li>The correct form <strong>MUST</strong> be wrapped in a <code class="language-plaintext highlighter-rouge">corr</code> element following the <code class="language-plaintext highlighter-rouge">sic</code> element and a child of the <code class="language-plaintext highlighter-rouge">choice</code> element.</li>
+</ol>
+
+<h3 id="examples-8">Examples</h3>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;choice&gt;</span>
+  <span class="nt">&lt;sic&gt;</span>fidei<span class="nt">&lt;/sic&gt;</span>
+  <span class="nt">&lt;corr&gt;</span>fide<span class="nt">&lt;/corr&gt;</span>
+<span class="nt">&lt;/choice&gt;</span>
+</code></pre></div></div>
+
+<h2 id="normalizations">Normalizations</h2>
+
+<h3 id="description-14">Description</h3>
+
+<p>Normalizations mark places where an original orthographic form has been preserved alongside its normalized form.</p>
+
+<h3 id="rules-15">Rules</h3>
+
+<ol>
+  <li>The form to be normalized <strong>MUST</strong> first be wrapped in a <code class="language-plaintext highlighter-rouge">choice</code> element.</li>
+  <li>The form to be normalized <strong>MUST</strong> be wrapped in a <code class="language-plaintext highlighter-rouge">orig</code> element which is a child of <code class="language-plaintext highlighter-rouge">choice</code>.</li>
+  <li>The correct form <strong>MUST</strong> be wrapped in a <code class="language-plaintext highlighter-rouge">reg</code> element following the <code class="language-plaintext highlighter-rouge">orig</code> element and a child of the <code class="language-plaintext highlighter-rouge">choice</code> element.</li>
+</ol>
+
+<h3 id="examples-9">Examples</h3>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;choice&gt;</span>
+  <span class="nt">&lt;orig&gt;</span>sicud<span class="nt">&lt;/orig&gt;</span>
+  <span class="nt">&lt;reg&gt;</span>sicut<span class="nt">&lt;/reg&gt;</span>
+<span class="nt">&lt;/choice&gt;</span>
+</code></pre></div></div>
+
+<h1 id="unclear-and-illegible-readings">Unclear and Illegible Readings</h1>
+
+<h2 id="description-15">Description</h2>
+
+<p>The situation where the editor has difficulties reading the text might be caused by a physical damage to the manuscript or by the editor’s inability to interpret the text although it is perfectly visible on the page. The difference between those two situations is indicated with the <code class="language-plaintext highlighter-rouge">@reason</code> tag added to the <code class="language-plaintext highlighter-rouge">unclear</code> element.</p>
+
+<p>If the editor has a suggestion for a reading, the <code class="language-plaintext highlighter-rouge">unclear</code> element is used, otherwise the <code class="language-plaintext highlighter-rouge">gap</code> is used.</p>
+
+<h2 id="rules-16">Rules</h2>
+
+<ol>
+  <li><code class="language-plaintext highlighter-rouge">unclear</code> and <code class="language-plaintext highlighter-rouge">gap</code> <strong>MAY</strong> contain <code class="language-plaintext highlighter-rouge">@reason</code> to indicate the reason for the difficult reading. The possible values are:
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">difficult</code> (default, assumed when nothing is stated)</li>
+      <li><code class="language-plaintext highlighter-rouge">damage</code> (referring to a physical damage of the manuscript)</li>
+      <li><code class="language-plaintext highlighter-rouge">reproduction</code> (referring to the quality of the reproduction)</li>
+    </ul>
+  </li>
+  <li>Two or more <code class="language-plaintext highlighter-rouge">unclear</code> elements <strong>MAY</strong> be wrapped in a <code class="language-plaintext highlighter-rouge">choice</code> element to indicate any number of possible but mutually exclusive suggestions.</li>
+  <li>In the case of several suggestions, <code class="language-plaintext highlighter-rouge">unclear</code> <strong>SHOULD</strong> contain <code class="language-plaintext highlighter-rouge">@cert</code> to indicate the relative certainty of the suggestions.
+    <ul>
+      <li>Available values are</li>
+    </ul>
+    <ul>
+      <li>high</li>
+      <li>low</li>
+      <li>medium</li>
+      <li>unknown</li>
+    </ul>
+  </li>
+  <li>In the case of several suggestions, the editor <strong>SHOULD</strong> put the suggestion that she deems most likely at the top of the list.</li>
+  <li><code class="language-plaintext highlighter-rouge">gap</code> <strong>MUST</strong> contain <code class="language-plaintext highlighter-rouge">@quantity</code> and <code class="language-plaintext highlighter-rouge">@unit</code> indicating the extent of the gap.</li>
+  <li><code class="language-plaintext highlighter-rouge">unclear</code> <strong>MAY</strong> contain <code class="language-plaintext highlighter-rouge">note</code> for discussing the difficulty.</li>
+  <li><code class="language-plaintext highlighter-rouge">choice</code> <strong>MAY</strong> contain <code class="language-plaintext highlighter-rouge">note</code> for discussing the different possible suggestions.</li>
+</ol>
+
+<h2 id="examples-10">Examples</h2>
+
+<p>A simple case where the editor has a suggestion:</p>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;unclear&gt;</span>suggestion<span class="nt">&lt;/unclear&gt;</span>
+</code></pre></div></div>
+
+<p>A simple case where the editor has no suggestion:</p>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;gap</span> <span class="na">extent=</span><span class="s">"5"</span> <span class="na">unit=</span><span class="s">"characters"</span><span class="nt">/&gt;</span>
+</code></pre></div></div>
+
+<p>In both of the above examples, the <code class="language-plaintext highlighter-rouge">@reason</code> is assumed to be <em>difficult</em>. If the problem is caused by a physical damage, it should be indicated like so:</p>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;unclear</span> <span class="na">reason=</span><span class="s">"damage"</span><span class="nt">&gt;</span>suggestion<span class="nt">&lt;/unclear&gt;</span>
+</code></pre></div></div>
+
+<p>Or</p>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;gap</span> <span class="na">reason=</span><span class="s">"damage"</span> <span class="na">extent=</span><span class="s">"5"</span> <span class="na">unit=</span><span class="s">"characters"</span><span class="nt">/&gt;</span>
+</code></pre></div></div>
+
+<p>A case where multiple possibilities are noted could appear as follows. The <code class="language-plaintext highlighter-rouge">@reason</code> is assumed to hold for all sibling nodes as the difficulty has the same cause.</p>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;choice&gt;</span>
+  <span class="nt">&lt;unclear</span> <span class="na">cert=</span><span class="s">"high"</span> <span class="na">reason=</span><span class="s">"damage"</span><span class="nt">&gt;</span>scilicet<span class="nt">&lt;/unclear&gt;</span>
+  <span class="nt">&lt;unclear</span> <span class="na">cert=</span><span class="s">"medium"</span><span class="nt">&gt;</span>sicud<span class="nt">&lt;/unclear&gt;</span>
+  <span class="nt">&lt;unclear</span> <span class="na">cert=</span><span class="s">"low"</span><span class="nt">&gt;</span>sed<span class="nt">&lt;/unclear&gt;</span>
+<span class="nt">&lt;/choice&gt;</span>
+</code></pre></div></div>
+
+<p>A case where multiple possibilities and the <code class="language-plaintext highlighter-rouge">note</code> element is used:</p>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;choice&gt;</span>
+  <span class="nt">&lt;unclear</span> <span class="na">cert=</span><span class="s">"high"</span> <span class="na">reason=</span><span class="s">"damage"</span><span class="nt">&gt;</span>scilicet
+     <span class="nt">&lt;note&gt;</span>This is the best choice if what looks like a descender is a stray ink mark<span class="nt">&lt;/note&gt;</span>
+  <span class="nt">&lt;/unclear&gt;</span>
+  <span class="nt">&lt;unclear</span> <span class="na">cert=</span><span class="s">"low"</span><span class="nt">&gt;</span>sicud<span class="nt">&lt;/unclear&gt;</span>
+  <span class="nt">&lt;note&gt;</span>I prefer the second because ...<span class="nt">&lt;/note&gt;</span>
+<span class="nt">&lt;/choice&gt;</span>
+</code></pre></div></div>
+
+<p>A case where the editor has no suggestion for a difficult reading.</p>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;gap</span> <span class="na">reason=</span><span class="s">"damage"</span> <span class="na">quantity=</span><span class="s">"5"</span> <span class="na">unit=</span><span class="s">"word"</span><span class="nt">/&gt;</span>
+</code></pre></div></div>
+
+<p>Or</p>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;gap</span> <span class="na">reason=</span><span class="s">"difficult"</span> <span class="na">quantity=</span><span class="s">"5"</span> <span class="na">unit=</span><span class="s">"word"</span><span class="nt">/&gt;</span>
+
+</code></pre></div></div>
+
+<h1 id="scribal-corrections">Scribal Corrections</h1>
+
+<h2 id="add">add</h2>
+
+<h3 id="description-16">Description</h3>
+
+<p><code class="language-plaintext highlighter-rouge">add</code> indicates a place where a word or phrase has been inserted, typically inter-linearly or in the margin.</p>
+
+<h3 id="rules-17">Rules</h3>
+
+<ol>
+  <li><code class="language-plaintext highlighter-rouge">add</code> <strong>MUST</strong> have an <code class="language-plaintext highlighter-rouge">@place</code> attribute.</li>
+</ol>
+
+<h3 id="examples-11">Examples</h3>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;add</span> <span class="na">place=</span><span class="s">"above-line"</span> <span class="na">hand=</span><span class="s">"#N1"</span><span class="nt">&gt;</span>fides<span class="nt">&lt;/add&gt;</span>
+</code></pre></div></div>
+
+<h2 id="del">del</h2>
+
+<h3 id="description-17">Description</h3>
+
+<p><code class="language-plaintext highlighter-rouge">del</code> indicates a place where a word or phrase has been deleted.</p>
+
+<h3 id="rules-18">Rules</h3>
+
+<ol>
+  <li><code class="language-plaintext highlighter-rouge">del</code> <strong>MUST</strong> have an <code class="language-plaintext highlighter-rouge">@rend</code> attribute.
+    <ul>
+      <li>Possible values of <code class="language-plaintext highlighter-rouge">@rend</code>:</li>
+    </ul>
+    <ul>
+      <li>erasure</li>
+      <li>expunctuation</li>
+      <li>underline</li>
+      <li>strikethrough</li>
+      <li>blackout</li>
+      <li>vacat</li>
+      <li>Combinations are possible, e.g. <code class="language-plaintext highlighter-rouge">rend="strikethrough vacat"</code></li>
+    </ul>
+  </li>
+</ol>
+
+<h3 id="examples-12">Examples</h3>
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;del</span> <span class="na">rend=</span><span class="s">"erasure"</span> <span class="na">hand=</span><span class="s">"#N1"</span><span class="nt">&gt;</span>fides<span class="nt">&lt;/del&gt;</span>
+</code></pre></div></div>
+
+<h2 id="subst">subst</h2>
+
+<h3 id="description-18">Description</h3>
+
+<p><code class="language-plaintext highlighter-rouge">subst</code> indicates a place where a word has been deleted and another word has been added as a replacement</p>
+
+<h3 id="rules-19">Rules</h3>
+
+<ol>
+  <li><code class="language-plaintext highlighter-rouge">subst</code> <strong>MUST</strong> contain an <code class="language-plaintext highlighter-rouge">add</code> and <code class="language-plaintext highlighter-rouge">del</code> element as children.</li>
+  <li><code class="language-plaintext highlighter-rouge">add</code> and <code class="language-plaintext highlighter-rouge">del</code> elements <strong>MUST</strong> follow above outlined rules.</li>
+</ol>
+
+<h3 id="examples-13">Examples</h3>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;subst</span> <span class="na">hand=</span><span class="s">"#N1"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;del</span> <span class="na">rend=</span><span class="s">"strikethrough"</span><span class="nt">&gt;</span>fides<span class="nt">&lt;/del&gt;</span>
+  <span class="nt">&lt;add</span> <span class="na">place=</span><span class="s">"margin-right"</span><span class="nt">&gt;</span>spes<span class="nt">&lt;/add&gt;</span>
+<span class="nt">&lt;/subst&gt;</span>
+</code></pre></div></div>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;subst&gt;</span>
+  <span class="nt">&lt;del</span> <span class="na">rend=</span><span class="s">"strikethrough"</span> <span class="na">hand=</span><span class="s">"#N1"</span><span class="nt">&gt;</span>fides<span class="nt">&lt;/del&gt;</span>
+  <span class="nt">&lt;add</span> <span class="na">place=</span><span class="s">"margin-right"</span> <span class="na">hand=</span><span class="s">"#N2"</span><span class="nt">&gt;</span>spes<span class="nt">&lt;/add&gt;</span>
+<span class="nt">&lt;/subst&gt;</span>
+</code></pre></div></div>
+
+<h2 id="segtypecorrection">seg@type=correction</h2>
+
+<h3 id="description-19">Description</h3>
+
+<p><code class="language-plaintext highlighter-rouge">seg@type="correction"</code> is used to wrap a word that is being corrected through an addition, deletion, or substitution of only part of the word.</p>
+
+<h3 id="rules-20">Rules</h3>
+
+<ol>
+  <li><code class="language-plaintext highlighter-rouge">seg@type="correction"</code> <strong>MUST</strong> must contain a <code class="language-plaintext highlighter-rouge">add</code>, <code class="language-plaintext highlighter-rouge">del</code>, or <code class="language-plaintext highlighter-rouge">subst</code> as a child element.</li>
+  <li><code class="language-plaintext highlighter-rouge">seg@type="correction"</code> <strong>MUST</strong> also contain text nodes as direct children (otherwise <code class="language-plaintext highlighter-rouge">seg</code> is unnecessary and <code class="language-plaintext highlighter-rouge">add</code>, <code class="language-plaintext highlighter-rouge">del</code>, or <code class="language-plaintext highlighter-rouge">subst</code> alone are sufficient).</li>
+  <li><code class="language-plaintext highlighter-rouge">add</code>, <code class="language-plaintext highlighter-rouge">del</code>, and <code class="language-plaintext highlighter-rouge">subst</code> <strong>MUST</strong> follow above outlined rules.</li>
+</ol>
+
+<h3 id="examples-14">Examples</h3>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;seg</span> <span class="na">type=</span><span class="s">"correction"</span><span class="nt">&gt;</span>
+carit
+  <span class="nt">&lt;subst&gt;</span>
+    <span class="nt">&lt;del&gt;</span>as<span class="nt">&lt;/del&gt;</span>
+    <span class="nt">&lt;add&gt;</span>atis<span class="nt">&lt;/add&gt;</span>
+  <span class="nt">&lt;/subst&gt;</span>
+<span class="nt">&lt;/seg&gt;</span>
+
+</code></pre></div></div>
+
+<h1 id="references-and-quotations">References and Quotations</h1>
+
+<p>References and quotations are marked with <code class="language-plaintext highlighter-rouge">ref</code> and <code class="language-plaintext highlighter-rouge">quote</code> elements.</p>
+
+<h2 id="ref">ref</h2>
+
+<h3 id="description-20">Description</h3>
+
+<p><code class="language-plaintext highlighter-rouge">ref</code> is used when the author makes an internal or external reference. The whole reference to the target may contain several elements, normally <code class="language-plaintext highlighter-rouge">title</code> and <code class="language-plaintext highlighter-rouge">name</code>.</p>
+
+<h3 id="rules-21">Rules</h3>
+
+<ol>
+  <li><code class="language-plaintext highlighter-rouge">ref</code> <strong>MAY</strong> contain <code class="language-plaintext highlighter-rouge">name</code> to indicate the author of the referenced work.</li>
+  <li><code class="language-plaintext highlighter-rouge">ref</code> <strong>MAY</strong> contain <code class="language-plaintext highlighter-rouge">title</code> to indicate the title of the referenced work.</li>
+</ol>
+
+<h3 id="examples-15">Examples</h3>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Ut dicit <span class="nt">&lt;ref&gt;&lt;name&gt;</span>Augustinus<span class="nt">&lt;/name&gt;</span> in <span class="nt">&lt;title&gt;</span>De civitate dei<span class="nt">&lt;/title&gt;&lt;/ref&gt;</span>
+</code></pre></div></div>
+
+<h2 id="quote">quote</h2>
+
+<h3 id="description-21">Description</h3>
+
+<p><code class="language-plaintext highlighter-rouge">quote</code> is used when the author makes a direct quote from another text (or a different passage of his/her own text).</p>
+
+<h3 id="rules-22">Rules</h3>
+
+<ol>
+  <li><code class="language-plaintext highlighter-rouge">quote</code> element <strong>MUST</strong> surround the quoted text.</li>
+</ol>
+
+<h3 id="examples-16">Examples</h3>
+
+<p>Simple indication of a quote:</p>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Librum sic incipitur <span class="nt">&lt;quote&gt;</span>In principio Deus creavit caelum<span class="nt">&lt;/quote&gt;</span> et cetera
+</code></pre></div></div>
+
+<p>Recommended indication with <code class="language-plaintext highlighter-rouge">xml:id</code>:</p>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Librum sic incipitur
+<span class="nt">&lt;quote</span> <span class="na">xml:id=</span><span class="s">"mockid-1"</span><span class="nt">&gt;</span>In principio Deus creavit caelum<span class="nt">&lt;/quote&gt;</span>
+et cetera
+</code></pre></div></div>
+
+<p>Use of the <code class="language-plaintext highlighter-rouge">@ana</code> attribute:</p>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Librum sic incipitur
+<span class="nt">&lt;quote</span> <span class="na">ana=</span><span class="s">"#gen1_1"</span> <span class="na">xml:id=</span><span class="s">"mockid-1"</span><span class="nt">&gt;</span>
+  In principio Deus creavit caelum
+<span class="nt">&lt;/quote&gt;</span>
+et cetera
+</code></pre></div></div>
+
+<h1 id="punctuation">Punctuation</h1>
+
+<h2 id="pc">pc</h2>
+
+<h3 id="description-22">Description</h3>
+
+<p><code class="language-plaintext highlighter-rouge">pc</code> is reserved for the use of marking punctuation characters within the text.</p>
+
+<h3 id="rules-23">Rules</h3>
+
+<ol>
+  <li><code class="language-plaintext highlighter-rouge">pc</code> <strong>MAY</strong> take a <code class="language-plaintext highlighter-rouge">@type</code> attribute indicating the type of punctuation that corresponds to the punctuation character inserted as a child text node.
+    <ul>
+      <li>Possible values of the <code class="language-plaintext highlighter-rouge">@type</code> attribute are:</li>
+    </ul>
+    <ul>
+      <li>pilcrow</li>
+      <li>punctus</li>
+      <li>punctus-elevatus</li>
+      <li>punctus-medius</li>
+      <li>punctus-interrogativus</li>
+      <li>virgula</li>
+    </ul>
+  </li>
+</ol>
+
+<p>For now, we recommend a small subset of the many possible punctuation marks are included by the unicode glyph. Any unicode code point can be encoded, but not all media will be able to represent the adequately, so here we include some that are in a standard font set.</p>
+
+<p>Names, code points and renderings of the punctuation marks:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th style="text-align: center">Code point</th>
+      <th style="text-align: center">Rend</th>
+      <th style="text-align: left">Note</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>pilcrow</td>
+      <td style="text-align: center">U+00B6</td>
+      <td style="text-align: center">¶</td>
+      <td style="text-align: left"> </td>
+    </tr>
+    <tr>
+      <td>punctus</td>
+      <td style="text-align: center">U+002E</td>
+      <td style="text-align: center">.</td>
+      <td style="text-align: left">regular full stop</td>
+    </tr>
+    <tr>
+      <td>punctus elevatus</td>
+      <td style="text-align: center">U+003B</td>
+      <td style="text-align: center">;</td>
+      <td style="text-align: left">regular semi colon</td>
+    </tr>
+    <tr>
+      <td>punctus medius</td>
+      <td style="text-align: center">U+00B7</td>
+      <td style="text-align: center">·</td>
+      <td style="text-align: left">middle dot</td>
+    </tr>
+    <tr>
+      <td>virgula</td>
+      <td style="text-align: center">U+002F</td>
+      <td style="text-align: center">/</td>
+      <td style="text-align: left">solidus, regular slash</td>
+    </tr>
+    <tr>
+      <td>punctus interrogativus</td>
+      <td style="text-align: center">U+003F</td>
+      <td style="text-align: center">?</td>
+      <td style="text-align: left">regular question mark</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Aficionados for medieval font encoding will find glyphs and font suggestions at http://folk.uib.no/hnooh/mufi/.</p>
+
+<h3 id="examples-17">Examples</h3>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;pc</span> <span class="na">type=</span><span class="s">"pilcrow"</span><span class="nt">&gt;</span>¶<span class="nt">&lt;/pc&gt;</span>
+<span class="nt">&lt;pc</span> <span class="na">type=</span><span class="s">"virgula"</span><span class="nt">&gt;</span>/<span class="nt">&lt;/pc&gt;</span>
+<span class="nt">&lt;pc</span> <span class="na">type=</span><span class="s">"punctus"</span><span class="nt">&gt;</span>.<span class="nt">&lt;/pc&gt;</span>
+<span class="nt">&lt;pc</span> <span class="na">type=</span><span class="s">"punctus-elevatus"</span><span class="nt">&gt;</span>;<span class="nt">&lt;/pc&gt;</span>
+<span class="nt">&lt;pc</span> <span class="na">type=</span><span class="s">"punctus-interrogativus"</span><span class="nt">&gt;</span>?<span class="nt">&lt;/pc&gt;</span>
+<span class="nt">&lt;pc</span> <span class="na">type=</span><span class="s">"punctus-medius"</span><span class="nt">&gt;</span>·<span class="nt">&lt;/pc&gt;</span>
+</code></pre></div></div>
+
+<p>Alternative examples that do not write the glyphs explicitly but only encode their presence:</p>
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;pc</span> <span class="na">type=</span><span class="s">"pilcrow"</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;pc</span> <span class="na">type=</span><span class="s">"virgula"</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;pc</span> <span class="na">type=</span><span class="s">"punctus"</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;pc</span> <span class="na">type=</span><span class="s">"punctus-elevatus"</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;pc</span> <span class="na">type=</span><span class="s">"punctus-interrogativus"</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;pc</span> <span class="na">type=</span><span class="s">"punctus-medius"</span><span class="nt">/&gt;</span>
+</code></pre></div></div>
+
+<h1 id="milestones">Milestones</h1>
+
+<h2 id="lb">lb</h2>
+
+<h3 id="description-23">Description</h3>
+
+<p><code class="language-plaintext highlighter-rouge">lb</code> is a milestone element used to mark line breaks in a material witness to the edition in question. <code class="language-plaintext highlighter-rouge">lb</code> elements are used to indicate the <em>start</em> of a new line.</p>
+
+<h3 id="rules-24">Rules</h3>
+
+<ol>
+  <li><code class="language-plaintext highlighter-rouge">@ed</code> <strong>MUST</strong> indicate the source text in which the line break occurs.</li>
+  <li><code class="language-plaintext highlighter-rouge">@n</code> <strong>MAY</strong> be used to indicate the line number.</li>
+</ol>
+
+<h3 id="examples-18">Examples</h3>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;lb</span> <span class="na">n=</span><span class="s">"1"</span><span class="nt">/&gt;</span> line content word<span class="nt">&lt;lb</span> <span class="na">n=</span><span class="s">"2"</span> <span class="na">break=</span><span class="s">"no"</span><span class="nt">&gt;</span>break
+new line content
+<span class="nt">&lt;lb</span> <span class="na">n=</span><span class="s">"3"</span><span class="nt">&gt;</span> new line content
+<span class="nt">&lt;lb</span> <span class="na">n=</span><span class="s">"4"</span><span class="nt">&gt;</span> new line content
+<span class="nt">&lt;lb</span> <span class="na">n=</span><span class="s">"5"</span><span class="nt">&gt;</span> new line content
+
+</code></pre></div></div>
+
+<h2 id="cb"><code class="language-plaintext highlighter-rouge">cb</code></h2>
+
+<h3 id="description-24">Description</h3>
+
+<p><code class="language-plaintext highlighter-rouge">cb</code> is a milestone element used to mark column breaks in a material witness to the edition in question. <code class="language-plaintext highlighter-rouge">cb</code> elements are used to indicate the <em>start</em> of a new column.</p>
+
+<h3 id="rules-25">Rules</h3>
+
+<ol>
+  <li><code class="language-plaintext highlighter-rouge">@ed</code> <strong>MUST</strong> indicate the source text in which the column break occurs.</li>
+  <li><code class="language-plaintext highlighter-rouge">@n</code> <strong>MUST</strong> be used indicate the start of the column in question, e.g. “a” or “b”.</li>
+</ol>
+
+<h3 id="examples-19">Examples</h3>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;cb</span> <span class="na">ed=</span><span class="s">"#W"</span> <span class="na">n=</span><span class="s">"a"</span><span class="nt">/&gt;</span>
+</code></pre></div></div>
+
+<h2 id="pb"><code class="language-plaintext highlighter-rouge">pb</code></h2>
+
+<h3 id="description-25">Description</h3>
+
+<p><code class="language-plaintext highlighter-rouge">pb</code> is a milestone element used to mark page breaks in a material witness to the edition in question. <code class="language-plaintext highlighter-rouge">pb</code> elements are used to indicate the <em>start</em> of a new page.</p>
+
+<h3 id="rules-26">Rules</h3>
+
+<ol>
+  <li><code class="language-plaintext highlighter-rouge">@ed</code> <strong>MUST</strong> indicate the source text in which the page break occurs.</li>
+  <li><code class="language-plaintext highlighter-rouge">@n</code> <strong>MUST</strong> indicate the page or folio number (determined by <code class="language-plaintext highlighter-rouge">@type</code>). In the case of <code class="language-plaintext highlighter-rouge">type="folio"</code>, the side of the folio is delimited by a <code class="language-plaintext highlighter-rouge">-</code>.
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">@type</code> <strong>MAY</strong> explicitly indicate the type of numbering as either paginated (“page”) or foliated (“folio”). If none is given, <code class="language-plaintext highlighter-rouge">@type="folio"</code> is assumed.</li>
+      <li>If an <code class="language-plaintext highlighter-rouge">-</code> is used in the value of <code class="language-plaintext highlighter-rouge">@n</code>, <code class="language-plaintext highlighter-rouge">folio</code> is assumed.</li>
+      <li>If no <code class="language-plaintext highlighter-rouge">-</code> appears in the value of <code class="language-plaintext highlighter-rouge">@n</code>, type <code class="language-plaintext highlighter-rouge">page</code> is assumed.</li>
+    </ul>
+  </li>
+</ol>
+
+<h3 id="examples-20">Examples</h3>
+
+<p>Page break in folio format</p>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;pb</span> <span class="na">ed=</span><span class="s">"#W"</span> <span class="na">n=</span><span class="s">"15-v"</span><span class="nt">/&gt;</span>
+</code></pre></div></div>
+
+<p>Page break in paged format</p>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;pb</span> <span class="na">ed=</span><span class="s">"#W"</span> <span class="na">n=</span><span class="s">"15"</span> <span class="na">type=</span><span class="s">"page"</span> <span class="nt">/&gt;</span>
+</code></pre></div></div>
+
+<h1 id="marginalia">Marginalia</h1>
+
+<h2 id="description-26">Description</h2>
+
+<p>Marginalia in a material witness are encoded using the element <code class="language-plaintext highlighter-rouge">note@type='marginal-note'</code></p>
+
+<h2 id="rules-27">Rules</h2>
+
+<ol>
+  <li><code class="language-plaintext highlighter-rouge">note</code> <strong>MUST</strong> have an <code class="language-plaintext highlighter-rouge">@type='marginal-note'</code>.</li>
+  <li><code class="language-plaintext highlighter-rouge">note</code> <strong>MUST</strong> have an <code class="language-plaintext highlighter-rouge">@place</code> attribute.</li>
+  <li><code class="language-plaintext highlighter-rouge">note</code> <strong>MAY</strong> have contain <code class="language-plaintext highlighter-rouge">lb</code> elements to indicate the line breaks of the marginal note.
+    <ul>
+      <li>Note that a processor should ignore all <code class="language-plaintext highlighter-rouge">//note//lb</code> when attempting to count the lines in a main column.</li>
+    </ul>
+  </li>
+</ol>
+
+<h2 id="examples-21">Examples</h2>
+
+<p>Example where marginal note is simply in the vicinity of a paragraph or line.</p>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;p&gt;</span>
+  <span class="nt">&lt;lb</span> <span class="na">ed=</span><span class="s">"#A"</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;note</span> <span class="na">type=</span><span class="s">"marginal-note"</span> <span class="na">place=</span><span class="s">"margin-right"</span> <span class="na">hand=</span><span class="s">"#N1"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;lb</span> <span class="na">ed=</span><span class="s">"#A"</span><span class="nt">/&gt;</span>this marginal note
+    <span class="nt">&lt;lb</span> <span class="na">ed=</span><span class="s">"#A"</span><span class="nt">/&gt;</span>is in the right margin
+    <span class="nt">&lt;lb</span> <span class="na">ed=</span><span class="s">"#A"</span><span class="nt">/&gt;</span>and spans three lines in the margin
+  <span class="nt">&lt;/note&gt;</span>
+  The main text is here and
+  <span class="nt">&lt;lb</span> <span class="na">ed=</span><span class="s">"#A"</span><span class="nt">/&gt;</span>there is a marginal note
+  <span class="nt">&lt;lb</span> <span class="na">ed=</span><span class="s">"#A"</span><span class="nt">/&gt;</span>in the margin near
+  <span class="nt">&lt;lb</span> <span class="na">ed=</span><span class="s">"#A"</span><span class="nt">/&gt;</span>this line. And now the text continues.
+<span class="nt">&lt;/p&gt;</span>
+</code></pre></div></div>
+
+<p>Example where a marginal note is made about a word or phrase in the text, such as in a gloss.</p>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;p&gt;</span>
+  <span class="nt">&lt;lb</span> <span class="na">ed=</span><span class="s">"#A"</span><span class="nt">/&gt;</span>The word
+  <span class="nt">&lt;seg&gt;</span>fides
+    <span class="nt">&lt;note</span> <span class="na">type=</span><span class="s">"marginal-note"</span> <span class="na">place=</span><span class="s">"margin-right "</span><span class="na">hand=</span><span class="s">"#N1"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;lb</span> <span class="na">ed=</span><span class="s">"#A"</span><span class="nt">/&gt;</span>this is a gloss on the
+      <span class="nt">&lt;lb</span> <span class="na">ed=</span><span class="s">"#A"</span><span class="nt">/&gt;</span>word fides that spans
+      <span class="nt">&lt;lb</span> <span class="na">ed=</span><span class="s">"#A"</span><span class="nt">/&gt;</span>three lines
+    <span class="nt">&lt;/note&gt;</span>
+  <span class="nt">&lt;/seg&gt;</span>
+  this is still part of the first line
+  <span class="nt">&lt;lb</span> <span class="na">ed=</span><span class="s">"#A"</span><span class="nt">/&gt;</span>more lines continue
+  <span class="nt">&lt;lb</span> <span class="na">ed=</span><span class="s">"#A"</span><span class="nt">/&gt;</span>in the margin near
+  <span class="nt">&lt;lb</span> <span class="na">ed=</span><span class="s">"#A"</span><span class="nt">/&gt;</span>this line. And now the text continues.
+<span class="nt">&lt;/p&gt;</span>
+</code></pre></div></div>
+
+<p>Example where a marginal note is best seen as a note about a quotation in the text.</p>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;p&gt;</span>
+  <span class="nt">&lt;lb</span> <span class="na">ed=</span><span class="s">"#A"</span><span class="nt">/&gt;</span>Augustine says
+  <span class="nt">&lt;quote&gt;</span>the commonwealth is united by a common love
+    <span class="nt">&lt;note</span> <span class="na">type=</span><span class="s">"marginal-note"</span> <span class="na">place=</span><span class="s">"margin-right"</span> <span class="na">hand=</span><span class="s">"#N1"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;lb</span> <span class="na">ed=</span><span class="s">"#A"</span><span class="nt">/&gt;&lt;ref&gt;</span>Augustine, City of God<span class="nt">&lt;/ref&gt;</span>
+    <span class="nt">&lt;/note&gt;</span>
+  <span class="nt">&lt;/quote&gt;</span>
+  this is still part of the first line of the main text,
+  <span class="nt">&lt;lb</span> <span class="na">ed=</span><span class="s">"#A"</span><span class="nt">/&gt;</span> and this is then a new line in the main text
+<span class="nt">&lt;/p&gt;</span>
+</code></pre></div></div>
+:ET

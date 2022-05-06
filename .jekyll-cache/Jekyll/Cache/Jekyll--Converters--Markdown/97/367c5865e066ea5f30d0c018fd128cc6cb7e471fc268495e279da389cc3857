@@ -1,0 +1,610 @@
+I"~K<p>Extracted from official github repo <a href="https://github.com/scta/scta-rdf-schema">https://github.com/scta/scta-rdf-schema</a> on 2020-01-23</p>
+
+<h1 id="resource-types">Resource Types</h1>
+
+<h2 id="resource">Resource</h2>
+
+<p>All resources inherit the global properties of the generic resource type</p>
+
+<ul>
+  <li>rdf:type
+    <ul>
+      <li>etc.</li>
+    </ul>
+  </li>
+  <li>dc:title
+    <ul>
+      <li>e.g. Wodeham Oxford Reportatio</li>
+      <li>e.g. Wodheam Abbreviatio</li>
+      <li>Beethoven’s 9th 1st Redaction</li>
+      <li>Beethoven’s 9th 2nd Redaction</li>
+      <li>Moby Dick the Novel</li>
+      <li>Moby Dick the Screen Play</li>
+    </ul>
+  </li>
+  <li>dc:description</li>
+  <li><a href="http://scta.info/property/shortId">sctap:shortId</a></li>
+  <li>ldp:inbox</li>
+</ul>
+
+<h2 id="workgroup">workGroup</h2>
+
+<ul>
+  <li>dcterms:isPartOf
+    <ul>
+      <li>if the workGroup is not level=1 it must specify its parent part. This must be another workGroup.</li>
+    </ul>
+  </li>
+  <li>dcterms:hasPart
+    <ul>
+      <li>a work group can take either another workGroup or a work as its direct part (or child)</li>
+    </ul>
+  </li>
+  <li><a href="http://scta.info/property/hasExpression">sctap:hasExpression</a>
+    <ul>
+      <li>every work group should list every expression contained within it, no matter what level</li>
+    </ul>
+  </li>
+  <li><a href="http://scta.info/property/level">sctap:level</a>
+    <ul>
+      <li>1,2,3</li>
+    </ul>
+  </li>
+  <li>sctap:citation
+    <ul>
+      <li>a string offering a best practice example of how this should be cited</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="text">Text</h2>
+<p>A super class for grouping work with expressions, manifestations, and transcriptions</p>
+
+<h2 id="work">Work</h2>
+
+<ul>
+  <li>role:author</li>
+  <li>dcterms:isPartOf
+    <ul>
+      <li>a work should indicate the immediate parent workGroup of which it is a part.</li>
+    </ul>
+  </li>
+  <li>dcterms:hasPart
+    <ul>
+      <li>a Work (unlike a WorkGroup) can take no workGroups or Works as children and thus can only have a top level Expression as its immediate child part.</li>
+    </ul>
+  </li>
+  <li>sctap:citation</li>
+  <li>sctap:hasExpression</li>
+  <li>sctap:hasCanonicalExpression</li>
+  <li>sctap:level</li>
+</ul>
+
+<h1 id="textitem">textItem</h1>
+
+<p>A super class for expressions, manifestations, and transcriptions</p>
+
+<h2 id="textitem-resources-chart">textItem Resources Chart</h2>
+
+<p><img src="https://s3.amazonaws.com/lum-faculty-jcwitt-public/SCTASCHEMA-Viz.png" alt="View visualization" /></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>—–</th>
+      <th><a href="#expression">Expression</a></th>
+      <th><a href="#manifestation">Manifestation</a></th>
+      <th><a href="#transcription">Transcription</a></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><a href="#toplevelstructurecollection">TopLevelStructureCollection</a></td>
+      <td><a href="toplevelcollectionexpression">TopLevelCollectionExpression</a></td>
+      <td><a href="#toplevelcollectionmanifestation">TopLevelCollectionManifestation</a></td>
+      <td><a href="#toplevelcollectiontranscription">TopLevelCollectionTranscription</a></td>
+    </tr>
+    <tr>
+      <td><a href="#structurecollection">StructureCollection</a></td>
+      <td><a href="#expressioncollection">ExpressionCollection</a></td>
+      <td><a href="#manifestationcollection">ManifestationCollection</a></td>
+      <td><a href="#transcriptioncollection">TranscriptionCollection</a></td>
+    </tr>
+    <tr>
+      <td><a href="#structureitem">StructureItem</a></td>
+      <td><a href="#expressionitem">ExpressionItem</a></td>
+      <td><a href="#manifestationitem">ManifestationItem</a></td>
+      <td><a href="#transcriptionitem">TranscriptionItem</a></td>
+    </tr>
+    <tr>
+      <td><a href="#structuredivision">StructureDivision</a></td>
+      <td><a href="#expressiondivision">ExpressionDivision</a></td>
+      <td><a href="#manifestationdivision">ManifestationDivision</a></td>
+      <td><a href="#transcriptiondivision">TranscriptionDivision</a></td>
+    </tr>
+    <tr>
+      <td><a href="#structureblock">StructureBlock</a></td>
+      <td><a href="#expressionblock">ExpressionBlock</a></td>
+      <td><a href="#manifestationblock">ManifestationBlock</a></td>
+      <td><a href="#itemblock">ItemBlock</a></td>
+    </tr>
+    <tr>
+      <td><a href="#structureelement">StructureElement</a></td>
+      <td><a href="#expressionelement">ExpressionElement</a></td>
+      <td><a href="#manifestationelement">ManifestationElement</a></td>
+      <td><a href="#itemelement">ItemElement</a></td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="global-textitem-resource-properties">Global textItem Resource Properties</h2>
+
+<ul>
+  <li>role:author</li>
+  <li>role:editor (is this global? I think maybe only a manifestation can have an editor)</li>
+  <li>role:contributor</li>
+  <li>sctap:citation</li>
+</ul>
+
+<h2 id="expression">Expression</h2>
+
+<ul>
+  <li>rdf:type=http://scta.info/resource/expression</li>
+  <li>sctap:status</li>
+  <li><a href="http://scta.info/property/expressionType">sctap:expressionType</a>
+    <ul>
+      <li>e.g. available expressionTypes should be enumerated in the WorkType or WorkGroupType class</li>
+      <li>e.g. a Work within the WorkGroup where workGroupType=”SentencesCommentaries” the value of expressionType given here must be one of the values of the availableExpressionType listed in that workGroupType. See WorkGroupType and WorkType below.</li>
+    </ul>
+  </li>
+  <li><a href="http://scta.info/property/hasManifestation">sctap:hasManifestation</a></li>
+  <li><a href="http://scta.info/property/hasCanonicalManifestation">sctap:hasCanonicalManifestation</a></li>
+  <li><a href="http://scta.info/property/hasCanonicalManifestation">sctap:isPartOfTopLevelExpression</a><!-- I would like to see this change just isPartOfTopLevel and become a property of structures -->
+    <ul>
+      <li>all non top level Expressions should point to the top level Expression of which they are a part.</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="manifestation">Manifestation</h2>
+
+<ul>
+  <li><a href="http://scta.info/property/manifestationType">sctap:manfestationType</a>
+    <ul>
+      <li>e.g.</li>
+      <li>manuscript</li>
+      <li>incunabula</li>
+      <li>earlyEdition</li>
+      <li>modernEdition</li>
+      <li>bornDigitalEdition</li>
+    </ul>
+  </li>
+  <li>sctap:hasCanonicalTranscription</li>
+  <li>sctap:hasTranscription</li>
+  <li>sctap:isManifestationOf
+    <ul>
+      <li>Value must be an Expression</li>
+    </ul>
+  </li>
+  <li>sctap:isOnSurface (only at item, block, and element level)</li>
+  <li>sctap:isOnZone (only block, and element level)</li>
+</ul>
+
+<h2 id="transcription">Transcription</h2>
+
+<ul>
+  <li><a href="http://scta.info/property/transcriptionType">sctap:transcriptionType</a>
+    <ul>
+      <li>e.g.</li>
+      <li>diplomatic</li>
+      <li>critical</li>
+      <li>translation</li>
+    </ul>
+  </li>
+  <li>sctap:isTranscriptionOf</li>
+  <li>sctap:hasXML</li>
+  <li>sctap:hasDocument</li>
+  <li>sctap:plaintext</li>
+  <li>sctap:status</li>
+  <li>Version Chain Properties
+    <ul>
+      <li>A transcription can forms part of a version chain, allows select transcriptions to be linked together in a version chain.</li>
+      <li>A version chain is not an RDF class, but an idea of transcriptions resources linked together by the following properties.</li>
+      <li>sctap:hasAncestor
+        <ul>
+          <li>indicates all previous versions within a version chain. An transcription MAY have many <code class="language-plaintext highlighter-rouge">hasAncestor</code> properties</li>
+        </ul>
+      </li>
+      <li>sctap:hasDescendant
+        <ul>
+          <li>indicates all subsequent versions within a version chain. A transcription MAY have many <code class="language-plaintext highlighter-rouge">hasDescendant</code> properties</li>
+        </ul>
+      </li>
+      <li>sctap:hasSuccessor
+        <ul>
+          <li>indicates the transcription immediately following this this transcription within the version chain.
+A transcription MAY have ONLY one <code class="language-plaintext highlighter-rouge">hasSuccessor</code> property</li>
+        </ul>
+      </li>
+      <li>sctap:hasPredecessor
+        <ul>
+          <li>indicates the transcription immediately preceding this transcription within the version chain. A transcription MAY have ONLY one <code class="language-plaintext highlighter-rouge">hasPredecessor</code> property</li>
+        </ul>
+      </li>
+      <li>sctap:isVersionDefault
+        <ul>
+          <li>Within a version chain, a transcription can be identified as the <code class="language-plaintext highlighter-rouge">versionDefault</code>. The <code class="language-plaintext highlighter-rouge">versionDefault=true</code> assertion indicates that this transcription that will be associated with a manifestation via the <code class="language-plaintext highlighter-rouge">hasTranscription</code> property and will be used for extraction purposes in processing. Only one transcription within a version chain should be the object of a manifestation’s <code class="language-plaintext highlighter-rouge">hasTranscription</code> property, while each transcription within the version chain has a <code class="language-plaintext highlighter-rouge">isTranscriptionOf</code> property.</li>
+        </ul>
+      </li>
+      <li>sctap:isHeadTranscription
+        <ul>
+          <li>No matter which version is the listed as the <code class="language-plaintext highlighter-rouge">versionDefault</code> the <code class="language-plaintext highlighter-rouge">isHeadTranscription=true</code> indicates which transcription stands at the top of the versionChain. the transcription with the <code class="language-plaintext highlighter-rouge">isHeadTranscription=true</code> will always have the highest <code class="language-plaintext highlighter-rouge">versionOrderNumber</code> within a series</li>
+        </ul>
+      </li>
+      <li>sctap:versionOrderNumber
+        <ul>
+          <li>the <code class="language-plaintext highlighter-rouge">versionOrderNumber</code> indicates the order of a transcription within a version chain. The first transcription will always have the version number “0001” and the head transcription will always have the highest number within the series.</li>
+        </ul>
+      </li>
+      <li>sctap:versionNo
+        <ul>
+          <li>A version Number 1.0.0 or 1.0.0. Ideally version number will match a git tag or or part of a git tag.</li>
+        </ul>
+      </li>
+      <li>sctap:versionLabel
+        <ul>
+          <li>A human readable version label designed for display.</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<hr />
+
+<p>Note: The following are not classes but critical properties that that textItem classes can take
+that effectively divide textItem classes into subclasses</p>
+
+<p>–</p>
+
+<h2 id="global-structure-properties">Global Structure properties</h2>
+
+<ul>
+  <li>sctap:structureType
+    <ul>
+      <li>structureCollection</li>
+      <li>sturctureItem</li>
+      <li>sturctureBlock</li>
+      <li>sturctureElement</li>
+    </ul>
+  </li>
+  <li>dcterms:isPartOf
+    <ul>
+      <li>a top level expression should point to the immediate parent Work (or WorkGroup) that contains the top level expression as a direct child</li>
+    </ul>
+  </li>
+  <li>dcterms:hasPart
+    <ul>
+      <li>the top level expression should list the immediate 2nd level child Expressions</li>
+    </ul>
+  </li>
+  <li>isPartOfTopLevelStructure
+    <ul>
+      <li>alias of isPartOfTopLevelExpression, isPartOfTopLevelManifestation, isPartOfTopLevelTranscription</li>
+      <li>applies at every level accept structureCollection level 1</li>
+    </ul>
+  </li>
+  <li>sctap:next
+    <ul>
+      <li>next should point to the next expression on the same level of the content hierarchy</li>
+      <li>obviously, a top level expression would not a have a next property because there is be definition now sibling of Expression of a top level Expression</li>
+    </ul>
+  </li>
+  <li>sctap:previous
+    <ul>
+      <li>next should point to the next expression on the same level of the content hierarchy</li>
+      <li>again, previous property does not apply to a top level Expression</li>
+    </ul>
+  </li>
+  <li>sctap:sectionOrderNumber
+    <ul>
+      <li>the order sequence position number among sibling Expression parts</li>
+    </ul>
+  </li>
+  <li>sctap:totalOrderNumber
+    <ul>
+      <li>the order sequence position number among all Expression parts on this level.</li>
+    </ul>
+  </li>
+  <li>sctap:level
+    <ul>
+      <li>the level of the expression within the Expression hierarchy</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="toplevelstructurecollection">TopLevelStructureCollection</h2>
+
+<ul>
+  <li>sctap:hasStructureItem</li>
+</ul>
+
+<h2 id="structurecollection">StructureCollection</h2>
+
+<ul>
+  <li>sctap:hasStructureItem</li>
+</ul>
+
+<h2 id="structureitem">StructureItem</h2>
+
+<ul>
+  <li>sctap:hasStructureBlock</li>
+</ul>
+
+<h2 id="structuredivision">StructureDivision</h2>
+
+<ul>
+  <li>sctap:hasStructureBlock</li>
+</ul>
+
+<h2 id="structureblock">StructureBlock</h2>
+
+<ul>
+  <li>sctap:isPartOfStructureItem</li>
+  <li>sctap:hasStructureElement</li>
+</ul>
+
+<h2 id="structureelement">StructureElement</h2>
+
+<ul>
+  <li>sctap:isPartOfStructureBlock</li>
+</ul>
+
+<h2 id="virtual-textitem-classes">Virtual textItem Classes</h2>
+
+<hr />
+
+<p>Note: The following are not explicitly classes,
+but could be considered sub classes that are the resultant combination of a
+textItem class and a structure type</p>
+
+<hr />
+<h3 id="toplevelcollectionexpression">TopLevelCollectionExpression</h3>
+<h3 id="expressioncollection">ExpressionCollection</h3>
+<h3 id="expressionitem">ExpressionItem</h3>
+<h3 id="expressionblock">ExpressionBlock</h3>
+<h3 id="expressionelement">ExpressionElement</h3>
+<h3 id="toplevelcollectionmanifestation">TopLevelCollectionManifestation</h3>
+<h3 id="manifestationcollection">ManifestationCollection</h3>
+<h3 id="manifestationitem">ManifestationItem</h3>
+<h3 id="manifestationblock">ManifestationBlock</h3>
+<h3 id="manifestationelement">ManifestationElement</h3>
+<h3 id="toplevelcollectiontranscription">TopLevelCollectionTranscription</h3>
+<h3 id="transcriptioncollection">TranscriptionCollection</h3>
+<h3 id="transcriptionitem">TranscriptionItem</h3>
+<h3 id="transcriptionblock">TranscriptionBlock</h3>
+<h3 id="transcriptionelement">TranscriptionElement</h3>
+
+<h2 id="marginalnote">marginalNote</h2>
+
+<ul>
+  <li>isPartOfStructureBlock</li>
+  <li>isPartOfTopLevelManifestation</li>
+  <li>structureType=structureElement</li>
+  <li>structureElementType=structureElementMarginalNote</li>
+  <li>structureElementText</li>
+  <li>isOnSurface</li>
+  <li>isOnZone</li>
+</ul>
+
+<h2 id="person">person</h2>
+
+<ul>
+  <li>hasInstance</li>
+  <li>personType</li>
+  <li>owl:sameAs (this should be global)</li>
+</ul>
+
+<h1 id="materialresource">materialResource</h1>
+
+<p>A super class for materialResource subclasses</p>
+
+<p><img src="https://s3.amazonaws.com/lum-faculty-jcwitt-public/SurfaceVisualization.png" alt="View visualization" /></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>MaterialManifestation</th>
+      <th>MatieralItem</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><a href="#codex">Codex</a></td>
+      <td><a href="#icodex">icodex</a></td>
+    </tr>
+    <tr>
+      <td><a href="#quire">Quire</a></td>
+      <td><a href="#iquire">iquire</a></td>
+    </tr>
+    <tr>
+      <td><a href="#folio">Folio</a></td>
+      <td><a href="#ifolio">ifolio</a></td>
+    </tr>
+    <tr>
+      <td><a href="#surface">Surface</a></td>
+      <td><a href="#isurface">isurface</a></td>
+    </tr>
+    <tr>
+      <td><a href="#zone">zone</a></td>
+      <td><a href="#izone">izone</a></td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="codex">codex</h2>
+
+<ul>
+  <li>sctap:hasCanonicalCodexItem</li>
+  <li>sctap:hasSurface
+    <ul>
+      <li>range: sctar:surface</li>
+    </ul>
+  </li>
+  <li>dc:hasPart
+    <ul>
+      <li>range: e.g, sctar:quire</li>
+    </ul>
+  </li>
+  <li>structureType=structureCollection</li>
+</ul>
+
+<h2 id="quire">quire</h2>
+
+<ul>
+  <li>sctap:hasCanonicalQuireItem</li>
+  <li>sctap:hasSurface
+    <ul>
+      <li>range: sctar:surface</li>
+    </ul>
+  </li>
+  <li>dc:hasPart
+    <ul>
+      <li>range: e.g sctar:folio, surface</li>
+    </ul>
+  </li>
+  <li>materialStructureType=materialStructureCollection</li>
+  <li>isMemberOf
+    <ul>
+      <li>each ancestor of this quire (codex should be listed)</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="folio">folio</h2>
+
+<ul>
+  <li>sctap:hasCanonicalFolioItem</li>
+  <li>sctap:hasSurface
+    <ul>
+      <li>range: sctar:surface</li>
+    </ul>
+  </li>
+  <li>dc:hasPart
+    <ul>
+      <li>range: sctar:quire or sctar:codex</li>
+    </ul>
+  </li>
+  <li>materialStructureType=materialStructureCollection</li>
+  <li>isMemberOf
+    <ul>
+      <li>each ancestor of this folio (quire, codex should be listed)</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="surface">surface</h2>
+
+<ul>
+  <li>sctap:isPartOfCodex</li>
+  <li>sctap:next</li>
+  <li>sctap:previous</li>
+  <li>dc:isPartOf
+    <ul>
+      <li>e.g. folio, quire, or codex</li>
+    </ul>
+  </li>
+  <li>dc:hasPart
+    <ul>
+      <li>range: directChildren</li>
+    </ul>
+  </li>
+  <li>sctap:hasZone
+    <ul>
+      <li>all descendant zones at any level</li>
+    </ul>
+  </li>
+  <li>materialStructureType=materialStructureItem</li>
+  <li>isMemberOf
+    <ul>
+      <li>each ancestor of this surface (folio, quire, codex should be listed)</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="zone">zone</h2>
+
+<ul>
+  <li>sctap:zoneType
+    <ul>
+      <li>marginRight</li>
+      <li>marginCenter</li>
+      <li>marginLeft</li>
+      <li>marginBottom</li>
+      <li>marginTop</li>
+      <li>column</li>
+      <li>line</li>
+      <li>general</li>
+    </ul>
+  </li>
+  <li>sctap:isPartOfSurface
+    <ul>
+      <li>inverse of hasZone</li>
+    </ul>
+  </li>
+  <li>dc:isPartOf
+    <ul>
+      <li>range: sctar:surface, or line is part of column, marginal note could be part of margin</li>
+    </ul>
+  </li>
+  <li>materialStructureType=materialStructureBlock</li>
+  <li>height</li>
+  <li>width</li>
+  <li>lrx</li>
+  <li>lry</li>
+  <li>ulx</li>
+  <li>uly</li>
+  <li>isMemberOf
+    <ul>
+      <li>each ancestor of this zone (surface, folio, quire, codex should be listed)</li>
+    </ul>
+  </li>
+  <li>Note on position/order
+    <ul>
+      <li>sctap:order?
+        <ul>
+          <li>default=1, where there is more than one zone for a given resource, (for example a paragraph that crosses from one column to the next) the zone should be given a order number so that the zones can be ordered correctly.</li>
+          <li>I think this should be removed and the manifestation pointing to more than one zone should indicate the order using a blank node, e.g hasZone-&gt;:bn-&gt;zone and order</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="icodex">icodex</h2>
+
+<ul>
+  <li>canvasPagedType</li>
+  <li>hasOfficialManifest</li>
+  <li>isCodexItemOf</li>
+  <li>sctap:hasISurface
+    <ul>
+      <li>range: sctar:isurface</li>
+    </ul>
+  </li>
+  <li>dc:hasPart
+    <ul>
+      <li>range: sctar:iquire</li>
+    </ul>
+  </li>
+  <li>materialStructureType=materialStructureCollection</li>
+</ul>
+
+<h2 id="iquire">iquire</h2>
+
+<h2 id="ifolio">ifolio</h2>
+
+<h2 id="isurface">isurface</h2>
+
+<h2 id="izone">izone</h2>
+:ET

@@ -1,0 +1,165 @@
+I"�D<p>Extracted from official github repo <a href="https://github.com/scta/tdf-schema">https://github.com/scta/tdf-schema</a> on 2020-01-23</p>
+
+<h1 id="transcription-description-file-schema">Transcription Description File Schema</h1>
+
+<p>This is a repository for the schema for Transcription Description Files,
+maintained by the SCTA community <a href="http://scta.info">http://scta.info</a></p>
+
+<p>The TDF-SCHEMA is used to associate Transcriptions (and Transcription version chains) with Text Editions at the structureItem level and associating transcriptions with Articles.</p>
+
+<h1 id="description">Description</h1>
+
+<h2 id="list">List</h2>
+
+<p>A transcription file begins with <code class="language-plaintext highlighter-rouge">&lt;List&gt;</code> as the root element, which takes a list of <code class="language-plaintext highlighter-rouge">&lt;manifestations&gt;</code> elements to which transcriptions will be associated.</p>
+
+<h2 id="manifestation">Manifestation</h2>
+
+<p>Each <code class="language-plaintext highlighter-rouge">&lt;manifestation&gt;</code> takes the following attributes and elements.</p>
+
+<ul>
+  <li>A <code class="language-plaintext highlighter-rouge">@manifestationDefault</code> <strong>MUST</strong> be present and the value <strong>MUST</strong> be <code class="language-plaintext highlighter-rouge">true</code> on one manifestation element which indicates which manifestation among a plurality of manifestations should be used as the default.</li>
+  <li>The <code class="language-plaintext highlighter-rouge">&lt;name&gt;</code> element <strong>MUST</strong> be present and <strong>MUST</strong> be unique. If a Manifestation identifier already exists in a corresponding EDF file, this should be used. If a Manifestation is being created (this generally will only happen in the case of born-digital manifestation). The identifier will be guaranteed to be unique system wide if it is unique within the file.</li>
+  <li>The <code class="language-plaintext highlighter-rouge">&lt;title&gt;</code> element <strong>MUST</strong> be present and should provide a human readable label. If the a the manifestation corresponds to the manifestation in an existing EDF this title will be overwritten by EDF information.</li>
+  <li>If the <code class="language-plaintext highlighter-rouge">&lt;list&gt;</code> has an <code class="language-plaintext highlighter-rouge">@type=articles</code>, the <code class="language-plaintext highlighter-rouge">&lt;Manifestation&gt;</code> element <strong>SHOULD</strong> contain a least one <code class="language-plaintext highlighter-rouge">&lt;isArticleOf&gt;</code> element which associates the article with a given SCTA resource.
+    <ul>
+      <li>Note: in the case of text editions, such associations are not needed as they are managed by the EDF file.</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="transcriptions">Transcriptions</h2>
+
+<p><code class="language-plaintext highlighter-rouge">&lt;Transcriptions&gt;</code> is a wrapper element that <strong>MUST</strong> be present, even if there is only one transcription being listed, which will likely be the case with respect to Articles.</p>
+
+<h2 id="transcription">Transcription</h2>
+
+<p>The <code class="language-plaintext highlighter-rouge">&lt;Transcription&gt;</code> element contains a version chain. There will often only be one main transcription here (again especially in the case of articles).</p>
+
+<ul>
+  <li>A <code class="language-plaintext highlighter-rouge">@transcriptionDefault</code> <strong>MUST</strong> be present and the value <strong>MUST</strong> be <code class="language-plaintext highlighter-rouge">true</code> on one transcription element which indicates which transcription among a plurality of transcriptions should be used as the default. This is the case, even if only one <code class="language-plaintext highlighter-rouge">&lt;transcription&gt;</code> element is listed.</li>
+  <li>A <code class="language-plaintext highlighter-rouge">&lt;title&gt;</code> element <strong>MAY</strong> be listed if there is a need for human readable label for this transcription.</li>
+  <li>A <code class="language-plaintext highlighter-rouge">&lt;type&gt;</code> element <strong>MAY</strong> be listed if there is an enumerated list of different kinds of transcription types (e.g. critical, diplomatic, translation). These values are defined outside the scope of the TDF.</li>
+</ul>
+
+<h2 id="version">Version</h2>
+
+<p>The <code class="language-plaintext highlighter-rouge">&lt;Version&gt;</code> element begins a version chain.</p>
+
+<ul>
+  <li>A <code class="language-plaintext highlighter-rouge">@versionDefault</code> <strong>MUST</strong> be present and the value <strong>MUST</strong> be <code class="language-plaintext highlighter-rouge">true</code> on one version element which indicates which version among a plurality of version should be used as the default.
+    <ul>
+      <li>Note the <code class="language-plaintext highlighter-rouge">@versionDefault</code> should be distinguished from the <code class="language-plaintext highlighter-rouge">versionHead</code>. The versionHead corresponds to whichever element stands in the first position of the list of <code class="language-plaintext highlighter-rouge">&lt;Version&gt;</code> elements. The <code class="language-plaintext highlighter-rouge">versionHead</code> is considered the current version of the file, as such its content is dynamic. The version refers, not to a specific snapshot of the file, but to whatever the current content of the file is. As such, a reviewed version should never be listed as the <code class="language-plaintext highlighter-rouge">versionHead</code> because a reviewed version should point to a static file whose content does not change. If there are any reviewed versions, there should always be at least to <code class="language-plaintext highlighter-rouge">&lt;Versions&gt;</code>, the <code class="language-plaintext highlighter-rouge">versionHead</code> followed by the reviewed version. The <code class="language-plaintext highlighter-rouge">@versionDefault</code> is a property used to indicate which version should be treated as the default version. This can be either the <code class="language-plaintext highlighter-rouge">versionHead</code> or any earlier version.</li>
+    </ul>
+  </li>
+  <li>A <code class="language-plaintext highlighter-rouge">@reviewed</code> <strong>MAY</strong> be present, whose value, if the attribute is present, <strong>MUST</strong> be <code class="language-plaintext highlighter-rouge">true</code>. The <code class="language-plaintext highlighter-rouge">@reviewed</code> indicates that this specific version has been reviewed and alerts aggregator and clients that a review for this version that can be de-referenced at a review look-up service (for example: https://dll-review-registry.digitallatin.org).</li>
+  <li>A <code class="language-plaintext highlighter-rouge">&lt;hash&gt;</code> element must be present. If the <code class="language-plaintext highlighter-rouge">&lt;Version&gt;</code> is the <code class="language-plaintext highlighter-rouge">versionHead</code> this hash must simply be a string-id that is unique from all other versions in the version chain. If it is not the <code class="language-plaintext highlighter-rouge">versionHead</code> the IPFS hash should be used.
+    <ul>
+      <li>Note: If this <code class="language-plaintext highlighter-rouge">versionHead</code> in the <code class="language-plaintext highlighter-rouge">defaultTranscription</code>, the id <code class="language-plaintext highlighter-rouge">transcription</code> should be used, as this will align this transcription with all other <code class="language-plaintext highlighter-rouge">defaultTranscription</code> versions, allowing aggregators to be a larger transcription file composed of multiple <code class="language-plaintext highlighter-rouge">structureItems.</code></li>
+    </ul>
+  </li>
+  <li>A <code class="language-plaintext highlighter-rouge">&lt;versionNo&gt;</code> element <strong>MUST</strong> be present which <strong>MUST</strong> contain an <code class="language-plaintext highlighter-rouge">@n</code> attribute with a machine readable version number and <strong>MUST</strong> contain a human readable version label as its text value.</li>
+  <li>A <code class="language-plaintext highlighter-rouge">&lt;url&gt;</code> value <strong>MUST</strong> contain a url pointer to the version.
+    <ul>
+      <li>If version is the <code class="language-plaintext highlighter-rouge">versionHead</code> a relative path can be used. In the case of a text edition transcription, the relative path is relative to the directory containing the <code class="language-plaintext highlighter-rouge">transcriptions.xml</code> file. In the case of article transcriptions, the relative path is relative articles directory which is a sibling to the articles list file, e.g. <code class="language-plaintext highlighter-rouge">articles/&lt;article-file-name&gt;.xml</code></li>
+    </ul>
+  </li>
+</ul>
+
+<h1 id="examples">Examples</h1>
+
+<p>An example transcription file associating transcriptions of text editions with manifestations looks as follows:</p>
+
+<p>An live example can be viewed here: https://github.com/scta-texts/graciliscommentary/blob/master/pg-b1q1/transcriptions.xml</p>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
+<span class="nt">&lt;list&gt;</span>
+  <span class="nt">&lt;manifestation</span> <span class="na">manifestationDefault=</span><span class="s">"true"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;name&gt;</span>critical<span class="nt">&lt;/name&gt;</span>
+    <span class="nt">&lt;title&gt;</span>Critical<span class="nt">&lt;/title&gt;</span>
+    <span class="nt">&lt;transcriptions&gt;</span>
+      <span class="nt">&lt;transcription</span> <span class="na">transcriptionDefault=</span><span class="s">"true"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;title&gt;</span>Critical<span class="nt">&lt;/title&gt;</span>
+        <span class="nt">&lt;type&gt;</span>critical<span class="nt">&lt;/type&gt;</span>
+        <span class="nt">&lt;version</span> <span class="na">versionDefault=</span><span class="s">"true"</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;hash&gt;</span>transcription<span class="nt">&lt;/hash&gt;</span>
+          <span class="nt">&lt;versionNo</span> <span class="na">n=</span><span class="s">"1.0.0-dev"</span><span class="nt">&gt;</span>Version 1.0.0-dev<span class="nt">&lt;/versionNo&gt;</span>
+          <span class="nt">&lt;url&gt;</span>pg-b1q1.xml<span class="nt">&lt;/url&gt;</span>
+        <span class="nt">&lt;/version&gt;</span>
+        <span class="nt">&lt;version&gt;</span>
+          <span class="nt">&lt;hash&gt;</span>QmT6MXgMLCgXVehKQn76vc2hMAYS4yn5n1h48VRe81A3Rz<span class="nt">&lt;/hash&gt;</span>
+          <span class="nt">&lt;versionNo</span> <span class="na">n=</span><span class="s">"1.0.0-dev"</span><span class="nt">&gt;</span>Version 1.0.0-dev<span class="nt">&lt;/versionNo&gt;</span>
+          <span class="nt">&lt;url&gt;</span>https://gateway.scta.info/ipfs/QmT6MXgMLCgXVehKQn76vc2hMAYS4yn5n1h48VRe81A3Rz<span class="nt">&lt;/url&gt;</span>
+        <span class="nt">&lt;/version&gt;</span>
+      <span class="nt">&lt;/transcription&gt;</span>
+      <span class="nt">&lt;transcription&gt;</span>
+        <span class="nt">&lt;title&gt;</span>Critical Alternative<span class="nt">&lt;/title&gt;</span>
+        <span class="nt">&lt;type&gt;</span>critical<span class="nt">&lt;/type&gt;</span>
+        <span class="nt">&lt;version</span> <span class="na">versionDefault=</span><span class="s">"true"</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;hash&gt;</span>transcription2<span class="nt">&lt;/hash&gt;</span>
+          <span class="nt">&lt;versionNo</span> <span class="na">n=</span><span class="s">"1.0.0-dev"</span><span class="nt">&gt;</span>Version 1.0.0-dev-t2<span class="nt">&lt;/versionNo&gt;</span>
+          <span class="nt">&lt;url&gt;</span>pg-b1q1.xml<span class="nt">&lt;/url&gt;</span>
+        <span class="nt">&lt;/version&gt;</span>
+        <span class="nt">&lt;version&gt;</span>
+          <span class="nt">&lt;hash&gt;</span>QmT6MXgMLCgXVehKQn76vc2hMAYS4yn5n1h48VRe81A3Rz-t2<span class="nt">&lt;/hash&gt;</span>
+          <span class="nt">&lt;versionNo</span> <span class="na">n=</span><span class="s">"1.0.0-dev"</span><span class="nt">&gt;</span>Version 1.0.0-dev-tw<span class="nt">&lt;/versionNo&gt;</span>
+          <span class="nt">&lt;url&gt;</span>https://gateway.scta.info/ipfs/QmT6MXgMLCgXVehKQn76vc2hMAYS4yn5n1h48VRe81A3Rz<span class="nt">&lt;/url&gt;</span>
+        <span class="nt">&lt;/version&gt;</span>
+      <span class="nt">&lt;/transcription&gt;</span>
+    <span class="nt">&lt;/transcriptions&gt;</span>
+  <span class="nt">&lt;/manifestation&gt;</span>
+  <span class="nt">&lt;manifestation&gt;</span>
+    <span class="nt">&lt;name&gt;</span>en<span class="nt">&lt;/name&gt;</span>
+    <span class="nt">&lt;title&gt;</span>English<span class="nt">&lt;/title&gt;</span>
+    <span class="nt">&lt;language&gt;</span>en<span class="nt">&lt;/language&gt;</span>
+    <span class="nt">&lt;transcriptions&gt;</span>
+      <span class="nt">&lt;transcription</span> <span class="na">transcriptionDefault=</span><span class="s">"true"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;type&gt;</span>translation<span class="nt">&lt;/type&gt;</span>
+        <span class="nt">&lt;version</span> <span class="na">versionDefault=</span><span class="s">"true"</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;hash&gt;</span>transcription<span class="nt">&lt;/hash&gt;</span>
+          <span class="nt">&lt;versionNo</span> <span class="na">n=</span><span class="s">"1.0.0-dev"</span><span class="nt">&gt;</span>Version 1.0.0-dev<span class="nt">&lt;/versionNo&gt;</span>
+          <span class="nt">&lt;url&gt;</span>en_pg-b1q1.xml<span class="nt">&lt;/url&gt;</span>
+        <span class="nt">&lt;/version&gt;</span>
+        <span class="nt">&lt;version&gt;</span>
+          <span class="nt">&lt;hash&gt;</span>QmP4FPs1fhvTHDkbuRgEsYuKdSUXG1Dr2ApSCiDBYFW7K8<span class="nt">&lt;/hash&gt;</span>
+          <span class="nt">&lt;versionNo</span> <span class="na">n=</span><span class="s">"1.0.0-dev"</span><span class="nt">&gt;</span>Version 1.0.0-dev<span class="nt">&lt;/versionNo&gt;</span>
+          <span class="nt">&lt;url&gt;</span>https://gateway.scta.info/ipfs/QmP4FPs1fhvTHDkbuRgEsYuKdSUXG1Dr2ApSCiDBYFW7K8<span class="nt">&lt;/url&gt;</span>
+        <span class="nt">&lt;/version&gt;</span>
+      <span class="nt">&lt;/transcription&gt;</span>
+    <span class="nt">&lt;/transcriptions&gt;</span>
+  <span class="nt">&lt;/manifestation&gt;</span>  
+<span class="nt">&lt;/list&gt;</span>
+
+</code></pre></div></div>
+
+<p>An example transcription file associating transcriptions with an Article looks as follows:
+Note that the <code class="language-plaintext highlighter-rouge">@type=articles</code> indicates that this list is for “articles” which allows the use of a view extra properties,
+most notably the <code class="language-plaintext highlighter-rouge">isArticleOf</code> element.</p>
+
+<p>A live example can be viewed here https://github.com/scta/scta-articles/blob/master/plaoul-articles.xml</p>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="nt">&lt;list</span> <span class="na">type=</span><span class="s">"articles"</span><span class="nt">&gt;</span>
+  <span class="c">&lt;!-- Plaoul related articles --&gt;</span>
+  <span class="nt">&lt;manifestation</span> <span class="na">manifestationDefault=</span><span class="s">"true"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;name&gt;</span>pp-about<span class="nt">&lt;/name&gt;</span>
+    <span class="nt">&lt;title&gt;</span>About the Sentences Commentaries<span class="nt">&lt;/title&gt;</span>
+    <span class="nt">&lt;type&gt;</span>about<span class="nt">&lt;/type&gt;</span>
+    <span class="nt">&lt;isArticleOf&gt;</span>http://scta.info/resource/plaoulcommentary<span class="nt">&lt;/isArticleOf&gt;</span>
+    <span class="nt">&lt;isArticleOf&gt;</span>http://scta.info/resource/plaoulreportatio<span class="nt">&lt;/isArticleOf&gt;</span>
+    <span class="nt">&lt;isArticleOf&gt;</span>http://scta.info/resource/plaoulreportatioA<span class="nt">&lt;/isArticleOf&gt;</span>
+    <span class="nt">&lt;transcriptions&gt;</span>
+      <span class="nt">&lt;transcription</span> <span class="na">transcriptionDefault=</span><span class="s">"true"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;version</span> <span class="na">versionDefault=</span><span class="s">"true"</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;hash&gt;</span>head<span class="nt">&lt;/hash&gt;</span>
+          <span class="nt">&lt;versionNo</span> <span class="na">n=</span><span class="s">"1.0.0-dev"</span><span class="nt">&gt;</span>Version 1.0.0-dev<span class="nt">&lt;/versionNo&gt;</span>
+          <span class="nt">&lt;url&gt;</span>pp-about.xml<span class="nt">&lt;/url&gt;</span>
+        <span class="nt">&lt;/version&gt;</span>
+      <span class="nt">&lt;/transcription&gt;</span>
+    <span class="nt">&lt;/transcriptions&gt;</span>
+  <span class="nt">&lt;/manifestation&gt;</span>
+<span class="nt">&lt;/list&gt;</span>
+
+</code></pre></div></div>
+:ET

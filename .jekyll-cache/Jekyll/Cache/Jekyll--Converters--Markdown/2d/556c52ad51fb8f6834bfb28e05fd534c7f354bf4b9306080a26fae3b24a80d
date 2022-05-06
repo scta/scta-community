@@ -1,0 +1,204 @@
+I":7<p>Extracted from official github repo <a href="https://github.com/scta/edf-schema">https://github.com/scta/edf-schema</a> on 2020-01-23</p>
+
+<h1 id="introduction">Introduction</h1>
+
+<p>The 0.0.0 schema documents an ad hoc schema that has emerged over time.</p>
+
+<p>The goal here is to document this practice and to make its intentions clear,
+in order to facilitate the community development of a 1.0.0 schema that
+serves the needs of the SCTA community</p>
+
+<h1 id="header">Header</h1>
+
+<p>The header is meant to collect information about “the top level expression”. There are several kinds of metadata about a top level expression that we need to collect. For clarity, we’ve tried to break this down into subcategories.</p>
+
+<h2 id="identification-metadata">Identification Metadata</h2>
+
+<p>This is information that generally corresponds to a typical library catalogue of scholastic works only interested in cataloguing the highest level of a text (e.g. Aquinas’ Scriptum, Scotus’ Ordinatio) etc. As such it needs to include author, title, date, and description information.</p>
+
+<p>These properties currently include:</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">&lt;authorName&gt;</code>
+    <ul>
+      <li>a human readable label (should be unnecessary as this information should be retrieved from the Prosopography entry)</li>
+    </ul>
+  </li>
+  <li><code class="language-plaintext highlighter-rouge">&lt;authorUri&gt;</code>
+    <ul>
+      <li>a machine readable unique id</li>
+    </ul>
+  </li>
+  <li><code class="language-plaintext highlighter-rouge">&lt;commentaryName&gt;</code>
+    <ul>
+      <li>a human readable label</li>
+    </ul>
+  </li>
+  <li><code class="language-plaintext highlighter-rouge">&lt;commentaryid&gt;</code>
+    <ul>
+      <li>a machine readable id, must be unique</li>
+    </ul>
+  </li>
+  <li><code class="language-plaintext highlighter-rouge">&lt;commentaryslug&gt;</code>
+    <ul>
+      <li>a 2-5 letter id, used as a prefix below to guarantee uniqueness of ids in distributed files</li>
+    </ul>
+  </li>
+  <li><code class="language-plaintext highlighter-rouge">&lt;parentUri&gt;</code>
+    <ul>
+      <li>unfortunate needless repetition of commentaryid</li>
+    </ul>
+  </li>
+  <li><code class="language-plaintext highlighter-rouge">&lt;description&gt;</code>
+    <ul>
+      <li>description of the expression</li>
+    </ul>
+  </li>
+  <li><code class="language-plaintext highlighter-rouge">&lt;date&gt;</code>
+    <ul>
+      <li>date expression was made</li>
+    </ul>
+  </li>
+  <li><code class="language-plaintext highlighter-rouge">&lt;parentWorkGroup&gt;</code>
+    <ul>
+      <li>identify for a parentWorkGroup to which the expression belongs (e.g. sentencesCommentaries, deAnimaCommentaries, CanonLaw, etc).</li>
+      <li>consideration needed to be added about adding a <code class="language-plaintext highlighter-rouge">&lt;parentWork&gt;</code> designation</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="attribution-metadata">Attribution Metadata</h2>
+
+<p>Secondly, it includes attribution information about the people and editors who are responsible for collecting this information as well as the text hierarchy and question list included below.</p>
+
+<p>This information includes the following:</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">&lt;questionListSource&gt;</code></li>
+  <li><code class="language-plaintext highlighter-rouge">&lt;questionListOriginalEditor&gt;</code></li>
+  <li><code class="language-plaintext highlighter-rouge">&lt;questionListEncoder&gt;</code></li>
+  <li><code class="language-plaintext highlighter-rouge">&lt;sponsors&gt;</code></li>
+</ul>
+
+<h2 id="manifestation-metadata">Manifestation Metadata</h2>
+
+<p>Finally the manifestation information includes important ids and references that indicate existing manifestations of an expression.
+Information here is used to link both to codices and is used below us to allow identify the existence of existing manifestations for an expression at granular levels. If one wanted to build a catalogue of every manuscript witness of an expression, a reference to each manuscript manifestation (a concept distinct from a codex manifestations) would need to be here. But manifestations can also include printed editions throughout history. They can also include born digital manifestations. Currently, the id “critical” is a reserved word for a default born digital manifestation.</p>
+
+<p>Available fields include the following</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">hasWitnesses</code>
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">witness</code>
+        <ul>
+          <li><code class="language-plaintext highlighter-rouge">slug</code>
+            <ul>
+              <li>slug id used to link to a codex id, but it should be known that the witness and codex are not identical, when the RDF database is built, two different ids are created using this slug, <code class="language-plaintext highlighter-rouge">resource/&lt;slug&gt;</code> which represents the codex manifestation and <code class="language-plaintext highlighter-rouge">/resource/&lt;toplevelexpression&gt;/slug</code> representing the top_level_manifestation of this expression.</li>
+            </ul>
+          </li>
+          <li><code class="language-plaintext highlighter-rouge">title</code>
+            <ul>
+              <li>it is once again tempting to see this as identical to the title of the manuscript in which this manifestation occurs, but in fact this is the title of the manifestation within a codex manifestation. For example: if two expressions are manifested in a single codex, the will be only one codex and corresponding titles, but there will still be two manifestations, each with their own title or label.</li>
+            </ul>
+          </li>
+          <li><code class="language-plaintext highlighter-rouge">initial</code>
+            <ul>
+              <li>a utility id, unique only to this file, but not necessarily to other files. This initial is used below to link to this manifestation entry.</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="example">Example</h2>
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;listofFileNames&gt;</span>
+    <span class="nt">&lt;header&gt;</span>
+      <span class="nt">&lt;authorName&gt;</span>Nicolas de Dinkelsbuhl<span class="nt">&lt;/authorName&gt;</span>
+      <span class="nt">&lt;commentaryName&gt;</span>Nicolas de Dinkelsbuhl Lectura Mellicensis<span class="nt">&lt;/commentaryName&gt;</span>
+      <span class="nt">&lt;commentaryid&gt;</span>dinkelsbuhllectura<span class="nt">&lt;/commentaryid&gt;</span>
+      <span class="nt">&lt;commentaryslug&gt;</span>nddm<span class="nt">&lt;/commentaryslug&gt;</span>
+      <span class="nt">&lt;authorUri&gt;</span>http://scta.info/resource/NicolasDeDinkelsbuhl<span class="nt">&lt;/authorUri&gt;</span>
+      <span class="nt">&lt;parentUri&gt;</span>http://scta.info/resource/dinkelsbuhllectura<span class="nt">&lt;/parentUri&gt;</span>
+      <span class="nt">&lt;parentWorkGroup&gt;</span>http://scta.info/resource/sententia<span class="nt">&lt;/parentWorkGroup&gt;</span>
+      <span class="nt">&lt;textfilesdir&gt;</span>/Users/jcwitt/Projects/scta/scta-texts/dinkelsbuhllectura/<span class="nt">&lt;/textfilesdir&gt;</span>
+        <span class="nt">&lt;questionListSource&gt;</span>Monica Article<span class="nt">&lt;/questionListSource&gt;</span>
+        <span class="nt">&lt;questionListOriginalEditor&gt;</span>Monica Brinzei<span class="nt">&lt;/questionListOriginalEditor&gt;</span>
+        <span class="nt">&lt;questionListEncoder&gt;</span>Jeffrey C. Witt<span class="nt">&lt;/questionListEncoder&gt;</span>
+        <span class="nt">&lt;sponsors&gt;</span>
+          <span class="nt">&lt;sponsor</span> <span class="na">id=</span><span class="s">"erc-thesis"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;name&gt;</span>ERC-THESIS project n° 313339<span class="nt">&lt;/name&gt;</span>
+            <span class="nt">&lt;logo&gt;</span>https://www.mathi.uni-heidelberg.de/~venjakob/ERC_transparent.png<span class="nt">&lt;/logo&gt;</span>
+            <span class="nt">&lt;link&gt;</span>http://www.thesis-project.ro/<span class="nt">&lt;/link&gt;</span>
+            <span class="nt">&lt;/sponsor&gt;</span>
+          <span class="nt">&lt;sponsor</span> <span class="na">id=</span><span class="s">"irht"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;name&gt;</span>IRHT<span class="nt">&lt;/name&gt;</span>
+            <span class="nt">&lt;logo&gt;</span>http://cald.irht.cnrs.fr/images/logo_irht_cnrs.png<span class="nt">&lt;/logo&gt;</span>
+            <span class="nt">&lt;link&gt;</span>http://www.irht.cnrs.fr/<span class="nt">&lt;/link&gt;</span>
+          <span class="nt">&lt;/sponsor&gt;</span>
+        <span class="nt">&lt;/sponsors&gt;</span>
+        <span class="nt">&lt;hasWitnesses&gt;</span>
+          <span class="nt">&lt;witness</span> <span class="na">id=</span><span class="s">"T"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;slug&gt;</span>bnf<span class="nt">&lt;/slug&gt;</span> <span class="c">&lt;!--need to change this when manifest changes --&gt;</span>
+            <span class="nt">&lt;title&gt;</span>TM 536<span class="nt">&lt;/title&gt;</span>
+            <span class="nt">&lt;initial&gt;</span>T<span class="nt">&lt;/initial&gt;</span>
+          <span class="nt">&lt;/witness&gt;</span>
+          <span class="nt">&lt;witness</span> <span class="na">id=</span><span class="s">"B"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;slug&gt;</span>clm2940<span class="nt">&lt;/slug&gt;</span>
+            <span class="nt">&lt;title&gt;</span>BSB Clm 2940<span class="nt">&lt;/title&gt;</span>
+            <span class="nt">&lt;initial&gt;</span>B<span class="nt">&lt;/initial&gt;</span>
+          <span class="nt">&lt;/witness&gt;</span>
+          <span class="nt">&lt;witness</span> <span class="na">id=</span><span class="s">"Ba"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;slug&gt;</span>clm8358<span class="nt">&lt;/slug&gt;</span>
+            <span class="nt">&lt;title&gt;</span>BSB Clm 8358<span class="nt">&lt;/title&gt;</span>
+            <span class="nt">&lt;initial&gt;</span>Ba<span class="nt">&lt;/initial&gt;</span>
+          <span class="nt">&lt;/witness&gt;</span>
+        <span class="nt">&lt;/hasWitnesses&gt;</span>
+    <span class="nt">&lt;/header&gt;</span>
+</code></pre></div></div>
+
+<h1 id="body">Body</h1>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"body"</span><span class="nt">&gt;</span>
+    <span class="c">&lt;!-- contains nested divs --&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+</code></pre></div></div>
+
+<h2 id="div">Div</h2>
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"nddm-librum4"</span> <span class="na">class=</span><span class="s">"toplevel"</span> <span class="na">type=</span><span class="s">"librum"</span> <span class="na">subtype=</span><span class="s">"librum4"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;head&gt;</span>Liber IV<span class="nt">&lt;/head&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"nddm-l4d1"</span> <span class="na">type=</span><span class="s">"distinctio"</span> <span class="na">subtype=</span><span class="s">"librum4-distinctio1"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;head&gt;</span>Liber IV, Distinctio 1<span class="nt">&lt;/head&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"nddm-l4d1p1"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;head&gt;</span>Liber IV, Distinctio 1, Pars 1<span class="nt">&lt;/head&gt;</span>
+      <span class="c">&lt;!-- contains items lowest level --&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+</code></pre></div></div>
+
+<h2 id="item">Item</h2>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;item</span> <span class="na">type=</span><span class="s">"quaestio"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;fileName</span> <span class="na">filestem=</span><span class="s">"nddm-l4d1p1q1"</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;title&gt;</span>Liber IV, d. 1, p. 1, q. 1<span class="nt">&lt;/title&gt;</span>
+  <span class="nt">&lt;questionTitle&gt;</span>Utrum in quolibet hominum statu fuerint aliqua sacramenta.<span class="nt">&lt;/questionTitle&gt;</span>
+  <span class="nt">&lt;hasWitnesses&gt;</span>
+    <span class="nt">&lt;witness</span> <span class="na">ref=</span><span class="s">"#T"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;folio&gt;</span>1r<span class="nt">&lt;/folio&gt;</span>
+      <span class="nt">&lt;folio&gt;</span>1v<span class="nt">&lt;/folio&gt;</span>
+      <span class="nt">&lt;folio&gt;</span>2r<span class="nt">&lt;/folio&gt;</span>
+      <span class="nt">&lt;folio&gt;</span>2v<span class="nt">&lt;/folio&gt;</span>
+      <span class="nt">&lt;folio&gt;</span>3r<span class="nt">&lt;/folio&gt;</span>
+      <span class="nt">&lt;folio&gt;</span>3v<span class="nt">&lt;/folio&gt;</span>
+      <span class="nt">&lt;folio&gt;</span>4r<span class="nt">&lt;/folio&gt;</span>
+      <span class="nt">&lt;folio&gt;</span>4v<span class="nt">&lt;/folio&gt;</span>
+      <span class="nt">&lt;folio&gt;</span>5r<span class="nt">&lt;/folio&gt;</span> <span class="c">&lt;!-- col. a --&gt;</span>
+    <span class="nt">&lt;/witness&gt;</span>
+  <span class="nt">&lt;/hasWitnesses&gt;</span>
+<span class="nt">&lt;/item&gt;</span>
+
+</code></pre></div></div>
+:ET

@@ -1,0 +1,2214 @@
+I"�d<p>Extracted from official github repo <a href="https://github.com/lombardpress/lombardpress-schema">https://github.com/lombardpress/lombardpress-schema</a> on 2020-01-23</p>
+
+<hr />
+<p>layout: page
+title:  “Lombard Press Schema 1.0.0 - Critical Transcription Guidelines”
+date:   2016-07-15
+categories: schema
+—</p>
+
+<h1 id="lombardpress-critical-transcription-guidelines">LombardPress Critical Transcription Guidelines</h1>
+
+<p>Editors:</p>
+
+<ul>
+  <li>Jeffrey C. Witt (Loyola University Maryland)</li>
+  <li>Michael Stenskjær Christensen (University of Copenhagen)</li>
+  <li>Nicolas Vaughan (Universidad de los Andes)</li>
+</ul>
+
+<p>Document Status: Draft</p>
+
+<h1 id="outline">Outline</h1>
+
+<ul>
+  <li><a href="#preamble">Preamble</a></li>
+  <li><a href="#teiheader">teiHeader</a>
+    <ul>
+      <li><a href="#filedesc">fileDesc</a>
+        <ul>
+          <li><a href="#titlestmt">titleStmt</a></li>
+          <li><a href="#editionstmt">editionStmt</a></li>
+          <li><a href="#publicationstmt">publicationStmt</a></li>
+          <li><a href="#sourcedesc">sourceDesc</a></li>
+        </ul>
+      </li>
+      <li><a href="#encodingdesc">encodingDesc</a></li>
+      <li><a href="#revisiondesc">revisionDesc</a></li>
+    </ul>
+  </li>
+  <li><a href="#text">text</a>
+    <ul>
+      <li><a href="#front">front</a></li>
+      <li><a href="#body">body</a></li>
+      <li><a href="#div">div</a></li>
+      <li><a href="#p">p</a></li>
+    </ul>
+  </li>
+  <li><a href="#inline-critical-elements">Inline critical elements</a>
+    <ul>
+      <li><a href="#supplied">supplied</a></li>
+      <li><a href="#surplus">surplus</a></li>
+      <li><a href="#sic">sic</a></li>
+    </ul>
+  </li>
+  <li><a href="#apparatus-criticus">Apparatus Criticus</a>
+    <ul>
+      <li><a href="#basic-rdg-types">Basic Rdg Types</a>
+        <ul>
+          <li><a href="#variation">variation</a></li>
+          <li><a href="#correction">correction</a></li>
+          <li><a href="#note-on-variation-and-correction">note on variation and correction</a></li>
+          <li><a href="#conjecture">conjecture</a></li>
+          <li><a href="#connected-apparatus-entries">connected apparatus entries</a></li>
+          <li><a href="#manual">manual</a></li>
+        </ul>
+      </li>
+      <li><a href="#witdetail">witDetail</a></li>
+      <li><a href="#appnote">note</a></li>
+    </ul>
+  </li>
+  <li><a href="#apparatus-fontium">Apparatus Fontium</a>
+    <ul>
+      <li><a href="#cite">cit</a></li>
+      <li><a href="#ref">ref</a></li>
+      <li><a href="#quote">quote</a></li>
+      <li><a href="#citnote">note</a></li>
+    </ul>
+  </li>
+  <li><a href="#milestones">Milestones</a></li>
+</ul>
+
+<h1 id="preamble">Preamble</h1>
+
+<p>The goal of the LombardPress Critical Transcription specification is to offer a set of guidelines for the markup of medieval scholastic commentaries and texts that conform, as much as possible, to existing standards. Therefore, these guidelines adopt the rules and conventions of the <a href="http://www.tei-c.org/">TEI guidelines</a> and, within these constraints, work to proscribe a single encoding practice where TEI offers multiple possibilities.</p>
+
+<h1 id="teiheader">teiHeader</h1>
+
+<p>The <code class="language-plaintext highlighter-rouge">teiHeader</code> defines metadata for the document about the file, including data on the author and title of the text as well as information about the edition.</p>
+
+<h2 id="rules">Rules</h2>
+
+<ol>
+  <li><code class="language-plaintext highlighter-rouge">teiHeader</code> <strong>MUST</strong> contain <code class="language-plaintext highlighter-rouge">fileDesc</code>.</li>
+  <li><code class="language-plaintext highlighter-rouge">teiHeader</code> <strong>MUST</strong> contain <code class="language-plaintext highlighter-rouge">encodingDesc</code>.</li>
+  <li><code class="language-plaintext highlighter-rouge">teiHeader</code> <strong>MUST</strong> contain <code class="language-plaintext highlighter-rouge">revisionDesc</code>.</li>
+</ol>
+
+<h2 id="example">Example</h2>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
+<span class="nt">&lt;TEI</span> <span class="na">xmlns=</span><span class="s">"http://www.tei-c.org/ns/1.0"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;teiHeader&gt;</span>
+    <span class="nt">&lt;fileDesc&gt;</span>
+      <span class="c">&lt;!-- Content of `fileDesc` --&gt;</span>
+    <span class="nt">&lt;/fileDesc&gt;</span>
+    <span class="nt">&lt;encodingDesc&gt;</span>
+      <span class="c">&lt;!-- Content of `encodingDesc` --&gt;</span>
+    <span class="nt">&lt;/encodingDesc&gt;</span>
+    <span class="nt">&lt;revisionDesc</span> <span class="na">status=</span><span class="s">"draft"</span><span class="nt">&gt;</span>
+      <span class="c">&lt;!-- Content of `revisionDesc` --&gt;</span>
+    <span class="nt">&lt;/revisionDesc&gt;</span>
+  <span class="nt">&lt;/teiHeader&gt;</span>
+</code></pre></div></div>
+
+<h2 id="filedesc">fileDesc</h2>
+
+<h3 id="description">Description</h3>
+
+<p>The <code class="language-plaintext highlighter-rouge">fileDesc</code> contains the full bibliographic description of an electronic file.</p>
+
+<h3 id="rules-1">Rules</h3>
+
+<ol>
+  <li><code class="language-plaintext highlighter-rouge">fileDesc</code> <strong>MUST</strong> contain <code class="language-plaintext highlighter-rouge">titleStmt</code>.</li>
+  <li><code class="language-plaintext highlighter-rouge">fileDesc</code> <strong>MUST</strong> contain <code class="language-plaintext highlighter-rouge">editionStmt</code>.</li>
+  <li><code class="language-plaintext highlighter-rouge">fileDesc</code> <strong>MUST</strong> contain <code class="language-plaintext highlighter-rouge">publicationStmt</code>.</li>
+</ol>
+
+<h3 id="titlestmt">titleStmt</h3>
+
+<h4 id="description-1">Description</h4>
+
+<p>The <code class="language-plaintext highlighter-rouge">titleStmt</code> determines the bibliographical information of the encoded file.</p>
+
+<h4 id="rules-2">Rules</h4>
+
+<ol>
+  <li><code class="language-plaintext highlighter-rouge">titleStmt</code> <strong>MUST</strong> have a <code class="language-plaintext highlighter-rouge">title</code>.</li>
+  <li><code class="language-plaintext highlighter-rouge">titleStmt</code> <strong>MUST</strong> have an <code class="language-plaintext highlighter-rouge">author</code>.</li>
+  <li><code class="language-plaintext highlighter-rouge">titleStmt</code> <strong>SHOULD</strong> have a <code class="language-plaintext highlighter-rouge">editor</code>.</li>
+  <li><code class="language-plaintext highlighter-rouge">titleStmt</code> <strong>MAY</strong> have a <code class="language-plaintext highlighter-rouge">respStmt</code>.</li>
+</ol>
+
+<h4 id="examples">Examples</h4>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;titleStmt&gt;</span>
+  <span class="nt">&lt;title&gt;</span>Dicta super librum De anima<span class="nt">&lt;/title&gt;</span>
+  <span class="nt">&lt;author&gt;</span>Simon Magister<span class="nt">&lt;/author&gt;</span>
+  <span class="nt">&lt;editor&gt;</span>Michael Stenskjær Christensen<span class="nt">&lt;/editor&gt;</span>
+  <span class="nt">&lt;respStmt&gt;</span>
+    <span class="nt">&lt;name</span> <span class="na">xml:id=</span><span class="s">"comments-JJ"</span><span class="nt">&gt;</span>John Johnson<span class="nt">&lt;/name&gt;</span>
+    <span class="nt">&lt;resp&gt;</span>Editorial suggestions<span class="nt">&lt;/resp&gt;</span>
+  <span class="nt">&lt;/respStmt&gt;</span>
+<span class="nt">&lt;/titleStmt&gt;</span>
+</code></pre></div></div>
+
+<h3 id="editionstmt">editionStmt</h3>
+
+<h4 id="description-2">Description</h4>
+
+<p><code class="language-plaintext highlighter-rouge">editionStmt</code> indicates the edition of the document within the context of its source history.</p>
+
+<h4 id="rules-3">Rules</h4>
+
+<ol>
+  <li><code class="language-plaintext highlighter-rouge">editionStmt</code> <strong>MUST</strong> contain an <code class="language-plaintext highlighter-rouge">edition</code> element.</li>
+  <li><code class="language-plaintext highlighter-rouge">edition@n</code> <strong>MUST</strong> be <code class="language-plaintext highlighter-rouge">n=X.X.X-dev</code>; usually, when starting a new document it should be listed as <code class="language-plaintext highlighter-rouge">n=0.0.0-dev</code>.</li>
+  <li><code class="language-plaintext highlighter-rouge">edition</code> <strong>MUST</strong> contain a <code class="language-plaintext highlighter-rouge">date</code> element.</li>
+  <li>The <code class="language-plaintext highlighter-rouge">date</code> element, that is the child of <code class="language-plaintext highlighter-rouge">edition</code>, <strong>MUST</strong> include a <code class="language-plaintext highlighter-rouge">@when</code> attribute, whose machine-formatted value corresponds to the date in the text node.</li>
+  <li><code class="language-plaintext highlighter-rouge">edition</code> <strong>SHOULD NOT</strong> contain any other children besides the date.</li>
+</ol>
+
+<h4 id="examples-1">Examples</h4>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;editionStmt&gt;</span>
+  <span class="nt">&lt;edition</span> <span class="na">n=</span><span class="s">"0.0.0-dev"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;date</span> <span class="na">when=</span><span class="s">"2016-06-18"</span><span class="nt">&gt;</span>June 18, 2016<span class="nt">&lt;/date&gt;</span>
+  <span class="nt">&lt;/edition&gt;</span>
+<span class="nt">&lt;/editionStmt&gt;</span>
+</code></pre></div></div>
+
+<h3 id="publicationstmt">publicationStmt</h3>
+
+<h4 id="description-3">Description</h4>
+
+<p><code class="language-plaintext highlighter-rouge">publicationStmt</code> indicates the authority supporting this edition (usually a sponsoring or funding research group). It should also list the license and availability of the text.</p>
+
+<h4 id="rules-4">Rules</h4>
+
+<ol>
+  <li><code class="language-plaintext highlighter-rouge">publicationStmt</code> <strong>MUST</strong> have EITHER <code class="language-plaintext highlighter-rouge">authority</code> and <code class="language-plaintext highlighter-rouge">availability</code> elements as children OR a general <code class="language-plaintext highlighter-rouge">p</code> element.
+    <ul>
+      <li>We highly encourage using <code class="language-plaintext highlighter-rouge">authority</code> and <code class="language-plaintext highlighter-rouge">availability</code> to identify the entity that makes the creation of the current document possible. See examples below.</li>
+    </ul>
+  </li>
+  <li><code class="language-plaintext highlighter-rouge">p</code> <strong>MAY</strong> contain a <code class="language-plaintext highlighter-rouge">ref</code> to provide an external link to the authority-like entity.</li>
+  <li><code class="language-plaintext highlighter-rouge">authority</code> <strong>MAY</strong> contain a <code class="language-plaintext highlighter-rouge">ref</code> to provide an external link to the authority entity.</li>
+  <li><code class="language-plaintext highlighter-rouge">availability</code> <strong>SHOULD</strong> contain <code class="language-plaintext highlighter-rouge">@status</code>.</li>
+  <li><code class="language-plaintext highlighter-rouge">availability</code> <strong>SHOULD</strong> contain a <code class="language-plaintext highlighter-rouge">p</code> describing the license under which the edition is published.</li>
+</ol>
+
+<h4 id="examples-2">Examples</h4>
+
+<h5 id="example-1">Example 1</h5>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;publicationStmt&gt;</span>
+  <span class="nt">&lt;authority&gt;</span>Scholastic Commentaries and Text Archive Project<span class="nt">&lt;/authority&gt;</span>
+  <span class="nt">&lt;availability</span> <span class="na">status=</span><span class="s">"free"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;p&gt;</span>Published under a <span class="nt">&lt;ref</span> <span class="na">target=</span><span class="s">"http://creativecommons.org/licenses/by-nc-nd/3.0/"</span><span class="nt">&gt;</span>Creative Commons Attribution-NonCommercial-NoDerivs 3.0 License<span class="nt">&lt;/ref&gt;&lt;/p&gt;</span>
+    <span class="nt">&lt;/availability&gt;</span>
+  <span class="nt">&lt;/publicationStmt&gt;</span>
+</code></pre></div></div>
+
+<h5 id="example-2">Example 2</h5>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;publicationStmt&gt;</span>
+  <span class="nt">&lt;authority&gt;</span>
+    <span class="nt">&lt;ref</span> <span class="na">target=</span><span class="s">"http://representationandreality.gu.se"</span><span class="nt">&gt;</span>
+      Representation and Reality: Historical and Contemporary Perspectives on the Aristotelian Tradition
+    <span class="nt">&lt;/ref&gt;</span>
+  <span class="nt">&lt;/authority&gt;</span>
+  <span class="nt">&lt;availability</span> <span class="na">status=</span><span class="s">"free"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;p&gt;</span>Published under a <span class="nt">&lt;ref</span> <span class="na">target=</span><span class="s">"http://creativecommons.org/licenses/by-nc-nd/3.0/"</span><span class="nt">&gt;</span>Creative Commons Attribution-NonCommercial-NoDerivs 3.0 License<span class="nt">&lt;/ref&gt;&lt;/p&gt;</span>
+    <span class="nt">&lt;/availability&gt;</span>
+  <span class="nt">&lt;/publicationStmt&gt;</span>
+</code></pre></div></div>
+
+<h5 id="example-3">Example 3</h5>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;publicationStmt&gt;</span>
+  <span class="nt">&lt;authority&gt;</span>
+    <span class="nt">&lt;ref</span> <span class="na">target=</span><span class="s">"http://petrushispanusproject.po"</span><span class="nt">&gt;</span>Petrus Hispanus Project<span class="nt">&lt;/ref&gt;&lt;/authority&gt;</span>
+  <span class="nt">&lt;availability</span> <span class="na">status=</span><span class="s">"free"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;p&gt;</span>Published under a <span class="nt">&lt;ref</span> <span class="na">target=</span><span class="s">"http://creativecommons.org/licenses/by-nc-nd/3.0/"</span><span class="nt">&gt;</span>Creative Commons Attribution-NonCommercial-NoDerivs 3.0 License<span class="nt">&lt;/ref&gt;&lt;/p&gt;</span>
+    <span class="nt">&lt;/availability&gt;</span>
+  <span class="nt">&lt;/publicationStmt&gt;</span>
+</code></pre></div></div>
+
+<h3 id="sourcedesc">sourceDesc</h3>
+
+<h4 id="description-4">Description</h4>
+
+<p><code class="language-plaintext highlighter-rouge">sourceDesc</code> should list the witnesses and sources used to construct the edition.</p>
+
+<h4 id="rules-5">Rules</h4>
+
+<ol>
+  <li><code class="language-plaintext highlighter-rouge">sourceDesc</code> <strong>MUST</strong> contain <code class="language-plaintext highlighter-rouge">listWit</code>, <code class="language-plaintext highlighter-rouge">listBibl</code> or both.</li>
+  <li><code class="language-plaintext highlighter-rouge">listWit</code> <strong>MUST</strong> contain at least one <code class="language-plaintext highlighter-rouge">wit</code>.</li>
+  <li><code class="language-plaintext highlighter-rouge">listBibl</code> <strong>MUST</strong> contain at least one <code class="language-plaintext highlighter-rouge">bibl</code>.</li>
+  <li><code class="language-plaintext highlighter-rouge">witness</code> <strong>MUST</strong> have a <code class="language-plaintext highlighter-rouge">@xml:id</code>.</li>
+  <li><code class="language-plaintext highlighter-rouge">witness</code> <strong>SHOULD</strong> have a <code class="language-plaintext highlighter-rouge">@n</code> giving a short id of the witness.
+    <ul>
+      <li>The value of <code class="language-plaintext highlighter-rouge">@n</code> <strong>SHOULD</strong> correspond to the short id for the manuscript or codex in the SCTA database. If the value is not known, leave it out. It will be added later during processing.</li>
+    </ul>
+  </li>
+  <li>For adding <code class="language-plaintext highlighter-rouge">handDesc</code>, follow TEI guidelines.</li>
+</ol>
+
+<h4 id="examples-3">Examples</h4>
+
+<h5 id="example-1-1">Example 1</h5>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;listWit&gt;</span>
+  <span class="nt">&lt;witness</span> <span class="na">xml:id=</span><span class="s">"P"</span> <span class="na">n=</span><span class="s">"bnf15705"</span><span class="nt">&gt;</span>Paris, Lat 15705<span class="nt">&lt;/witness&gt;</span>
+<span class="nt">&lt;/listWit&gt;</span>
+</code></pre></div></div>
+
+<h5 id="example-2-1">Example 2</h5>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;listBibl&gt;</span>
+  <span class="nt">&lt;bibl</span> <span class="na">xml:id=</span><span class="s">"Q"</span> <span class="na">n=</span><span class="s">"quaracchi1924"</span><span class="nt">&gt;</span>Quaracchi 1924 Edition<span class="nt">&lt;/bibl&gt;</span>
+<span class="nt">&lt;/listBibl&gt;</span>
+</code></pre></div></div>
+
+<h5 id="example-3-1">Example 3</h5>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;listWit&gt;</span>
+  <span class="nt">&lt;witness</span> <span class="na">xml:id=</span><span class="s">"P"</span> <span class="na">n=</span><span class="s">"bnf15705"</span><span class="nt">&gt;</span>Paris, Lat 15705
+    <span class="nt">&lt;msDesc&gt;</span>
+      <span class="nt">&lt;physDesc&gt;</span>
+        <span class="nt">&lt;handDesc</span> <span class="na">hands=</span><span class="s">"2"</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;handNote</span> <span class="na">sameAs=</span><span class="s">'#P'</span><span class="nt">&gt;</span>This is the main hand of the text. German hand of the XIIIc with an inclination toward particularly complex majuscules.<span class="nt">&lt;/handNote&gt;</span>
+          <span class="nt">&lt;handNote</span> <span class="na">xml:id=</span><span class="s">"#P1"</span><span class="nt">&gt;</span>Flemish hand of the XVc written in mauve ink. Used for minor corrections.<span class="nt">&lt;/handNote&gt;</span>
+        <span class="nt">&lt;/handDesc&gt;</span>
+      <span class="nt">&lt;/physDesc&gt;</span>
+    <span class="nt">&lt;/msDesc&gt;</span>
+  <span class="nt">&lt;/witness&gt;</span>witness&gt;
+  <span class="nt">&lt;witness</span> <span class="na">xml:id=</span><span class="s">"Pb"</span> <span class="na">n=</span><span class="s">"bda446"</span><span class="nt">&gt;</span>Paris, Bibliotheque de l'Arsenal, ms. lat. 446<span class="nt">&lt;/witness&gt;</span>
+  <span class="nt">&lt;witness</span> <span class="na">xml:id=</span><span class="s">"Z"</span> <span class="na">n=</span><span class="s">"zbsSII72"</span><span class="nt">&gt;</span>Solothurn, Zentralbibliothek, Cod. S II 72<span class="nt">&lt;/witness&gt;</span>
+<span class="nt">&lt;/listWit&gt;</span>
+</code></pre></div></div>
+
+<h2 id="encodingdesc">encodingDesc</h2>
+
+<h3 id="description-5">Description</h3>
+
+<p><code class="language-plaintext highlighter-rouge">encodingDesc</code> provides details about the encoding methods used in the text and the schema followed.</p>
+
+<h3 id="rules-6">Rules</h3>
+
+<ol>
+  <li><code class="language-plaintext highlighter-rouge">encodingDesc</code> <strong>MUST</strong> be stated.</li>
+  <li><code class="language-plaintext highlighter-rouge">encodingDesc</code> <strong>SHOULD</strong> contain a <code class="language-plaintext highlighter-rouge">variantEncoding</code> element as a direct child.</li>
+  <li><code class="language-plaintext highlighter-rouge">variantEncoding</code> <strong>MUST</strong> contain <code class="language-plaintext highlighter-rouge">@method</code> which confirms that the method of variant encoding is <em>parallel-segmentation</em>.</li>
+  <li><code class="language-plaintext highlighter-rouge">encodingDesc</code> <strong>MUST</strong> contain a <code class="language-plaintext highlighter-rouge">schemaRef</code> element as a direct child.</li>
+  <li><code class="language-plaintext highlighter-rouge">schemaRef</code> <strong>MUST</strong> contain a <code class="language-plaintext highlighter-rouge">@url</code> that points to the URL of the LBP schema.</li>
+  <li><code class="language-plaintext highlighter-rouge">schemaRef</code> <strong>MUST</strong> contain an <code class="language-plaintext highlighter-rouge">@n</code> pointing to the version number of the LBP schema.</li>
+  <li><code class="language-plaintext highlighter-rouge">encodingDesc</code> <strong>MAY</strong> take an <code class="language-plaintext highlighter-rouge">editorialDecl</code> as a direct child.</li>
+  <li><code class="language-plaintext highlighter-rouge">editorialDecl</code> <strong>SHOULD</strong> contain a <code class="language-plaintext highlighter-rouge">p</code> element with a prose description of the guidelines followed in the preparation of this edition.</li>
+</ol>
+
+<h3 id="examples-4">Examples</h3>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;encodingDesc&gt;</span>
+  <span class="nt">&lt;variantEncoding</span> <span class="na">method=</span><span class="s">"parallel-segmentation"</span>
+    <span class="na">location=</span><span class="s">"internal"</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;schemaRef</span>
+    <span class="na">n=</span><span class="s">"lbp-critical-1.0.0"</span>
+    <span class="na">url=</span><span class="s">"https://raw.githubusercontent.com/lombardpress/lombardpress-schema/master/src/1.0/critical.rng"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;/schemaRef&gt;</span>
+  <span class="nt">&lt;editorialDecl&gt;</span>
+    <span class="nt">&lt;p&gt;</span>Encoding of this text has followed the recommendations of the LombardPress 1.0.0 guidelines for a critical edition<span class="nt">&lt;/p&gt;</span>
+  <span class="nt">&lt;/editorialDecl&gt;</span>
+<span class="nt">&lt;/encodingDesc&gt;</span>
+</code></pre></div></div>
+
+<h2 id="revisiondesc">revisionDesc</h2>
+
+<h3 id="description-6">Description</h3>
+
+<p>The <code class="language-plaintext highlighter-rouge">revisionDesc</code> contains a description of the current and previous versions of the current edition.
+The individual editor would usually not be responsible for maintaining the <code class="language-plaintext highlighter-rouge">revisionDesc</code>, as it should (ideally) be generated as part of the publication workflow.</p>
+
+<h3 id="rules-7">Rules</h3>
+
+<ol>
+  <li><code class="language-plaintext highlighter-rouge">revisionDesc</code> <strong>MUST</strong> be stated.</li>
+  <li><code class="language-plaintext highlighter-rouge">revisionDesc</code> <strong>MUST</strong> contain <code class="language-plaintext highlighter-rouge">@status</code>.</li>
+  <li><code class="language-plaintext highlighter-rouge">revisionDesc</code> <strong>MUST</strong> contain <code class="language-plaintext highlighter-rouge">listChange</code>.</li>
+  <li><code class="language-plaintext highlighter-rouge">listChange</code> <strong>MUST</strong> contain at least one <code class="language-plaintext highlighter-rouge">change</code>.</li>
+  <li><code class="language-plaintext highlighter-rouge">change</code> <strong>MUST</strong> contain <code class="language-plaintext highlighter-rouge">@when</code>.</li>
+  <li><code class="language-plaintext highlighter-rouge">change</code> <strong>MUST</strong> contain <code class="language-plaintext highlighter-rouge">@status</code>. Possible values of the attribute are:
+    <ul>
+      <li>private-draft</li>
+      <li>public-draft (alias: draft)</li>
+      <li>out-for-review</li>
+      <li>peer-reviewed (alias: published)</li>
+    </ul>
+  </li>
+  <li><code class="language-plaintext highlighter-rouge">change</code> <strong>MUST</strong> contain <code class="language-plaintext highlighter-rouge">@n</code>.</li>
+  <li><code class="language-plaintext highlighter-rouge">change</code> <strong>MUST</strong> contain either <code class="language-plaintext highlighter-rouge">@corresp</code> pointing to a description of the change in another file or a <code class="language-plaintext highlighter-rouge">p</code> describing the change.</li>
+</ol>
+
+<h3 id="examples-5">Examples</h3>
+
+<h4 id="example-1-2">Example 1</h4>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;revisionDesc</span> <span class="na">status=</span><span class="s">"draft"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;listChange&gt;</span>
+    <span class="nt">&lt;change</span> <span class="na">when=</span><span class="s">"2015-11-11"</span> <span class="na">status=</span><span class="s">"draft"</span> <span class="na">n=</span><span class="s">"0.0.0"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;p&gt;</span>Created file for the first time.<span class="nt">&lt;/p&gt;</span>  
+    <span class="nt">&lt;/change&gt;</span>
+  <span class="nt">&lt;/listChange&gt;</span>
+<span class="nt">&lt;/revisionDesc&gt;</span>
+</code></pre></div></div>
+
+<h4 id="example-2-2">Example 2</h4>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;revisionDesc</span> <span class="na">status=</span><span class="s">"draft"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;listChange&gt;</span>
+    <span class="nt">&lt;change</span> <span class="na">when=</span><span class="s">"2015-12-24"</span> <span class="na">status=</span><span class="s">"draft"</span> <span class="na">n=</span><span class="s">"0.1.0"</span> <span class="na">corresp=</span><span class="s">"versionlog.xml#v0.1.0"</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;change</span> <span class="na">when=</span><span class="s">"2015-11-11"</span> <span class="na">status=</span><span class="s">"draft"</span> <span class="na">n=</span><span class="s">"0.0.0"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;p&gt;</span>Created file for the first time<span class="nt">&lt;/p&gt;</span>
+    <span class="nt">&lt;/change&gt;</span>
+  <span class="nt">&lt;/listChange&gt;</span>
+<span class="nt">&lt;/revisionDesc&gt;</span>
+</code></pre></div></div>
+<h1 id="text">text</h1>
+
+<h2 id="description-7">Description</h2>
+
+<p><code class="language-plaintext highlighter-rouge">text</code> is the main wrapper of the edition and sibling to the <code class="language-plaintext highlighter-rouge">teiHeader</code>.</p>
+
+<h2 id="rules-8">Rules</h2>
+
+<ol>
+  <li><code class="language-plaintext highlighter-rouge">text</code> <strong>SHOULD</strong> take a <code class="language-plaintext highlighter-rouge">@type</code> attribute the value of which is “critical”.
+    <ul>
+      <li>The possible values for <code class="language-plaintext highlighter-rouge">text@type</code> are:</li>
+    </ul>
+    <ul>
+      <li>critical</li>
+      <li>diplomatic</li>
+      <li>translation</li>
+    </ul>
+  </li>
+  <li><code class="language-plaintext highlighter-rouge">text</code> <strong>SHOULD</strong> take an <code class="language-plaintext highlighter-rouge">@xml:lang</code> attribute indicating the dominant language of the edition, usually <code class="language-plaintext highlighter-rouge">la</code> for “latin”.</li>
+</ol>
+
+<h2 id="front">front</h2>
+
+<h3 id="description-8">Description</h3>
+
+<p><code class="language-plaintext highlighter-rouge">front</code> is used to make prefatory declarations about the text. For now that only includes the starting location of the text in the witnesses.</p>
+
+<h3 id="rules-9">Rules</h3>
+
+<ol>
+  <li><code class="language-plaintext highlighter-rouge">front</code> <strong>MUST</strong> take a <code class="language-plaintext highlighter-rouge">div</code> with the <code class="language-plaintext highlighter-rouge">xml:id="starts-on"</code>.
+    <ul>
+      <li>The content of this div should only be <code class="language-plaintext highlighter-rouge">pb</code>, <code class="language-plaintext highlighter-rouge">cb</code>, and <code class="language-plaintext highlighter-rouge">lb</code> elements indicating the page, column, and lb on which the text begins in the different witnesses. For the encoding of <code class="language-plaintext highlighter-rouge">pb</code> and <code class="language-plaintext highlighter-rouge">cb</code>
+ see <a href="#milestones">the relevant section below</a>.
+        <h3 id="examples-6">Examples</h3>
+      </li>
+    </ul>
+  </li>
+</ol>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;front&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">xml:id=</span><span class="s">"starts-on"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;pb</span> <span class="na">ed=</span><span class="s">"#V"</span> <span class="na">n=</span><span class="s">"5-r"</span><span class="nt">/&gt;&lt;cb</span> <span class="na">ed=</span><span class="s">"#V"</span> <span class="na">n=</span><span class="s">"b"</span><span class="nt">/&gt;&lt;lb</span> <span class="na">ed=</span><span class="s">"#V"</span> <span class="na">n=</span><span class="s">"15"</span><span class="nt">/&gt;</span> <span class="c">&lt;!-- V5rb --&gt;</span>
+    <span class="nt">&lt;pb</span> <span class="na">ed=</span><span class="s">"#S"</span> <span class="na">n=</span><span class="s">"2-r"</span><span class="nt">/&gt;&lt;cb</span> <span class="na">ed=</span><span class="s">"#S"</span> <span class="na">n=</span><span class="s">"a"</span><span class="nt">/&gt;&lt;lb</span> <span class="na">ed=</span><span class="s">"#S"</span> <span class="na">n=</span><span class="s">"5"</span><span class="nt">/&gt;</span> <span class="c">&lt;!-- S2ra --&gt;</span>
+    <span class="nt">&lt;pb</span> <span class="na">ed=</span><span class="s">"#R"</span> <span class="na">n=</span><span class="s">"1-r"</span><span class="nt">/&gt;&lt;cb</span> <span class="na">ed=</span><span class="s">"#R"</span> <span class="na">n=</span><span class="s">"a"</span><span class="nt">/&gt;&lt;lb</span> <span class="na">ed=</span><span class="s">"#R"</span> <span class="na">n=</span><span class="s">"1"</span><span class="nt">/&gt;</span> <span class="c">&lt;!-- R1ra --&gt;</span>
+    <span class="nt">&lt;pb</span> <span class="na">ed=</span><span class="s">"#SV"</span> <span class="na">n=</span><span class="s">"187-r"</span><span class="nt">/&gt;&lt;cb</span> <span class="na">ed=</span><span class="s">"#SV"</span> <span class="na">n=</span><span class="s">"a"</span><span class="nt">/&gt;&lt;lb</span> <span class="na">ed=</span><span class="s">"#V"</span> <span class="na">n=</span><span class="s">"49"</span><span class="nt">/&gt;</span> <span class="c">&lt;!-- SV187ra --&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/front&gt;</span>
+</code></pre></div></div>
+
+<h2 id="body">body</h2>
+
+<h3 id="description-9">Description</h3>
+
+<p><code class="language-plaintext highlighter-rouge">body</code> is the primary wrapper of the edited text.</p>
+
+<h3 id="rules-10">Rules</h3>
+
+<ol>
+  <li><code class="language-plaintext highlighter-rouge">body</code> <strong>MUST</strong> immediately follow <code class="language-plaintext highlighter-rouge">front</code>.</li>
+  <li><code class="language-plaintext highlighter-rouge">body</code> <strong>MUST</strong> take a <code class="language-plaintext highlighter-rouge">div</code> as an immediate child.</li>
+</ol>
+
+<h2 id="div">div</h2>
+
+<h3 id="description-10">Description</h3>
+
+<p><code class="language-plaintext highlighter-rouge">div</code> is the fundamental section unit of an edition.</p>
+
+<h3 id="rules-11">Rules</h3>
+
+<ol>
+  <li>There <strong>MUST</strong> be one <code class="language-plaintext highlighter-rouge">div</code> in each edition as a direct child of <code class="language-plaintext highlighter-rouge">body</code>.</li>
+  <li><code class="language-plaintext highlighter-rouge">div</code> <strong>MAY</strong> only contain <code class="language-plaintext highlighter-rouge">head</code> and <code class="language-plaintext highlighter-rouge">p</code> as children.</li>
+  <li><code class="language-plaintext highlighter-rouge">div</code> <strong>MAY NOT</strong> contain any text nodes as direct children.</li>
+</ol>
+
+<h2 id="head">head</h2>
+
+<p><code class="language-plaintext highlighter-rouge">head</code> is the wrapper heading declaration for a <code class="language-plaintext highlighter-rouge">div</code>.</p>
+
+<h3 id="rules-12">Rules</h3>
+
+<ol>
+  <li><code class="language-plaintext highlighter-rouge">head</code> <strong>MUST</strong> be an immediate child of a <code class="language-plaintext highlighter-rouge">div</code>.</li>
+  <li><code class="language-plaintext highlighter-rouge">head</code> <strong>MUST</strong> precede <code class="language-plaintext highlighter-rouge">p</code> elements in parent <code class="language-plaintext highlighter-rouge">div</code>.</li>
+  <li><code class="language-plaintext highlighter-rouge">head</code> <strong>MAY</strong> take an <code class="language-plaintext highlighter-rouge">@type</code> attribute.
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">@type</code> values include:</li>
+    </ul>
+    <ul>
+      <li>subtitle</li>
+      <li>question-title</li>
+    </ul>
+  </li>
+</ol>
+
+<h2 id="p">p</h2>
+
+<h3 id="description-11">Description</h3>
+
+<p><code class="language-plaintext highlighter-rouge">p</code> (along with <code class="language-plaintext highlighter-rouge">head</code>) is the wrapper of all text nodes within the <code class="language-plaintext highlighter-rouge">body</code> element.</p>
+
+<h3 id="rules-13">Rules</h3>
+
+<ol>
+  <li>All text nodes of the edition, other than those that are descendants of the <code class="language-plaintext highlighter-rouge">head</code> element, <strong>MUST</strong> be descendants of a <code class="language-plaintext highlighter-rouge">p</code> element.</li>
+  <li><code class="language-plaintext highlighter-rouge">p</code> <strong>MUST</strong> be an immediate child of a <code class="language-plaintext highlighter-rouge">div</code>.</li>
+</ol>
+
+<h1 id="inline-critical-elements">Inline critical elements</h1>
+
+<p>In some situations a note in the critical apparatus is not necessary for indicating a critical evaluation by the editor. The following inline elements will usually have a semantically relevant rendering in the text.</p>
+
+<p>In most cases correlated notes in the critical apparatus are also available. In only the most simple situations will this be sufficient for avoiding ambiguities. As soon as the text is not uniformly transmitted or the change is not made by the current editor, one should resort to critical notes using the critical apparatus guidelines outlined below.</p>
+
+<h2 id="supplied">supplied</h2>
+
+<h3 id="description-12">Description</h3>
+
+<p><code class="language-plaintext highlighter-rouge">supplied</code> signifies text supplied by the editor because it is believed to be missing from the text, and it can be argued that it must have been part of the original text as intended by the author.</p>
+
+<p>For the use of this in a critical note, see <a href="#conjecture-supplied">conjecture-supplied</a></p>
+
+<h3 id="rules-14">Rules</h3>
+
+<ol>
+  <li><code class="language-plaintext highlighter-rouge">supplied</code> <strong>MUST</strong> contain the supplied text, and nothing but that.</li>
+</ol>
+
+<h3 id="example-1">Example</h3>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Utrum fides semper <span class="nt">&lt;supplied&gt;</span>sit<span class="nt">&lt;/supplied&gt;</span> acquisita
+</code></pre></div></div>
+
+<p>In a processed text, this could result in the following text:</p>
+
+<blockquote>
+  <p>Utrum fides semper &lt;sit&gt; acquisita</p>
+</blockquote>
+
+<h2 id="surplus">surplus</h2>
+
+<h3 id="description-13">Description</h3>
+
+<p><code class="language-plaintext highlighter-rouge">surplus</code> marks a text present in the source which the editor believes to be superfluous or redundant. According to the editor, the word(s) marked with <code class="language-plaintext highlighter-rouge">surplus</code> is therefore not to be considered part of the established text.</p>
+
+<p>For the use of this in a critical note, see <a href="#conjecture-removed">conjecture-removed</a>.</p>
+
+<h3 id="rules-15">Rules</h3>
+
+<ol>
+  <li><code class="language-plaintext highlighter-rouge">surplus</code> <strong>MUST</strong> contain the removed text, and nothing but that.</li>
+</ol>
+
+<h3 id="example-2">Example</h3>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Ergo non sequitur quod <span class="nt">&lt;surplus&gt;</span>quia<span class="nt">&lt;/surplus&gt;</span> in probationem dicitur.
+</code></pre></div></div>
+
+<p>In a processed text, this could result in the following text:</p>
+
+<blockquote>
+  <p>Ergo non sequitur quod [quia] in probationem dicitur.</p>
+</blockquote>
+
+<h2 id="sic">sic</h2>
+
+<h3 id="description-14">Description</h3>
+
+<p><code class="language-plaintext highlighter-rouge">sic</code> is used to indicate that, according to the best judgement of the editor, the demarcated text is corrupt, and the editor does not know how to solve the problem satisfyingly. Notice that this does not mean that there is a passage that the editor is not able to read, nor that a gap is left in the text, nor a physical damage is in the manuscript, but that the text as transmitted is incomprehensible.</p>
+
+<h3 id="rules-16">Rules</h3>
+
+<ol>
+  <li><code class="language-plaintext highlighter-rouge">sic</code> <strong>MUST</strong> contain the text considered to be corrupt.</li>
+</ol>
+
+<h3 id="example-3">Example</h3>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code>subsidiis magnis <span class="nt">&lt;sic&gt;</span>epicuri<span class="nt">&lt;/sic&gt;</span> constabilitas
+</code></pre></div></div>
+
+<p>In a processed text, this could result in the following text:</p>
+
+<blockquote>
+  <p>subsidiis magnis †epicuri† constabilitas</p>
+</blockquote>
+
+<h1 id="apparatus-criticus">Apparatus Criticus</h1>
+
+<h2 id="general-rules">General Rules</h2>
+
+<p>Below are the basic reading and lemma types in three main categories: variation, correction, and conjecture. Before detailing those types, the general rules of any apparatus entry are described here.</p>
+
+<p>The general rules of any <code class="language-plaintext highlighter-rouge">app</code> element are:</p>
+
+<ol>
+  <li><code class="language-plaintext highlighter-rouge">app</code> <strong>MUST</strong> contain <code class="language-plaintext highlighter-rouge">lem</code> element.</li>
+  <li><code class="language-plaintext highlighter-rouge">app</code> <strong>MUST</strong> contain at least one <code class="language-plaintext highlighter-rouge">rdg</code> element.</li>
+  <li><code class="language-plaintext highlighter-rouge">app</code> <strong>MAY</strong> contain a <code class="language-plaintext highlighter-rouge">witDetail</code> element.</li>
+  <li><code class="language-plaintext highlighter-rouge">app</code> <strong>MAY</strong> contain a <code class="language-plaintext highlighter-rouge">note</code> element.</li>
+  <li>If <code class="language-plaintext highlighter-rouge">lem</code> is empty, it <strong>MUST</strong> contain the <code class="language-plaintext highlighter-rouge">@n</code> element.</li>
+  <li><code class="language-plaintext highlighter-rouge">lem</code> <strong>MAY</strong> have <code class="language-plaintext highlighter-rouge">@wit</code> or <code class="language-plaintext highlighter-rouge">@source</code>.</li>
+  <li><code class="language-plaintext highlighter-rouge">lem</code> <strong>MAY</strong> take an another <code class="language-plaintext highlighter-rouge">app</code> element as a descendant</li>
+  <li><code class="language-plaintext highlighter-rouge">lem</code> <strong>SHOULD</strong> have <code class="language-plaintext highlighter-rouge">@wit</code> or <code class="language-plaintext highlighter-rouge">@source</code> when its parent <code class="language-plaintext highlighter-rouge">app</code> is contained within another <code class="language-plaintext highlighter-rouge">app</code> element.</li>
+  <li><code class="language-plaintext highlighter-rouge">rdg</code> <strong>MUST</strong> have <code class="language-plaintext highlighter-rouge">@wit</code> or <code class="language-plaintext highlighter-rouge">@source</code>.</li>
+  <li><code class="language-plaintext highlighter-rouge">rdg</code> <strong>MAY NOT</strong> take an another <code class="language-plaintext highlighter-rouge">app</code> element as a descendant</li>
+</ol>
+
+<h2 id="note-on-encoding-empty-lemmas">Note on encoding empty lemmas</h2>
+
+<p>When one or more witnesses contain readings that are not adopted in the critical text, the <code class="language-plaintext highlighter-rouge">lem</code> element <strong>MUST</strong> be left empty. Such an encoding would signify that some readings are present in a part of the tradition, but not included in the established text. When the <code class="language-plaintext highlighter-rouge">lem</code> is left empty, it is more difficult for the processor to anchor the entry in the text, so a label is needed. <code class="language-plaintext highlighter-rouge">@n</code> gives the processor a label for this purpose. Usually the word preceding the apparatus would be used for that. An example of this encoding would look like:</p>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Praeterea, sicut oculus
+<span class="nt">&lt;app&gt;</span>
+  <span class="nt">&lt;lem</span> <span class="na">n=</span><span class="s">"oculus"</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;rdg</span> <span class="na">wit=</span><span class="s">"#B"</span><span class="nt">&gt;</span>nicticoracis<span class="nt">&lt;/rdg&gt;</span>
+<span class="nt">&lt;/app&gt;</span>
+ad lumen solis
+</code></pre></div></div>
+
+<p>This would make it easy to create the following apparatus entry:</p>
+
+<blockquote>
+  <p>nicticoracis <em>post</em> oculus <em>B</em></p>
+</blockquote>
+
+<h2 id="basic-rdg-types">Basic rdg types</h2>
+
+<p>The basic structure of the <code class="language-plaintext highlighter-rouge">rdg</code> typology can be described as follows</p>
+
+<ul>
+  <li>variation
+    <ul>
+      <li>variation-substance</li>
+      <li>variation-orthography</li>
+      <li>variation-inversion</li>
+      <li>variation-present</li>
+      <li>variation-absent</li>
+      <li>variation-choice</li>
+    </ul>
+  </li>
+  <li>correction
+    <ul>
+      <li>correction-addition</li>
+      <li>correction-deletion</li>
+      <li>correction-substitution
+        <ul>
+          <li>correction-transposition</li>
+        </ul>
+      </li>
+      <li>correction-cancellation
+        <ul>
+          <li>deletion-of-addition</li>
+          <li>deletion-of-deletion</li>
+          <li>deletion-of-substitution</li>
+          <li>substitution-of-addition</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>conjecture
+    <ul>
+      <li>conjecture-supplied</li>
+      <li>conjecture-removed</li>
+      <li>conjecture-corrected</li>
+    </ul>
+  </li>
+  <li>manual</li>
+</ul>
+
+<h2 id="variation">variation</h2>
+
+<h3 id="description-15">Description</h3>
+
+<p>A variation is meant as any reading that varies from the indicated lemma. At present, we have identified five main variation types listed below.</p>
+
+<h3 id="variation-substance">variation-substance</h3>
+
+<h4 id="description-16">Description</h4>
+
+<p>A <code class="language-plaintext highlighter-rouge">variation-substance</code> is generally the most common type of variant, in which an editor simply wants to show that the witness has a different word or phrase than what is included in the critical text.</p>
+
+<p>This kind of variant is most commonly seen in an apparatus as something like:</p>
+
+<blockquote>
+  <p>10 fides] spes <em>A</em></p>
+</blockquote>
+
+<h4 id="rules-17">Rules</h4>
+
+<ol>
+  <li><code class="language-plaintext highlighter-rouge">rdg</code> <strong>MAY</strong> have <code class="language-plaintext highlighter-rouge">@type=variation-substance</code>.
+    <ul>
+      <li>The requirement for <code class="language-plaintext highlighter-rouge">@type</code> is only a “<strong>MAY</strong>” because this <code class="language-plaintext highlighter-rouge">@type</code> is so common and can be inferred by a processor from the following encoding pattern. Thus it is not necessary for an editor to state it on every reading.</li>
+    </ul>
+  </li>
+  <li><code class="language-plaintext highlighter-rouge">rdg</code> text node <strong>MUST</strong> be present.</li>
+</ol>
+
+<h4 id="example-4">Example</h4>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;app&gt;</span>
+  <span class="nt">&lt;lem</span> <span class="na">wit=</span><span class="s">"#B #C #D"</span><span class="nt">&gt;</span>fides<span class="nt">&lt;/lem&gt;</span>
+  <span class="nt">&lt;rdg</span> <span class="na">wit=</span><span class="s">"#A"</span> <span class="na">type=</span><span class="s">"variation-substance"</span><span class="nt">&gt;</span>spes<span class="nt">&lt;/rdg&gt;</span>
+<span class="nt">&lt;/app&gt;</span>
+
+</code></pre></div></div>
+
+<p>On a negative apparatus:</p>
+
+<blockquote>
+  <p>10 fides] spes <em>A</em></p>
+</blockquote>
+
+<p>On a positive apparatus:</p>
+
+<blockquote>
+  <p>10 fides] <em>BCD</em> spes <em>A</em></p>
+</blockquote>
+
+<h3 id="variation-orthography">variation-orthography</h3>
+
+<h4 id="description-17">Description</h4>
+
+<p>The <code class="language-plaintext highlighter-rouge">variation-orthography</code> class is meant to identify a class of variant instances where there is no actual variation in the substance of the word or phrase in question but simply an orthographic difference.</p>
+
+<h4 id="rules-18">Rules</h4>
+
+<ol>
+  <li><code class="language-plaintext highlighter-rouge">rdg</code> <strong>MUST</strong> have <code class="language-plaintext highlighter-rouge">@type=variation-orthography</code>.
+    <ul>
+      <li>The requirement for <code class="language-plaintext highlighter-rouge">@type</code> is “<strong>MUST</strong>” because without the <code class="language-plaintext highlighter-rouge">@type</code> value, the encoding pattern is indistinguishable from the <code class="language-plaintext highlighter-rouge">@type="variation-substance"</code> encoding pattern.</li>
+    </ul>
+  </li>
+  <li><code class="language-plaintext highlighter-rouge">rdg</code> text node <strong>MUST</strong> be present.</li>
+</ol>
+
+<h4 id="example-5">Example</h4>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;app&gt;</span>
+  <span class="nt">&lt;lem&gt;</span>sicut<span class="nt">&lt;/lem&gt;</span>
+  <span class="nt">&lt;rdg</span> <span class="na">wit=</span><span class="s">"#A"</span> <span class="na">type=</span><span class="s">"variation-orthography"</span><span class="nt">&gt;</span>sicud<span class="nt">&lt;/rdg&gt;</span>
+<span class="nt">&lt;/app&gt;</span>
+est
+</code></pre></div></div>
+
+<blockquote>
+  <p>10 sicut] sicud <em>A</em></p>
+</blockquote>
+
+<h3 id="variation-inversion">variation-inversion</h3>
+
+<h4 id="description-18">Description</h4>
+
+<p><code class="language-plaintext highlighter-rouge">variation-inversion</code> is meant to indicate a variant reading where two or more words have been inverted relative to the critical text.</p>
+
+<h4 id="rules-19">Rules</h4>
+
+<ol>
+  <li><code class="language-plaintext highlighter-rouge">lem</code> <strong>MUST</strong> not be empty.</li>
+  <li><code class="language-plaintext highlighter-rouge">rdg</code> <strong>MUST</strong> have <code class="language-plaintext highlighter-rouge">@type=variation-inversion</code>.</li>
+  <li><code class="language-plaintext highlighter-rouge">rdg</code> text node <strong>MUST</strong> be present.</li>
+  <li><code class="language-plaintext highlighter-rouge">rdg</code> <strong>MAY</strong> have two <code class="language-plaintext highlighter-rouge">seg</code> elements which indicate which elements have been inverted.</li>
+</ol>
+
+<h4 id="example-1-3">Example 1</h4>
+
+<p>In this simple example the <code class="language-plaintext highlighter-rouge">rdg</code> only contains two words.</p>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code>fides non
+<span class="nt">&lt;app&gt;</span>
+  <span class="nt">&lt;lem&gt;</span>bona fides<span class="nt">&lt;/lem&gt;</span>
+  <span class="nt">&lt;rdg</span> <span class="na">wit=</span><span class="s">"#A"</span> <span class="na">type=</span><span class="s">"variation-inversion"</span><span class="nt">&gt;</span>fides bona<span class="nt">&lt;/rdg&gt;</span>
+<span class="nt">&lt;/app&gt;</span>
+</code></pre></div></div>
+
+<blockquote>
+  <p>10 bona fides] fides bona <em>A</em></p>
+</blockquote>
+
+<h4 id="example-2-3">Example 2</h4>
+
+<p>In this example the <code class="language-plaintext highlighter-rouge">rdg</code> contains more than two words, and it is therefore necessary to indicate which words have been moved around with the <code class="language-plaintext highlighter-rouge">seg</code> element.</p>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Ad demonstrationem tria requirantur: subiectum, passio, et
+principium per quod ostenditur passio de subiecto. Ubi est
+<span class="nt">&lt;app&gt;</span>
+  <span class="nt">&lt;lem&gt;</span>ista tria invenire<span class="nt">&lt;/lem&gt;</span>
+  <span class="nt">&lt;rdg</span> <span class="na">wit=</span><span class="s">"#B"</span><span class="nt">&gt;</span>ista tria invenire<span class="nt">&lt;/rdg&gt;</span>
+  <span class="nt">&lt;rdg</span> <span class="na">wit=</span><span class="s">"#O"</span> <span class="na">type=</span><span class="s">"variation-inversion"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;seg&gt;</span>invenire<span class="nt">&lt;/seg&gt;</span>
+    <span class="nt">&lt;seg&gt;</span>ista tria<span class="nt">&lt;/seg&gt;</span>
+  <span class="nt">&lt;/rdg&gt;</span>
+<span class="nt">&lt;/app&gt;</span>
+, ibi contingit ponere scientiam.
+</code></pre></div></div>
+
+<blockquote>
+  <p>10 ista tria invenire ] invenire <em>et</em> ista tria <em>inv</em> <em>O</em></p>
+</blockquote>
+
+<h3 id="variation-present">variation-present</h3>
+
+<h4 id="description-19">Description</h4>
+
+<p>The <code class="language-plaintext highlighter-rouge">variation-present</code> type should be used to indicate that a word or phrase is present in a witness but has not been included in the critical text. It is important that this be distinguished from the type <code class="language-plaintext highlighter-rouge">correction-addition</code> which is meant to indicate that a word or phrase has been actively added as a conscious correction to the witness text.</p>
+
+<h4 id="rules-20">Rules</h4>
+
+<ol>
+  <li><code class="language-plaintext highlighter-rouge">lem</code> <strong>MUST</strong> be an empty node.
+    <ul>
+      <li>As stated above in the general rules, when a <code class="language-plaintext highlighter-rouge">lem</code> is empty it should have an <code class="language-plaintext highlighter-rouge">@n="suggested-lemma-value"</code> attribute, the value of which should be the word to appear in the critical text that immediately proceeds the <code class="language-plaintext highlighter-rouge">app</code>.</li>
+    </ul>
+  </li>
+  <li><code class="language-plaintext highlighter-rouge">rdg</code> <strong>MUST</strong> have <code class="language-plaintext highlighter-rouge">@type=variation-present</code>.</li>
+  <li><code class="language-plaintext highlighter-rouge">rdg</code> <strong>MAY</strong> include <code class="language-plaintext highlighter-rouge">@cause</code> with the following available enumerated values:
+    <ul>
+      <li>repetition</li>
+    </ul>
+  </li>
+</ol>
+
+<h4 id="examples-7">Examples</h4>
+
+<h5 id="example-1-4">Example 1</h5>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code>fides
+<span class="nt">&lt;app&gt;</span>
+  <span class="nt">&lt;lem</span> <span class="na">n=</span><span class="s">"fides"</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;rdg</span> <span class="na">wit=</span><span class="s">"#A"</span> <span class="na">type=</span><span class="s">"variation-present"</span><span class="nt">&gt;</span>spes<span class="nt">&lt;/rdg&gt;</span>
+<span class="nt">&lt;/app&gt;</span>
+</code></pre></div></div>
+
+<blockquote>
+  <p>10 fides] spes <em>in textu</em> <em>A</em></p>
+</blockquote>
+
+<blockquote>
+  <p>10 spes <em>post</em> fides <em>hab./scr./inest</em> <em>A</em></p>
+</blockquote>
+
+<h5 id="example-2-4">Example 2</h5>
+
+<p>Another example of the present type where the present word is caused by an (erroneous) repetition.</p>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code>spes
+<span class="nt">&lt;app&gt;</span>
+  <span class="nt">&lt;lem</span> <span class="na">n=</span><span class="s">"spes"</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;rdg</span> <span class="na">wit=</span><span class="s">"#A"</span> <span class="na">type=</span><span class="s">"variation-present"</span> <span class="na">cause=</span><span class="s">"repetition"</span><span class="nt">&gt;</span>spes<span class="nt">&lt;/rdg&gt;</span>
+<span class="nt">&lt;/app&gt;</span>
+</code></pre></div></div>
+
+<blockquote>
+  <p>10 spes <em>iter.</em> <em>A</em></p>
+</blockquote>
+
+<h3 id="variation-absent">variation-absent</h3>
+
+<h4 id="description-20">Description</h4>
+
+<p>A word or phrase is absent from a witness but present in the transmitted text. This is most often rendered as a simple “omission”.</p>
+
+<blockquote>
+  <p>10 fides] <em>om.</em> <em>A</em></p>
+</blockquote>
+
+<h4 id="rules-21">Rules</h4>
+
+<ol>
+  <li><code class="language-plaintext highlighter-rouge">rdg</code> <strong>MUST NOT</strong> have any descendant text nodes.</li>
+  <li><code class="language-plaintext highlighter-rouge">rdg</code> <strong>MAY</strong> have a child <code class="language-plaintext highlighter-rouge">space</code> element.
+    <ul>
+      <li>A <code class="language-plaintext highlighter-rouge">space</code> may be used when attempting to indicate a space left by the scribe intended to be filled in later.</li>
+    </ul>
+  </li>
+  <li><code class="language-plaintext highlighter-rouge">rdg</code> <strong>SHOULD</strong> include <code class="language-plaintext highlighter-rouge">@type=variation-absent</code>.
+    <ul>
+      <li>The reason this is not a <strong>MUST</strong> is because the pattern of a present <code class="language-plaintext highlighter-rouge">lem</code> with a text value and a present but empty <code class="language-plaintext highlighter-rouge">rdg</code> element is a unique pattern that corresponds to the <code class="language-plaintext highlighter-rouge">variation-absent</code> type.</li>
+    </ul>
+  </li>
+  <li><code class="language-plaintext highlighter-rouge">rdg</code> <strong>MAY</strong> include <code class="language-plaintext highlighter-rouge">@cause</code> with the following available enumerated values:
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">homeoteleuton</code></li>
+      <li><code class="language-plaintext highlighter-rouge">homeoarchon</code></li>
+    </ul>
+  </li>
+</ol>
+
+<h4 id="examples-8">Examples</h4>
+
+<h5 id="example-1-5">Example 1</h5>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;app&gt;</span>
+  <span class="nt">&lt;lem&gt;</span>fides<span class="nt">&lt;/lem&gt;</span>
+  <span class="nt">&lt;rdg</span> <span class="na">wit=</span><span class="s">"#A"</span> <span class="na">type=</span><span class="s">"variation-absent"</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/app&gt;</span>
+</code></pre></div></div>
+
+<p>In a positive apparatus this could be presented like this:</p>
+
+<blockquote>
+  <p>10 fides] <em>B</em> ; <em>om.</em> <em>A</em></p>
+</blockquote>
+
+<p>In a negative apparatus it would be like this:</p>
+
+<blockquote>
+  <p>10 fides] <em>om.</em> <em>A</em></p>
+</blockquote>
+
+<h5 id="example-2-5">Example 2</h5>
+
+<p>The following is an example of a conjecture where a word is added to the edition but missing in the transmitted text. For more on conjectures <a href="#conjecture">see below</a>.</p>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;app&gt;</span>
+  <span class="nt">&lt;lem</span> <span class="na">type=</span><span class="s">"conjecture-supplied"</span><span class="nt">&gt;&lt;supplied&gt;</span>fides<span class="nt">&lt;/supplied&gt;&lt;/lem&gt;</span>
+  <span class="nt">&lt;rdg</span> <span class="na">wit=</span><span class="s">"#A"</span> <span class="na">type=</span><span class="s">"variation-absent"</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/app&gt;</span>
+est
+</code></pre></div></div>
+
+<h5 id="example-3-2">Example 3</h5>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code>fides
+<span class="nt">&lt;app&gt;</span>
+  <span class="nt">&lt;lem&gt;</span>non semper sic, sed non<span class="nt">&lt;/lem&gt;</span>
+  <span class="nt">&lt;rdg</span> <span class="na">wit=</span><span class="s">"#A"</span> <span class="na">type=</span><span class="s">"variation-absent"</span> <span class="na">cause=</span><span class="s">"homeoteleuton"</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/app&gt;</span>
+</code></pre></div></div>
+
+<blockquote>
+  <p>10 non semper sic, sed non] <em>om.</em> <em>A</em> <em>(hom.)</em></p>
+</blockquote>
+
+<h5 id="example-4">Example 4</h5>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;app&gt;</span>
+  <span class="nt">&lt;lem&gt;</span>fides<span class="nt">&lt;/lem&gt;</span>
+  <span class="nt">&lt;rdg</span> <span class="na">wit=</span><span class="s">"#A"</span> <span class="na">type=</span><span class="s">"variation-absent"</span><span class="nt">&gt;&lt;space</span> <span class="na">extent=</span><span class="s">"5"</span> <span class="na">unit=</span><span class="s">"characters"</span> <span class="nt">/&gt;&lt;/rdg&gt;</span>
+<span class="nt">&lt;/app&gt;</span>
+</code></pre></div></div>
+
+<blockquote>
+  <p>10 fides] <em>spat. vac. (5 litt.)</em> <em>A</em></p>
+</blockquote>
+
+<h3 id="variation-choice">variation-choice</h3>
+
+<h4 id="description-21">Description</h4>
+
+<p>The <code class="language-plaintext highlighter-rouge">variation-choice</code> type can be used when a single witness (however the concept of witness is defined) contains two or more parallel readings, and it is not clear which reading is preferred. The distinction between this case and a correction can be difficult to discern, and one editor might feel convinced that the text contains a correction, while another might see it as two readings of potentially equivalent weight or value.</p>
+
+<p>The <code class="language-plaintext highlighter-rouge">seg</code> elements are used to distinguish the different readings. If the editor wishes to indicate the chronological order of the readings, she may do so by adding the <code class="language-plaintext highlighter-rouge">@n</code> attribute as described below.</p>
+
+<h4 id="rules-22">Rules</h4>
+
+<ol>
+  <li><code class="language-plaintext highlighter-rouge">rdg</code> <strong>MUST</strong> contain a <code class="language-plaintext highlighter-rouge">choice</code> element.</li>
+  <li><code class="language-plaintext highlighter-rouge">choice</code> <strong>MUST</strong> contain two or more <code class="language-plaintext highlighter-rouge">seg</code> elements.</li>
+  <li><code class="language-plaintext highlighter-rouge">seg</code> elements <strong>MAY</strong> use <code class="language-plaintext highlighter-rouge">@n</code> to indicate their relative order of the readings, when they are on the same baseline.</li>
+  <li><code class="language-plaintext highlighter-rouge">seg</code> element <strong>MAY</strong> contain an <code class="language-plaintext highlighter-rouge">add</code> element to indicate whether and where the reading was added, when it is not on the baseline of the text.</li>
+  <li><code class="language-plaintext highlighter-rouge">seg</code> or <code class="language-plaintext highlighter-rouge">add</code> <strong>MAY</strong> use <code class="language-plaintext highlighter-rouge">@hand</code> to indicate an alternative scribe.</li>
+</ol>
+
+<h4 id="examples-9">Examples</h4>
+
+<h5 id="example-1-6">Example 1</h5>
+
+<p>A simple example could look like this:</p>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;app&gt;</span>
+  <span class="nt">&lt;lem&gt;</span>vel<span class="nt">&lt;/lem&gt;</span>
+  <span class="nt">&lt;rdg</span> <span class="na">wit=</span><span class="s">"#G"</span> <span class="na">type=</span><span class="s">"variation-choice"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;choice&gt;</span>
+      <span class="nt">&lt;seg&gt;</span>et<span class="nt">&lt;/seg&gt;</span>
+      <span class="nt">&lt;seg&gt;&lt;add</span> <span class="na">place=</span><span class="s">"above-live"</span><span class="nt">&gt;</span>vel<span class="nt">&lt;/add&gt;&lt;/seg&gt;</span>
+    <span class="nt">&lt;/choice&gt;</span>
+  <span class="nt">&lt;/rdg&gt;</span>
+<span class="nt">&lt;/app&gt;</span>
+</code></pre></div></div>
+
+<p>The representation in the apparatus would depend on the processor. But one suggestion is:</p>
+
+<blockquote>
+  <p>vel ] et <em>et</em> vel (<em>s.l.</em>) <em>B</em></p>
+</blockquote>
+
+<h5 id="example-2-6">Example 2</h5>
+
+<p>In this more complex example, M and V have the correct reading “instare”. S originally had “dicere” and then corrected it to “instare”. T includes both “dicere” and “instare” as options, but isn’t sure which one is correct and simply writes “dicere vel instare”.</p>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;app&gt;</span>
+  <span class="nt">&lt;lem</span> <span class="na">wit=</span><span class="s">"#M #V"</span><span class="nt">&gt;</span>instare<span class="nt">&lt;/lem&gt;</span>
+  <span class="nt">&lt;rdg</span> <span class="na">wit=</span><span class="s">"#S"</span> <span class="na">type=</span><span class="s">"correction-substitution"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;subst&gt;</span>
+       <span class="nt">&lt;del&gt;</span>dicere<span class="nt">&lt;/del&gt;</span>
+       <span class="nt">&lt;add&gt;</span>instare<span class="nt">&lt;/add&gt;</span>
+    <span class="nt">&lt;/subst&gt;</span>
+  <span class="nt">&lt;/rdg&gt;</span>
+  <span class="nt">&lt;rdg</span> <span class="na">wit=</span><span class="s">"#T"</span> <span class="na">type=</span><span class="s">"variation-choice"</span><span class="nt">&gt;</span>
+     <span class="nt">&lt;choice&gt;</span>
+       <span class="nt">&lt;seg&gt;</span>dicere<span class="nt">&lt;/seg&gt;</span>
+       <span class="nt">&lt;seg&gt;</span>instare<span class="nt">&lt;/seg&gt;</span>
+     <span class="nt">&lt;/choice&gt;</span>
+   <span class="nt">&lt;/rdg&gt;</span>
+<span class="nt">&lt;/app&gt;</span>
+</code></pre></div></div>
+
+<p>Since this is the critical encoding, and the editor interprets the “vel” in “dicere vel instare” of T to mean that the scribe believes one of the two to be the correct reading, this is encoded as a choice between the two. If the editor also produces a diplomatic edition of the witness G, it should reveal the more low level reading of “dicere vel instare”.</p>
+
+<p>An apparatus representation of this could look like this:</p>
+
+<blockquote>
+  <p>instare ] instare <em>MV</em> ; instare <em>corr. ex.</em> dicere <em>S</em> ; dicere <em>et</em> instare <em>T</em></p>
+</blockquote>
+
+<h2 id="correction">correction</h2>
+
+<h3 id="description-22">Description</h3>
+
+<p>A correction is meant as any reading where it is assumed that the witness corrects a perceived error in the transmitted text.</p>
+
+<p>This is <em>not</em> used to represent corrections made by the edition. These kinds of corrections are reserved for the conjecture class <a href="#conjecture">below</a>.</p>
+
+<h3 id="correction-addition">correction-addition</h3>
+
+<h4 id="description-23">Description</h4>
+
+<p>This indicates that a scribe (either the original or a later scribe) has realized that a word or phrase is missing in his text and subsequently added it. This should be clearly distinguished from <code class="language-plaintext highlighter-rouge">variation-present</code> above where the editor only means to indicate that a word is present in a witness, but has not been added through a conscious correction.</p>
+
+<h4 id="rules-23">Rules</h4>
+
+<ol>
+  <li><code class="language-plaintext highlighter-rouge">lem</code> <strong>MAY</strong> be empty.
+    <ul>
+      <li>In this case, an editor may not want to include the <code class="language-plaintext highlighter-rouge">correction-addition</code> in the critical text, but still indicate that the correction has been made in a witness. This is an instance where the <code class="language-plaintext highlighter-rouge">correction-addition</code> is also taking on the form parallel to that of a <code class="language-plaintext highlighter-rouge">variation-present</code>. In such a case the additional <code class="language-plaintext highlighter-rouge">varation-present</code> type can be inferred from the empty lemma.</li>
+    </ul>
+  </li>
+  <li><code class="language-plaintext highlighter-rouge">rdg</code> <strong>SHOULD</strong> have <code class="language-plaintext highlighter-rouge">@type="correction-addition"</code>.</li>
+  <li><code class="language-plaintext highlighter-rouge">rdg</code> <strong>MUST</strong> contain an <code class="language-plaintext highlighter-rouge">add</code> element.</li>
+  <li><code class="language-plaintext highlighter-rouge">rdg</code> <strong>MUST NOT</strong> contain any content outside of the <code class="language-plaintext highlighter-rouge">add</code> element.</li>
+  <li><code class="language-plaintext highlighter-rouge">add</code> <strong>MUST</strong> have a <code class="language-plaintext highlighter-rouge">@place</code> attribute.</li>
+  <li><code class="language-plaintext highlighter-rouge">add</code> <strong>MAY</strong> have a <code class="language-plaintext highlighter-rouge">@hand</code> attribute.</li>
+</ol>
+
+<h4 id="examples-10">Examples</h4>
+
+<h5 id="example-1-7">Example 1</h5>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;app&gt;</span>
+  <span class="nt">&lt;lem&gt;</span>fides<span class="nt">&lt;/lem&gt;</span>
+  <span class="nt">&lt;rdg</span> <span class="na">wit=</span><span class="s">"#A"</span> <span class="na">type=</span><span class="s">"correction-addition"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;add</span> <span class="na">place=</span><span class="s">"margin-left"</span><span class="nt">&gt;</span>fides<span class="nt">&lt;/add&gt;</span>
+  <span class="nt">&lt;/rdg&gt;</span>
+<span class="nt">&lt;/app&gt;</span>
+</code></pre></div></div>
+
+<blockquote>
+  <p>10 fides] <em>add. in mg.</em> <em>A</em></p>
+</blockquote>
+
+<h5 id="example-2-7">Example 2</h5>
+
+<p>In this example, a scribe wrote “in nomine Patri et Spiritus Sancti”, but a later hand (#L1) realized the mistake and added the missing phrase “Filii et” above the line.</p>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code>in nomine Patri et
+<span class="nt">&lt;app&gt;</span>
+  <span class="nt">&lt;lem&gt;</span>Filii et<span class="nt">&lt;/lem&gt;</span>
+    <span class="nt">&lt;rdg</span> <span class="na">wit=</span><span class="s">"#L"</span> <span class="na">type=</span><span class="s">"correction-addition"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;add</span> <span class="na">place=</span><span class="s">"above-line"</span> <span class="na">hand=</span><span class="s">"#L1"</span><span class="nt">&gt;</span>Filii et<span class="nt">&lt;/add&gt;</span>
+  <span class="nt">&lt;/rdg&gt;</span>
+<span class="nt">&lt;/app&gt;</span>
+Spiritus Sancti.
+</code></pre></div></div>
+
+<blockquote>
+  <p>Filii et] <em>add. s.l.</em> <em>L1</em></p>
+</blockquote>
+
+<blockquote>
+  <p>Filii et] <em>add. s.l. alia manu</em> <em>L</em></p>
+</blockquote>
+
+<blockquote>
+  <p>Filli et] <em>om.</em> <em>L</em> <em>(corr. *L1</em>)*</p>
+</blockquote>
+
+<h3 id="correction-deletion">correction-deletion</h3>
+
+<h4 id="description-24">Description</h4>
+
+<p>This indicates that a scribe (either the original or a later scribe) has realized that a word or phrase is erroneously present in the text and subsequently deleted it.</p>
+
+<h4 id="rules-24">Rules</h4>
+
+<ol>
+  <li><code class="language-plaintext highlighter-rouge">lem</code> <strong>MAY</strong> be empty.
+    <ul>
+      <li>In most cases, the <code class="language-plaintext highlighter-rouge">lem</code> will be empty, since it is normal to note a deletion of word that does not appear in the critical text. However, an editor might want to include a word in the critical text that has been deleted in one or more witnesses. In this case, the <code class="language-plaintext highlighter-rouge">lem</code> <strong>MUST NOT</strong> be empty.</li>
+    </ul>
+  </li>
+  <li><code class="language-plaintext highlighter-rouge">rdg</code> <strong>SHOULD</strong> have <code class="language-plaintext highlighter-rouge">@type="correction-deletion"</code>.</li>
+  <li><code class="language-plaintext highlighter-rouge">rdg</code> <strong>MUST</strong> contain a <code class="language-plaintext highlighter-rouge">del</code> element.</li>
+  <li><code class="language-plaintext highlighter-rouge">rdg</code> <strong>MUST NOT</strong> contain any content outside of the <code class="language-plaintext highlighter-rouge">del</code> element.</li>
+  <li><code class="language-plaintext highlighter-rouge">del</code> <strong>MAY</strong> have a <code class="language-plaintext highlighter-rouge">@place</code> attribute.
+    <ul>
+      <li>Generally, it is assumed that a deletion happens <code class="language-plaintext highlighter-rouge">in-line</code>. A deletion of something not <code class="language-plaintext highlighter-rouge">in-line</code> should generally be treated as a <code class="language-plaintext highlighter-rouge">correction-cancellation</code>. <a href="#correction-cancellation">See correction-cancellation below</a>.</li>
+    </ul>
+  </li>
+  <li><code class="language-plaintext highlighter-rouge">del</code> <strong>SHOULD</strong> have a <code class="language-plaintext highlighter-rouge">@rend</code> attribute.</li>
+  <li><code class="language-plaintext highlighter-rouge">del</code> <strong>MAY</strong> have a <code class="language-plaintext highlighter-rouge">@hand</code> attribute.</li>
+</ol>
+
+<h4 id="examples-11">Examples</h4>
+
+<h5 id="example-1-8">Example 1</h5>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code>fides
+<span class="nt">&lt;app&gt;</span>
+  <span class="nt">&lt;lem</span> <span class="na">n=</span><span class="s">"fides"</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;rdg</span> <span class="na">wit=</span><span class="s">"#A"</span> <span class="na">type=</span><span class="s">"correction-deletion"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;del&gt;</span>non<span class="nt">&lt;/del&gt;</span>
+  <span class="nt">&lt;/rdg&gt;</span>
+<span class="nt">&lt;/app&gt;</span>
+est
+</code></pre></div></div>
+
+<blockquote>
+  <p>10 non <em>post</em> fides <em>del.</em> <em>A</em></p>
+</blockquote>
+
+<blockquote>
+  <p>10 fides] non <em>scr. sed del.</em> <em>A</em></p>
+</blockquote>
+
+<h5 id="example-2-8">Example 2</h5>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sicut
+<span class="nt">&lt;app&gt;</span>
+  <span class="nt">&lt;lem&gt;</span>dicit<span class="nt">&lt;/lem&gt;</span>
+  <span class="nt">&lt;rdg</span> <span class="na">wit=</span><span class="s">"#A"</span> <span class="na">type=</span><span class="s">"correction-deletion"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;del&gt;</span>dicit<span class="nt">&lt;/del&gt;</span>
+  <span class="nt">&lt;/rdg&gt;</span>
+<span class="nt">&lt;/app&gt;</span>
+Aristoteles
+</code></pre></div></div>
+
+<blockquote>
+  <p>10 sicut] dicit <em>scr. sed del.</em> <em>S</em></p>
+</blockquote>
+
+<blockquote>
+  <p>10 dicit <em>post</em> sicut <em>del.</em> <em>S</em></p>
+</blockquote>
+
+<h3 id="correction-substitution">correction-substitution</h3>
+
+<h4 id="description-25">Description</h4>
+
+<p>This indicates that a scribe (either the original or a later scribe) wants to correct one word or phrase with another.</p>
+
+<h4 id="rules-25">Rules</h4>
+
+<ol>
+  <li><code class="language-plaintext highlighter-rouge">lem</code> <strong>MAY</strong> be empty.
+    <ul>
+      <li>In most cases the lemma would be included, but the editor might want to include the substitution made in the witness without including either of the possible readings in the edited text.</li>
+    </ul>
+  </li>
+  <li><code class="language-plaintext highlighter-rouge">rdg</code> <strong>SHOULD</strong> have <code class="language-plaintext highlighter-rouge">@type="correction-substitution"</code>.</li>
+  <li><code class="language-plaintext highlighter-rouge">rdg</code> <strong>MUST</strong> contain a <code class="language-plaintext highlighter-rouge">subst</code> element as a direct child.</li>
+  <li><code class="language-plaintext highlighter-rouge">subst</code> <strong>MUST</strong> contain a <code class="language-plaintext highlighter-rouge">del</code> and a <code class="language-plaintext highlighter-rouge">add</code> element.</li>
+  <li><code class="language-plaintext highlighter-rouge">subst</code> <strong>MUST NOT</strong> contain any nodes other than the <code class="language-plaintext highlighter-rouge">del</code> and <code class="language-plaintext highlighter-rouge">add</code> elements.</li>
+  <li>The smallest unit of substitution <strong>MUST</strong> be a word.</li>
+  <li><code class="language-plaintext highlighter-rouge">add</code> <strong>MAY</strong> have a <code class="language-plaintext highlighter-rouge">@place</code>.</li>
+  <li><code class="language-plaintext highlighter-rouge">del</code> <strong>MAY</strong> have a <code class="language-plaintext highlighter-rouge">@rend</code>.</li>
+  <li>A <code class="language-plaintext highlighter-rouge">@hand</code> attribute <strong>MAY</strong> be placed on either the <code class="language-plaintext highlighter-rouge">subst</code> element or on the <code class="language-plaintext highlighter-rouge">add</code> and <code class="language-plaintext highlighter-rouge">del</code> elements.</li>
+</ol>
+
+<h4 id="extended-commentary">Extended Commentary</h4>
+
+<p>A possible argument against rule 6 is that an editor might desire to produce the following rendering for a correction to a particular word.</p>
+
+<blockquote>
+  <p>insidia <em>N</em> (s <em>add.</em> <em>N1</em>)</p>
+</blockquote>
+
+<p>However, we find this rendering ambiguous and therefore somewhat problematic.</p>
+
+<p>Does this mean N1 has added the letter “s” after “insidia” or to the word itself?</p>
+
+<p>While in the case of “s”, it is probably obvious to an editor that “s” is not a word by itself and therefore the editor probably meant that “s” was added to “insidia”.</p>
+
+<p>However, what if the added letter were “a”? Then it would be much less clear.</p>
+
+<p>Likewise, scholastic texts use a lot of variables, so it is possible that a scribe could have been adding “b” or “c” as a separate word or character, and did not mean to add a new letter to the preceding word.</p>
+
+<p>So for example, the following would be very ambiguous in a sequence where variables a, b, c, d, and e were in use:</p>
+
+<blockquote>
+  <p>insidia] <em>N</em> (e <em>add.</em> <em>N2</em>)</p>
+</blockquote>
+
+<p>Does this mean that the correction was to “insidiae” or “insidia e”?</p>
+
+<p>Thus we think it would be best to handle this with a <code class="language-plaintext highlighter-rouge">correction-substitution</code>, which could render to:</p>
+
+<blockquote>
+  <p>insidias] <em>corr. ex</em> insidia <em>alia manu</em> <em>N</em></p>
+</blockquote>
+
+<p>It is true that with something like</p>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;app&gt;</span>
+  <span class="nt">&lt;lem&gt;</span>insidias<span class="nt">&lt;/lem&gt;</span>
+  <span class="nt">&lt;rdg</span> <span class="na">wit=</span><span class="s">"#N"</span> <span class="na">type=</span><span class="s">"correction-substitution"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;subst&gt;</span>
+      <span class="nt">&lt;del&gt;</span>insidia<span class="nt">&lt;/del&gt;</span>
+      <span class="nt">&lt;add&gt;</span>insidias<span class="nt">&lt;/add&gt;</span>
+    <span class="nt">&lt;subst&gt;</span>
+  <span class="nt">&lt;/rdg&gt;</span>
+<span class="nt">&lt;/app&gt;</span>
+</code></pre></div></div>
+
+<p>We certainly sacrifice some specificity about how the correction was made (namely, by simply adding an “s” rather than crossing out the whole word and replacing it with the new word). However, we gain considerable clarity about the meaning of the correction.</p>
+
+<p><strong>In sum</strong>: The problem we face with the language of “addition, correction, substitution” etc. is that it becomes tempting to record two distinct types of phenomena: 1) the ultimate meaning of the correction and 2) the material way in which that correction was made.</p>
+
+<p>In the example above the addition of “s” to “insidias” is, in meaning, really a <code class="language-plaintext highlighter-rouge">correction-substitution</code>, even though the way that the correction was materially made makes it look like a simple <code class="language-plaintext highlighter-rouge">correction-addition</code>.</p>
+
+<p>By adding “s” the scribe, did not meant to simply add an “s”, but rather meant to replace the word “insidia” with “insidias”.</p>
+
+<p>In its rendering, it looks equivalent to the addition of a missing word or letter, but the effect or meaning of the correction is to substitute one word with another.</p>
+
+<p>In our view, complex details about how a correction was precisely made is best left recorded in a <code class="language-plaintext highlighter-rouge">witDetail</code> (<a href="#witDetail">see below</a>) and in an accompanying diplomatic transcriptions of the witness.</p>
+
+<h4 id="examples-12">Examples</h4>
+
+<h5 id="example-1-9">Example 1</h5>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;app&gt;</span>
+  <span class="nt">&lt;lem&gt;</span>fidem<span class="nt">&lt;/lem&gt;</span>
+  <span class="nt">&lt;rdg</span> <span class="na">wit=</span><span class="s">"#A"</span> <span class="na">type=</span><span class="s">"correction-substitution"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;subst&gt;</span>
+      <span class="nt">&lt;del&gt;</span>spem<span class="nt">&lt;/del&gt;</span>
+      <span class="nt">&lt;add&gt;</span>fidem<span class="nt">&lt;/add&gt;</span>
+    <span class="nt">&lt;/subst&gt;</span>
+  <span class="nt">&lt;/rdg&gt;</span>
+<span class="nt">&lt;/app&gt;</span>
+</code></pre></div></div>
+
+<blockquote>
+  <p>10 fidem] <em>corr. ex</em> spem <em>A</em></p>
+</blockquote>
+
+<h5 id="example-2-9">Example 2</h5>
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;app&gt;</span>
+  <span class="nt">&lt;lem&gt;</span>fides<span class="nt">&lt;/lem&gt;</span>
+  <span class="nt">&lt;rdg</span> <span class="na">wit=</span><span class="s">"#A"</span> <span class="na">type=</span><span class="s">"correction-substitution"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;subst&gt;</span>
+      <span class="nt">&lt;del&gt;</span>fidem<span class="nt">&lt;/del&gt;</span>
+      <span class="nt">&lt;add</span> <span class="na">hand=</span><span class="s">"#A1"</span> <span class="na">place=</span><span class="s">"margin-right"</span><span class="nt">&gt;</span>fides<span class="nt">&lt;/add&gt;</span>
+    <span class="nt">&lt;/subst&gt;</span>
+  <span class="nt">&lt;/rdg&gt;</span>
+<span class="nt">&lt;/app&gt;</span>
+est
+</code></pre></div></div>
+
+<blockquote>
+  <p>10 fides] fidem <em>A</em> (<em>ante corr.</em> <em>A1</em>)</p>
+</blockquote>
+
+<blockquote>
+  <p>10 fides] <em>corr. ex</em> fidem <em>in mg.</em> <em>A1</em></p>
+</blockquote>
+
+<blockquote>
+  <p>10 fides] <em>corr. ex</em> fidem <em>in alia manu</em> <em>A</em></p>
+</blockquote>
+
+<h5 id="example-3-3">Example 3</h5>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;app&gt;</span>
+  <span class="nt">&lt;lem&gt;</span>insidias<span class="nt">&lt;/lem&gt;</span>
+  <span class="nt">&lt;rdg</span> <span class="na">wit=</span><span class="s">"#N"</span> <span class="na">type=</span><span class="s">"correction-substitution"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;subst</span> <span class="na">hand=</span><span class="s">"#N1"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;del&gt;</span>insidia<span class="nt">&lt;/del&gt;</span>
+      <span class="nt">&lt;add&gt;</span>insidias<span class="nt">&lt;/add&gt;</span>
+    <span class="nt">&lt;subst&gt;</span>
+  <span class="nt">&lt;/rdg&gt;</span>
+<span class="nt">&lt;/app&gt;</span>
+</code></pre></div></div>
+
+<blockquote>
+  <p>insidias] <em>corr. ex</em> insidia <em>alia manu</em> <em>N</em></p>
+</blockquote>
+
+<blockquote>
+  <p>insidias] <em>corr. ex</em> insidia <em>N¹</em></p>
+</blockquote>
+
+<h3 id="correction-transposition">correction-transposition</h3>
+
+<h4 id="description-26">Description</h4>
+
+<p>A <code class="language-plaintext highlighter-rouge">correction-transposition</code> is a special kind of <code class="language-plaintext highlighter-rouge">correction-substitution</code> and should follow the same rules and basic encoding pattern of a <code class="language-plaintext highlighter-rouge">correction-substitution</code>. The designation <code class="language-plaintext highlighter-rouge">correction-transposition</code> only serves to further specify the kind of substitution taking place.</p>
+
+<h4 id="rules-26">Rules</h4>
+
+<ol>
+  <li>See the above rules for <code class="language-plaintext highlighter-rouge">correction-substitution</code>.</li>
+  <li>The <code class="language-plaintext highlighter-rouge">del</code> element within the <code class="language-plaintext highlighter-rouge">rdg/subst</code> element <strong>MAY</strong> take <code class="language-plaintext highlighter-rouge">seg</code> elements with <code class="language-plaintext highlighter-rouge">@n</code> attributes indicating the boundaries of the transposed words or phrases. This is necessary for proper processing when the <code class="language-plaintext highlighter-rouge">add</code> element contains more than two words.
+    <ul>
+      <li>The <code class="language-plaintext highlighter-rouge">@n</code> indicates the relative order of the segments <em>after</em> the transposition has taken place.</li>
+      <li>This is required rendering more complicated transpositions a word is moved more than one position.</li>
+    </ul>
+  </li>
+</ol>
+
+<h4 id="examples-13">Examples</h4>
+
+<h5 id="example-1-10">Example 1</h5>
+
+<p>A correction that simply inverts the order of two words.</p>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;app&gt;</span>
+  <span class="nt">&lt;lem&gt;</span>spiritus sanctus<span class="nt">&lt;/lem&gt;</span>
+  <span class="nt">&lt;rdg</span> <span class="na">wit=</span><span class="s">"#A"</span> <span class="na">type=</span><span class="s">"correction-transposition"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;subst&gt;</span>
+      <span class="nt">&lt;del&gt;</span>sanctus spiritus<span class="nt">&lt;/del&gt;</span>
+      <span class="nt">&lt;add&gt;</span>spiritus sanctus<span class="nt">&lt;/add&gt;</span>
+    <span class="nt">&lt;/subst&gt;</span>
+  <span class="nt">&lt;/rdg&gt;</span>
+<span class="nt">&lt;/app&gt;</span>
+</code></pre></div></div>
+
+<blockquote>
+  <p>sanctus <em>ante</em> spiritus <em>transp.</em> <em>A</em></p>
+</blockquote>
+
+<h5 id="example-2-10">Example 2</h5>
+
+<p>A correction where a word is moved more than a single word.</p>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;app&gt;</span>
+  <span class="nt">&lt;lem&gt;</span>et spiritus sanctus<span class="nt">&lt;/lem&gt;</span>
+  <span class="nt">&lt;rdg</span> <span class="na">wit=</span><span class="s">"#A"</span> <span class="na">type=</span><span class="s">"correction-transposition"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;subst&gt;</span>
+      <span class="nt">&lt;del&gt;&lt;seg</span> <span class="na">n=</span><span class="s">"2"</span><span class="nt">&gt;</span>spiritus sanctus<span class="nt">&lt;seg/&gt;</span> <span class="nt">&lt;seg</span> <span class="na">n=</span><span class="s">"1"</span><span class="nt">&gt;</span>et<span class="nt">&lt;/seg&gt;&lt;/del&gt;</span>
+      <span class="nt">&lt;add&gt;</span>et spiritus sanctus<span class="nt">&lt;/add&gt;</span>
+    <span class="nt">&lt;/subst&gt;</span>
+  <span class="nt">&lt;/rdg&gt;</span>
+<span class="nt">&lt;/app&gt;</span>
+</code></pre></div></div>
+
+<blockquote>
+  <p>et <em>ante</em> spiritus sanctus <em>transp.</em> <em>A</em></p>
+</blockquote>
+
+<h3 id="correction-cancellation">correction-cancellation</h3>
+
+<h4 id="description-27">Description</h4>
+
+<p><em>note: correction-cancellation is a particularly complicated variation type and should be considered very likely to recieve change and alteration in the next release of the guidelines</em></p>
+
+<p>A cancellation is a correction of a correction. This gives us nine theoretical types (resulting from the combination of <code class="language-plaintext highlighter-rouge">correction-addition</code>, <code class="language-plaintext highlighter-rouge">correction-deletion</code>, and <code class="language-plaintext highlighter-rouge">correction-substitution</code>) following the logic of the corrections described above. Thus a correction of a correction would simply be a correction wrapped in a parent correction. Some of those nine permutations are not materially possible, and thus we support the following 4 types of <em>corrections of corrections</em> :</p>
+
+<ol>
+  <li>deletion-of-addition</li>
+  <li>deletion-of-deletion</li>
+  <li>deletion-of-substitution</li>
+  <li>substitution-of-addition
+    <ul>
+      <li>similar to <code class="language-plaintext highlighter-rouge">deletion-of-addition</code>, but the cancellation also adds a new word in the place of the now deleted addition.</li>
+    </ul>
+  </li>
+</ol>
+
+<h4 id="rules-27">Rules</h4>
+
+<ol>
+  <li><code class="language-plaintext highlighter-rouge">rdg</code> <strong>MUST</strong> take <code class="language-plaintext highlighter-rouge">@type=&lt;value-of-cancellation-type&gt;</code>.</li>
+  <li>Children of <code class="language-plaintext highlighter-rouge">rdg</code> must follow the logic of one of 4 accepted patterns described in the examples below.</li>
+</ol>
+
+<h4 id="examples-14">Examples</h4>
+
+<ol>
+  <li><code class="language-plaintext highlighter-rouge">deletion-of-addition</code></li>
+</ol>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;rdg</span> <span class="na">wit=</span><span class="s">"#A"</span> <span class="na">type=</span><span class="s">"deletion-of-addition"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;del&gt;</span>
+    <span class="nt">&lt;add</span> <span class="na">place=</span><span class="s">"above-line"</span><span class="nt">&gt;</span>fides<span class="nt">&lt;/add&gt;</span>
+  <span class="nt">&lt;/del&gt;</span>
+<span class="nt">&lt;/rdg&gt;</span>
+</code></pre></div></div>
+
+<ol>
+  <li><code class="language-plaintext highlighter-rouge">deletion-of-deletion</code></li>
+</ol>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;rdg</span> <span class="na">wit=</span><span class="s">"#A"</span> <span class="na">type=</span><span class="s">"deletion-of-deletion"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;del&gt;</span>
+    <span class="nt">&lt;del&gt;</span>fides<span class="nt">&lt;/del&gt;</span>
+  <span class="nt">&lt;/del&gt;</span>
+<span class="nt">&lt;/rdg&gt;</span>
+</code></pre></div></div>
+
+<ol>
+  <li><code class="language-plaintext highlighter-rouge">deletion-of-substitution</code></li>
+</ol>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;rdg</span> <span class="na">wit=</span><span class="s">"#A"</span> <span class="na">wit=</span><span class="s">"deletion-of-substitution"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;del&gt;</span>
+    <span class="nt">&lt;subst&gt;</span>
+      <span class="nt">&lt;add&gt;</span>fidem<span class="nt">&lt;/add&gt;</span>
+      <span class="nt">&lt;del&gt;</span>fides<span class="nt">&lt;/del&gt;</span>
+    <span class="nt">&lt;/subst&gt;</span>
+  <span class="nt">&lt;/del&gt;</span>
+<span class="nt">&lt;/rdg&gt;</span>
+
+</code></pre></div></div>
+<ol>
+  <li><code class="language-plaintext highlighter-rouge">substitution-of-addition</code></li>
+</ol>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;rdg</span> <span class="na">wit=</span><span class="s">"#A"</span> <span class="na">type=</span><span class="s">"substitution-of-addition"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;subst&gt;</span>
+    <span class="nt">&lt;del&gt;</span>
+      <span class="nt">&lt;add&gt;</span>spes<span class="nt">&lt;/add&gt;</span>
+    <span class="nt">&lt;/del&gt;</span>
+    <span class="nt">&lt;add&gt;</span>fides<span class="nt">&lt;/add&gt;</span>
+  <span class="nt">&lt;/subst&gt;</span>
+<span class="nt">&lt;/rdg&gt;</span>
+</code></pre></div></div>
+
+<h2 id="note-on-variation-and-correction">Note on Variation and Correction</h2>
+
+<p>With both variations and corrections discussed, it is important to pause and acknowledge two conceptual categories that should inform editorial work and the choice of reading type used.</p>
+
+<p>These two categories are:</p>
+
+<ul>
+  <li>A Variation with Correction
+    <ul>
+      <li>If we imagine the main text being a straight line, a variation represents an alternative stem. On this “alternative” stem it is possible for corrections to be made: a correction that has no relation to the main stem</li>
+    </ul>
+  </li>
+  <li>A Correction that Varies
+    <ul>
+      <li>Alternatively, it is possible for a correction to be on the “main” stem but in the course of making this correction to introduce a variation, or to inaugurate an alternative stem.</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="a-variation-with-a-correction">A Variation with a Correction</h3>
+
+<p>When a correction is made on the “alternative” stem it becomes difficult to represent this as a simple correction because, with respect to the main line, there is nothing to correct. The very words in need of correction only occur on the alternate stem.</p>
+
+<p>To handle these cases, we allow <code class="language-plaintext highlighter-rouge">rdg@type="variation-substance"</code> to include <code class="language-plaintext highlighter-rouge">add</code>, <code class="language-plaintext highlighter-rouge">del</code>, and <code class="language-plaintext highlighter-rouge">subst</code> as children. But only for the present case, i.e. a correction on an “alternative” stem.</p>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;app&gt;</span>
+  <span class="nt">&lt;lem&gt;</span>secum compateretur illud<span class="nt">&lt;/lem&gt;</span>
+  <span class="nt">&lt;rdg</span> <span class="na">type=</span><span class="s">"variation-substance"</span> <span class="na">wit=</span><span class="s">"#V"</span><span class="nt">&gt;</span>
+    non
+    <span class="nt">&lt;subst&gt;</span>
+      <span class="nt">&lt;del&gt;</span>idem<span class="nt">&lt;/del&gt;</span>
+      <span class="nt">&lt;add&gt;</span>illud<span class="nt">&lt;/add&gt;</span>
+    <span class="nt">&lt;/subst&gt;</span>
+    est
+  <span class="nt">&lt;/rdg&gt;</span>
+<span class="nt">&lt;/app&gt;</span>
+</code></pre></div></div>
+
+<p>This will only work if the <code class="language-plaintext highlighter-rouge">rdg</code> in question represents a single witness (or two witnesses with an identical variation AND correction).</p>
+
+<p>Thus, if there is another witness with an identical <code class="language-plaintext highlighter-rouge">rdg</code> but no correction, then this variation needs to be recorded in a separate reading.</p>
+
+<p>In this case, a processor could be expected, to recognize any <code class="language-plaintext highlighter-rouge">add</code>, <code class="language-plaintext highlighter-rouge">del</code>, or <code class="language-plaintext highlighter-rouge">subst</code> element within a <code class="language-plaintext highlighter-rouge">variation-substance</code> and automatically produce the kind of note that would otherwise be manually written in a <code class="language-plaintext highlighter-rouge">witDetail</code>.</p>
+
+<p>Such a note might look like:</p>
+
+<blockquote>
+  <p>secum compateretur illud] non illud <em>nota</em> illud <em>corr. ex</em> idem <em>V</em></p>
+</blockquote>
+
+<p>As discussed <a href="#witDetail">below in witDetail</a>, such cases can also continue to be addressed with the use of <code class="language-plaintext highlighter-rouge">witDetail</code>. In this case, one would simply ignore the correction in the <code class="language-plaintext highlighter-rouge">rdg</code> and then add a note in <code class="language-plaintext highlighter-rouge">witDetail</code>. However, since this case is quite common, it is nice to be able to simply add the correction within the <code class="language-plaintext highlighter-rouge">rdg</code> and not worry about adding an extra <code class="language-plaintext highlighter-rouge">witDetail</code>.</p>
+
+<h3 id="a-correction-that-varies">A Correction that Varies</h3>
+
+<p>A “correction that varies” is only possible in the <code class="language-plaintext highlighter-rouge">correction-addition</code> and <code class="language-plaintext highlighter-rouge">correction-substitution</code> cases.</p>
+
+<p>The guidelines above state that a simple <code class="language-plaintext highlighter-rouge">correction-addition</code> should look as follows:</p>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;app&gt;</span>
+  <span class="nt">&lt;lem&gt;</span>Filii et<span class="nt">&lt;/lem&gt;</span>
+  <span class="nt">&lt;rdg</span> <span class="na">type=</span><span class="s">"correction-addition"</span> <span class="na">wit=</span><span class="s">"#V"</span><span class="nt">&gt;</span>
+     <span class="nt">&lt;add</span> <span class="na">place=</span><span class="s">"above-line"</span><span class="nt">&gt;</span>Filii et<span class="nt">&lt;/add&gt;</span>
+  <span class="nt">&lt;/rdg&gt;</span>
+<span class="nt">&lt;/app&gt;</span>
+</code></pre></div></div>
+
+<p>and it is suggested that this should render as:</p>
+
+<blockquote>
+  <p>Filii et] <em>add. s.l</em> <em>V</em></p>
+</blockquote>
+
+<p>But what if the correction was ‘Filium etiam’? Here we have not only a correction, but a “correction that varies.” In such a case, we would expect that correction to be recorded as follows:</p>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;app&gt;</span>
+  <span class="nt">&lt;lem&gt;</span>Filii et<span class="nt">&lt;/lem&gt;</span>
+  <span class="nt">&lt;rdg</span> <span class="na">type=</span><span class="s">"correction-addition"</span> <span class="na">wit=</span><span class="s">"#V"</span><span class="nt">&gt;</span>
+     <span class="nt">&lt;add</span> <span class="na">place=</span><span class="s">"above-line"</span><span class="nt">&gt;</span>Filium etiam<span class="nt">&lt;/add&gt;</span>
+  <span class="nt">&lt;/rdg&gt;</span>
+<span class="nt">&lt;/app&gt;</span>
+</code></pre></div></div>
+
+<p>And the processor is expected to render something slightly different, such as:</p>
+
+<blockquote>
+  <p>Filii et] Filium etiam <em>add. s.l</em> <em>V</em></p>
+</blockquote>
+
+<p>The difference in rendering is the result of the difference between a simple correction that corrects in agreement with the main stem and correction that offers a variation from the main stem.</p>
+
+<p>In the end, no new requirements are placed on the editor in such a case. An editor should simply follow the rules outlined above for a <code class="language-plaintext highlighter-rouge">correction-addition</code> or <code class="language-plaintext highlighter-rouge">correction-substitution</code>. However, it is incumbent on the processor to recognize this difference by performing a string comparison on the value of the <code class="language-plaintext highlighter-rouge">add</code> and the value of the <code class="language-plaintext highlighter-rouge">lem</code>. When the two strings are identical, a simple correction can be assumed. If the strings are not identical, a “correction that varies” is assumed. If a processor does not wish to perform such a comparison, it is suggested that it should default to the rendering for a “correction that varies.”</p>
+
+<h2 id="conjecture">conjecture</h2>
+
+<h3 id="description-28">Description</h3>
+
+<p>These types refer to the situation where a (current or previous) editor suggests or introduces an emendation to the text that is not supported by the textual tradition.</p>
+
+<p>Terminologically, one might consider an improvement that is adopted in the text (i.e. it is placed in the <code class="language-plaintext highlighter-rouge">lem</code> element) to be an <em>emendation</em>, while an improvement that is merely suggested but not adopted in the text (and therefore put in a <code class="language-plaintext highlighter-rouge">rdg</code> element) can be referred to as a <em>conjecture</em>. To maintain a higher degree of flexibility and reduce the amount of necessary types, we adopt the term <em>conjecture</em> in the typology to signify both emendations and conjectures in the more restricted sense.</p>
+
+<p>General rules for conjectures:</p>
+
+<ol>
+  <li><code class="language-plaintext highlighter-rouge">@resp</code> <strong>MAY</strong> be used to indicate an internal editor responsible for suggesting or including the conjecture.</li>
+  <li><code class="language-plaintext highlighter-rouge">@source</code> <strong>MAY</strong> be used to indicate an external scholar who has suggested the conjecture.</li>
+</ol>
+
+<p>Notice that both of these attributes are pointers. If they do not point to an existing <code class="language-plaintext highlighter-rouge">xml:id</code>, the string after <code class="language-plaintext highlighter-rouge">#</code> will generally be used in processing.</p>
+
+<h3 id="conjecture-supplied">conjecture-supplied</h3>
+
+<h4 id="description-29">Description</h4>
+
+<p>According to the the judgement of the editor, an expression is missing from the transmitted text. Ideas for improvement of the text may then either be added to the edited text itself or indicated in an apparatus note.</p>
+
+<p>Notice this reading type is only relevant if a note in the apparatus is desired or required. If the addition of some material is sufficiently reflected by appropriate symbols in the text (such as <added> or {added}), the `supplied` element can simply be put in the main text, as detailed in the [section above](#supplied).</added></p>
+
+<h4 id="rules-28">Rules</h4>
+
+<ol>
+  <li>Either <code class="language-plaintext highlighter-rouge">lem</code> or <code class="language-plaintext highlighter-rouge">rdg</code> <strong>MUST</strong> contain <code class="language-plaintext highlighter-rouge">@type="conjecture-supplied"</code>.</li>
+  <li><code class="language-plaintext highlighter-rouge">lem</code> or <code class="language-plaintext highlighter-rouge">rdg</code> element <strong>MUST</strong> contain a <code class="language-plaintext highlighter-rouge">supplied</code> element as its first child.</li>
+  <li><code class="language-plaintext highlighter-rouge">supplied</code> element <strong>MUST</strong> contain the added text.</li>
+</ol>
+
+<h4 id="examples-15">Examples</h4>
+
+<h5 id="example-1-11">Example 1</h5>
+
+<p>An emendation is introduced into the edited text. The text is absent from the textual tradition but added by an editor.</p>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Utrum fides semper
+<span class="nt">&lt;app&gt;</span>
+  <span class="nt">&lt;lem</span> <span class="na">type=</span><span class="s">"conjecture-supplied"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;supplied&gt;</span>sit<span class="nt">&lt;/supplied&gt;</span>
+  <span class="nt">&lt;/lem&gt;</span>
+  <span class="nt">&lt;rdg</span> <span class="na">type=</span><span class="s">"variation-absent"</span> <span class="na">wit=</span><span class="s">"#P #V #L"</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/app&gt;</span>
+acquisita
+</code></pre></div></div>
+
+<blockquote>
+  <p>10 sit ] <em>suppl.</em></p>
+</blockquote>
+
+<p>Note: If the reading of the other witnesses had been <code class="language-plaintext highlighter-rouge">variation-absent</code>, a processor could render it like so:</p>
+
+<blockquote>
+  <p>10 sit ] <em>suppl.</em>, <em>om.</em> <em>PVL</em></p>
+</blockquote>
+
+<h5 id="example-2-11">Example 2</h5>
+
+<p>Two scholars have suggested different solutions to the problem, and the solution by the scholar refered to by the <code class="language-plaintext highlighter-rouge">@xml:id</code>#John is is adopted in the text.</p>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Utrum fides semper
+<span class="nt">&lt;app&gt;</span>
+  <span class="nt">&lt;lem</span> <span class="na">type=</span><span class="s">"conjecture-supplied"</span> <span class="na">source=</span><span class="s">"#John"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;supplied&gt;</span>sit<span class="nt">&lt;/supplied&gt;</span>
+  <span class="nt">&lt;/lem&gt;</span>
+  <span class="nt">&lt;rdg</span> <span class="na">type=</span><span class="s">"absent"</span> <span class="na">wit=</span><span class="s">"#P #V #L"</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;rdg</span> <span class="na">type=</span><span class="s">"conjecture-supplied"</span> <span class="na">source=</span><span class="s">"#James"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;supplied&gt;</span>erit<span class="nt">&lt;/supplied&gt;</span>
+  <span class="nt">&lt;/rdg&gt;</span>
+<span class="nt">&lt;/app&gt;</span>
+acquisita
+</code></pre></div></div>
+
+<blockquote>
+  <p>10 sit ] <em>suppl.</em> John, <em>om.</em> <em>PVL</em>, erit <em>suppl.</em> James</p>
+</blockquote>
+
+<h5 id="example-3-4">Example 3</h5>
+
+<p>The editor suspects that a word is missing from the text, but is not certain enough to add it to the text. This might as well have been another scholar, and in that case, the <code class="language-plaintext highlighter-rouge">@source</code> should be indicated.</p>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Utrum fides
+<span class="nt">&lt;app&gt;</span>
+  <span class="nt">&lt;lem</span> <span class="na">n=</span><span class="s">"fides"</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;rdg</span> <span class="na">type=</span><span class="s">"conjecture-supplied"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;supplied&gt;</span>semper<span class="nt">&lt;/supplied&gt;</span>
+  <span class="nt">&lt;/rdg&gt;</span>
+<span class="nt">&lt;/app&gt;</span>
+sit
+</code></pre></div></div>
+
+<blockquote>
+  <p>10 <em>num</em> semper <em>post</em> fides <em>scribendum?</em></p>
+</blockquote>
+
+<h3 id="conjecture-removed">conjecture-removed</h3>
+
+<h4 id="description-30">Description</h4>
+
+<p>A word or phrase is transmitted in some or all of the textual tradition, but the editor or another scholar has suspected that it does not belong in the text and suggests that it be removed.</p>
+
+<h4 id="rules-29">Rules</h4>
+
+<ol>
+  <li>Either a <code class="language-plaintext highlighter-rouge">lem</code> or a <code class="language-plaintext highlighter-rouge">rdg</code> <strong>MUST</strong> contain <code class="language-plaintext highlighter-rouge">@type="conjecture-removed"</code>.</li>
+  <li><code class="language-plaintext highlighter-rouge">lem</code> or <code class="language-plaintext highlighter-rouge">rdg</code> element <strong>MUST</strong> contain a <code class="language-plaintext highlighter-rouge">surplus</code> element as its only child.</li>
+  <li><code class="language-plaintext highlighter-rouge">surplus</code> element <strong>MUST</strong> contain the removed text.</li>
+</ol>
+
+<h4 id="examples-16">Examples</h4>
+
+<h5 id="example-1-12">Example 1</h5>
+
+<p>Simple example with a unanimous transmission. The editor removes the word from the edited text.</p>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ut
+<span class="nt">&lt;app&gt;</span>
+  <span class="nt">&lt;lem</span> <span class="na">type=</span><span class="s">"conjecture-removed"</span><span class="nt">&gt;&lt;surplus&gt;</span>cum<span class="nt">&lt;/surplus&gt;&lt;/lem&gt;</span>
+  <span class="nt">&lt;rdg</span> <span class="na">wit=</span><span class="s">"#A #B #C"</span><span class="nt">&gt;</span>cum<span class="nt">&lt;/rdg&gt;</span>
+<span class="nt">&lt;/app&gt;</span>
+dicit Aristoteles
+</code></pre></div></div>
+
+<p>If the printed text reads “ut [cum] dicit Aristoteles”:</p>
+
+<blockquote>
+  <p>10 [cum] ] <em>del.</em>, cum <em>in textu</em> <em>ABC</em></p>
+</blockquote>
+
+<p>Alternative, if the printed text reads “ut dicit Aristoteles”:</p>
+
+<blockquote>
+  <p>10 cum <em>post</em> ut <em>del.</em>, cum <em>in textu</em> <em>ABC</em></p>
+</blockquote>
+
+<h5 id="example-2-12">Example 2</h5>
+
+<p>Another scholar has suggested that a word be removed, but it is supported by the textual tradition and the editor chooses to keep it in the text.</p>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ut
+<span class="nt">&lt;app&gt;</span>
+  <span class="nt">&lt;lem</span> <span class="na">wit=</span><span class="s">"#A #B #C"</span><span class="nt">&gt;</span>cum<span class="nt">&lt;/lem&gt;</span>
+  <span class="nt">&lt;rdg</span> <span class="na">source=</span><span class="s">"#James"</span> <span class="na">type=</span><span class="s">"conjecture-removed"</span><span class="nt">&gt;&lt;surplus&gt;</span>cum<span class="nt">&lt;/surplus&gt;&lt;/rdg&gt;</span>
+<span class="nt">&lt;/app&gt;</span>
+dicit Aristoteles
+</code></pre></div></div>
+
+<blockquote>
+  <p>10 cum ] <em>ABC</em>, <em>del.</em> James</p>
+</blockquote>
+
+<h3 id="conjecture-corrected"><code class="language-plaintext highlighter-rouge">conjecture-corrected</code></h3>
+
+<h4 id="description-31">Description</h4>
+
+<p>Parts of all of the textual tradition supports one reading, but an editor or scholar suggests an alternative reading in its place.</p>
+
+<h4 id="rules-30">Rules</h4>
+
+<ol>
+  <li>Either a <code class="language-plaintext highlighter-rouge">lem</code> or a <code class="language-plaintext highlighter-rouge">rdg</code> <strong>MUST</strong> contain <code class="language-plaintext highlighter-rouge">@type="conjecture-corrected"</code>.</li>
+  <li><code class="language-plaintext highlighter-rouge">lem</code> or <code class="language-plaintext highlighter-rouge">rdg</code> element <strong>MUST</strong> contain a <code class="language-plaintext highlighter-rouge">corr</code> element as its only child.</li>
+  <li><code class="language-plaintext highlighter-rouge">corr</code> element <strong>MUST</strong> contain the corrected text.</li>
+</ol>
+
+<h4 id="examples-17">Examples</h4>
+
+<h5 id="example-1-13">Example 1</h5>
+
+<p>The tradition is unambiguous, but the editor deems it useless and prints an emendation in the text.</p>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Utrum fides
+<span class="nt">&lt;app&gt;</span>
+  <span class="nt">&lt;lem</span> <span class="na">type=</span><span class="s">"conjecture-corrected"</span><span class="nt">&gt;&lt;corr&gt;</span>sit<span class="nt">&lt;/corr&gt;&lt;/lem&gt;</span>
+  <span class="nt">&lt;rdg</span> <span class="na">wit=</span><span class="s">"#P #V #L"</span><span class="nt">&gt;</span>servus<span class="nt">&lt;/rdg&gt;</span>
+<span class="nt">&lt;/app&gt;</span>
+acquisita
+</code></pre></div></div>
+
+<blockquote>
+  <p>10 sit ] servus <em>PVL</em></p>
+</blockquote>
+
+<p>The note might be more explicit:</p>
+
+<blockquote>
+  <p>10 sit ] <em>scr.</em>, servus <em>PVL</em></p>
+</blockquote>
+
+<h5 id="example-2-13">Example 2</h5>
+
+<p>The tradition is mixed and the editor has a conjecture that he does not dare put in the edited text, so he chooses the most appropriate of the transmitted readings (in light of his general editorial principles), which is also supported by another scholar.</p>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Utrum fides
+<span class="nt">&lt;app&gt;</span>
+  <span class="nt">&lt;lem</span> <span class="na">wit=</span><span class="s">"#C"</span> <span class="na">source=</span><span class="s">"#John"</span><span class="nt">&gt;</span>semper<span class="nt">&lt;/lem&gt;</span>
+  <span class="nt">&lt;rdg</span> <span class="na">wit=</span><span class="s">"#A #B"</span><span class="nt">&gt;</span>servus<span class="nt">&lt;/rdg&gt;</span>
+  <span class="nt">&lt;rdg</span> <span class="na">resp=</span><span class="s">"#Ed"</span> <span class="na">type=</span><span class="s">"conjecture-corrected"</span><span class="nt">&gt;&lt;corr&gt;</span>sit<span class="nt">&lt;/corr&gt;&lt;/rdg&gt;</span>
+<span class="nt">&lt;/app&gt;</span>
+acquisita
+</code></pre></div></div>
+
+<blockquote>
+  <p>10 semper ] <em>C</em> John, servus <em>AB</em>, sit <em>conj.</em></p>
+</blockquote>
+
+<h2 id="connected-apparatus-entries">Connected Apparatus Entries</h2>
+
+<h3 id="overlapping-elements">Overlapping Elements</h3>
+
+<h4 id="description-32">Description</h4>
+
+<p>While parallel-segmentation encoding comes with a number of advantages, an editor invariably faces the challenge of overlapping lemmas and XML’s prohibition against cross-nesting elements. Here we offer guidelines of how to handles such cases.</p>
+
+<h4 id="rules-31">Rules</h4>
+
+<ol>
+  <li>All connected <code class="language-plaintext highlighter-rouge">apps</code> <strong>MUST</strong> have an <code class="language-plaintext highlighter-rouge">@xml:id</code>.</li>
+  <li>The first <code class="language-plaintext highlighter-rouge">app</code> <strong>MUST</strong> contain a <code class="language-plaintext highlighter-rouge">@next</code> pointing to the next connected <code class="language-plaintext highlighter-rouge">app</code> element.</li>
+  <li>The last <code class="language-plaintext highlighter-rouge">app</code> <strong>MUST</strong> contain a <code class="language-plaintext highlighter-rouge">@prev</code> pointing to the previous connected <code class="language-plaintext highlighter-rouge">app</code>.</li>
+  <li>Any <code class="language-plaintext highlighter-rouge">app</code> that is neither first nor last <strong>MUST</strong> contain a <code class="language-plaintext highlighter-rouge">@next</code> and a <code class="language-plaintext highlighter-rouge">@prev</code> element indicating its position in the list.</li>
+</ol>
+
+<h4 id="examples-18">Examples</h4>
+
+<p>In this complex example, we imagine an omission in witness A that begins with the last word of paragraph 1 and continues into paragraph 2. But the last word of paragraph 1 is also the lemma for a variant between witness B and C.</p>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;p</span> <span class="na">xml:id=</span><span class="s">"paragraph1"</span><span class="nt">&gt;</span>lorum
+  <span class="nt">&lt;app</span> <span class="na">xml:id=</span><span class="s">"app1"</span> <span class="na">next=</span><span class="s">"#app2"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;lem&gt;</span>
+      <span class="nt">&lt;app&gt;</span>
+        <span class="nt">&lt;lem</span> <span class="na">wit=</span><span class="s">"#C"</span><span class="nt">&gt;</span>ipsum<span class="nt">&lt;/lem&gt;</span>
+        <span class="nt">&lt;rdg</span> <span class="na">wit=</span><span class="s">"#B"</span><span class="nt">&gt;</span>ipsam<span class="nt">&lt;/rdg&gt;</span>
+      <span class="nt">&lt;/app&gt;</span>
+    <span class="nt">&lt;/lem&gt;</span>
+    <span class="nt">&lt;rdg</span> <span class="na">wit=</span><span class="s">"#A"</span> <span class="na">type=</span><span class="s">"variation-absent"</span> <span class="na">cause=</span><span class="s">"homeoteleuton"</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;/app&gt;</span>
+<span class="nt">&lt;/p&gt;</span>
+<span class="nt">&lt;p</span> <span class="na">xml:id=</span><span class="s">"paragraph2"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;app</span> <span class="na">xml:id=</span><span class="s">"app2"</span> <span class="na">prev=</span><span class="s">"#app1"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;lem&gt;</span>this is the text<span class="nt">&lt;/lem&gt;</span>
+    <span class="nt">&lt;rdg</span> <span class="na">wit=</span><span class="s">"#A"</span> <span class="na">type=</span><span class="s">"variation-absent"</span> <span class="na">cause=</span><span class="s">"homeoteleuton"</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;/app&gt;</span>
+  of the second paragraph. The first part of which continues the homeoteleuton started in the previous paragraph
+<span class="nt">&lt;/p&gt;</span>
+</code></pre></div></div>
+
+<p>A processor is expected to handle the above example as follows.</p>
+
+<p>Whenever an <code class="language-plaintext highlighter-rouge">app</code> is encountered with a <code class="language-plaintext highlighter-rouge">@next</code> attribute, the processor should begin looping through each connected <code class="language-plaintext highlighter-rouge">app</code> until it reaches an <code class="language-plaintext highlighter-rouge">app</code> that no longer has a <code class="language-plaintext highlighter-rouge">@next</code> attribute but only a <code class="language-plaintext highlighter-rouge">@prev</code> attribute. Throughout this loop it should concatenate the <code class="language-plaintext highlighter-rouge">lem</code> from each <code class="language-plaintext highlighter-rouge">app</code> and then concatenate the available readings, matching <code class="language-plaintext highlighter-rouge">rdg</code> by the value of the <code class="language-plaintext highlighter-rouge">@wit</code> attribute. (In complicated cases, it is advisable to give each witness a separate <code class="language-plaintext highlighter-rouge">rdg</code> to make the connection of <code class="language-plaintext highlighter-rouge">rdg</code> elements as easy as possible.) Once having looped through all connected apps. The processor should ignore all subsequent apps that have an <code class="language-plaintext highlighter-rouge">@prev</code> attribute because these have presumably been dealt with in the previous loop.</p>
+
+<p>A processor can also choose to create this loop in the opposite direction, first ignoring all <code class="language-plaintext highlighter-rouge">apps</code> with a <code class="language-plaintext highlighter-rouge">@next</code> attribute until it comes to an <code class="language-plaintext highlighter-rouge">app</code> that only has a <code class="language-plaintext highlighter-rouge">@prev</code> attribute. It can then loop up to each connected app until it reaches an <code class="language-plaintext highlighter-rouge">app</code> without a <code class="language-plaintext highlighter-rouge">@prev</code> attribute.</p>
+
+<h3 id="generic-app-connections">Generic App Connections</h3>
+
+<h4 id="description-33">Description</h4>
+
+<p>Sometimes it is desirable to connect readings even if an editor is not trying to avoid overlapping lemmas. The most likely scenario for this is when it is ideal for an <code class="language-plaintext highlighter-rouge">app</code> with a lemma and a second <code class="language-plaintext highlighter-rouge">app</code> with a blank lemma to be rendered together. Despite the different motivation, this should be handled in the same way as the method used to deal with overlapping lemmas.</p>
+
+<h4 id="examples-19">Examples</h4>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;app</span> <span class="na">xml:id=</span><span class="s">"app1"</span> <span class="na">next=</span><span class="s">"#app2"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;lem&gt;</span>ars<span class="nt">&lt;/lem&gt;</span>
+  <span class="nt">&lt;rdg</span> <span class="na">wit=</span><span class="s">"#E"</span> <span class="na">next=</span><span class="s">"#app2"</span><span class="nt">&gt;</span>ars artium<span class="nt">&lt;/rdg&gt;</span>
+  <span class="nt">&lt;rdg</span> <span class="na">wit=</span><span class="s">"#Y #H"</span> <span class="na">type=</span><span class="s">"variation-present"</span><span class="nt">&gt;</span>ars artium et scientia scientiarum<span class="nt">&lt;/rdg&gt;</span>
+<span class="nt">&lt;/app&gt;</span>
+<span class="nt">&lt;app</span> <span class="na">xml:id=</span><span class="s">"app2"</span> <span class="na">prev=</span><span class="s">"#app1"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;lem</span> <span class="na">n=</span><span class="s">"ars"</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;rdg</span> <span class="na">wit=</span><span class="s">"#E"</span> <span class="na">type=</span><span class="s">"correction-addition"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;add</span> <span class="na">place=</span><span class="s">"above-line"</span> <span class="na">hand=</span><span class="s">"#E1"</span><span class="nt">&gt;</span>et scientia scientiarum<span class="nt">&lt;/add&gt;</span>
+  <span class="nt">&lt;/rdg&gt;</span>
+<span class="nt">&lt;/app&gt;</span>
+</code></pre></div></div>
+
+<p>This could render as:</p>
+
+<blockquote>
+  <p>10 ars] ars artium <em>E</em> + et scientia scientiarum <em>add. interl.</em> <em>E1</em> ars artium et scientia scientiarum <em>YH</em></p>
+</blockquote>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code>non
+<span class="nt">&lt;app</span> <span class="na">xml:id=</span><span class="s">"app1"</span> <span class="na">next=</span><span class="s">"#app2"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;lem</span> <span class="na">n=</span><span class="s">"non"</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;rdg</span> <span class="na">wit=</span><span class="s">"#E"</span> <span class="na">type=</span><span class="s">"variation-present"</span><span class="nt">&gt;</span>ars<span class="nt">&lt;/rdg&gt;</span>
+  <span class="nt">&lt;rdg</span> <span class="na">wit=</span><span class="s">"#Y #H"</span> <span class="na">type=</span><span class="s">"variation-present"</span><span class="nt">&gt;</span>ars artium<span class="nt">&lt;/rdg&gt;</span>
+<span class="nt">&lt;/app&gt;</span>
+<span class="nt">&lt;app</span> <span class="na">xml:id=</span><span class="s">"app2"</span> <span class="na">prev=</span><span class="s">"#app1"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;rdg</span> <span class="na">wit=</span><span class="s">"#E"</span> <span class="na">type=</span><span class="s">"correction-addition"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;add</span> <span class="na">place=</span><span class="s">"above-line"</span> <span class="na">hand=</span><span class="s">"#E1"</span><span class="nt">&gt;</span>artium<span class="nt">&lt;/add&gt;</span>
+  <span class="nt">&lt;rdg&gt;</span>
+<span class="nt">&lt;/app&gt;</span>
+</code></pre></div></div>
+
+<p>This could be rendered as:</p>
+
+<blockquote>
+  <p>10 non] ars <em>in textu</em> <em>E</em> + artium <em>add. interl.</em> <em>E1</em> ars artium <em>in textu</em> <em>YH</em></p>
+</blockquote>
+
+<h2 id="manual">Manual</h2>
+
+<h3 id="description-34">Description</h3>
+
+<p>Because we recognize there may be cases where an editor feels that a reading is so unique that it fits into no existing typology, we support the use of a <code class="language-plaintext highlighter-rouge">rdg@type="manual"</code>, despite highly discouraging its use.</p>
+
+<p>The use of the <code class="language-plaintext highlighter-rouge">manual</code> type should be avoided at all costs, and in subsequent versions of the lbp-schema we aim to identify all instances of <code class="language-plaintext highlighter-rouge">manual</code> and either explain how these cases fit into the existing typology or expand the typology to encompass this instance.</p>
+
+<h3 id="rules-32">Rules</h3>
+
+<ol>
+  <li><code class="language-plaintext highlighter-rouge">rdg</code> must have an <code class="language-plaintext highlighter-rouge">@type="manual</code>.</li>
+  <li><code class="language-plaintext highlighter-rouge">rdg</code> should include precisely what the editors hope will appear after the lemma</li>
+  <li>The description of the variant (normally the part of the reading placed in italics) should be wrapped in an <code class="language-plaintext highlighter-rouge">desc</code> element</li>
+  <li>The siglum should be wrapped in a <code class="language-plaintext highlighter-rouge">wit</code> element.</li>
+</ol>
+
+<h3 id="examples-20">Examples</h3>
+
+<p><em>Note: for both of the examples below, there are appropriate type categorizes for these rdg types, and thus there is no need for a manual override here. These are provided just for the sake of example.</em></p>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;app&gt;</span>
+  <span class="nt">&lt;lem&gt;</span>fides<span class="nt">&lt;/lem&gt;</span>
+  <span class="nt">&lt;rdg</span> <span class="na">wit=</span><span class="s">"#V"</span> <span class="na">type=</span><span class="s">"manual"</span><span class="nt">&gt;</span>
+    fides <span class="nt">&lt;desc&gt;</span>corr. interl. ex<span class="nt">&lt;/desc&gt;</span> fide <span class="nt">&lt;wit&gt;</span>V<span class="nt">&lt;/wit&gt;</span>
+  <span class="nt">&lt;/rdg&gt;</span>
+<span class="nt">&lt;/app&gt;</span>
+</code></pre></div></div>
+
+<p>This would likely be rendered as:</p>
+
+<blockquote>
+  <p>10 fides] fides <em>corr. interl. ex</em> fide <em>V</em></p>
+</blockquote>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;app&gt;</span>
+  <span class="nt">&lt;lem&gt;</span>fides<span class="nt">&lt;/lem&gt;</span>
+  <span class="nt">&lt;rdg</span> <span class="na">wit=</span><span class="s">"#V"</span> <span class="na">type=</span><span class="s">"manual"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;desc&gt;</span>om.<span class="nt">&lt;/desc&gt;</span> <span class="nt">&lt;wit&gt;</span>V<span class="nt">&lt;/wit&gt;</span>
+  <span class="nt">&lt;/rdg&gt;</span>
+<span class="nt">&lt;/app&gt;</span>
+</code></pre></div></div>
+
+<p>This would likely be rendered as:</p>
+
+<blockquote>
+  <p>10 fides] <em>om.</em> <em>V</em></p>
+</blockquote>
+
+<h2 id="witdetail">witDetail</h2>
+
+<h3 id="description-35">Description</h3>
+
+<p>Under normal circumstances the processor will generate, from the above described <code class="language-plaintext highlighter-rouge">rdg</code> types, text describing the particular reading. But a reading might represent a certain situation that the editor would like to describe, but is not handled by the processor. In that case the <code class="language-plaintext highlighter-rouge">witDetail</code> is handy (and preferred over resorting to the use of <code class="language-plaintext highlighter-rouge">rdg@type="manual"</code>), as its content should be added by the processor after the standard text of the reading type, but before the witness siglum.</p>
+
+<h3 id="rules-33">Rules</h3>
+
+<ol>
+  <li><code class="language-plaintext highlighter-rouge">witDetail</code> <strong>MAY</strong> take as children only text nodes and the <code class="language-plaintext highlighter-rouge">mentioned</code> element.</li>
+  <li>All references to the content of the established text or witness within <code class="language-plaintext highlighter-rouge">witDetail</code> should be wrapped in a <code class="language-plaintext highlighter-rouge">mentioned</code> element.</li>
+  <li><code class="language-plaintext highlighter-rouge">witDetail</code> <strong>MUST</strong> have an <code class="language-plaintext highlighter-rouge">@wit</code> that points to the reading associated with this <code class="language-plaintext highlighter-rouge">witDetail</code>.
+    <ul>
+      <li>The <code class="language-plaintext highlighter-rouge">witDetail</code> information should target only one reading. General notes meant to offer detail or information about the entire apparatus should be included in a <code class="language-plaintext highlighter-rouge">note</code> element which should appear at the end of the <code class="language-plaintext highlighter-rouge">app</code>.</li>
+    </ul>
+  </li>
+  <li>For ease of processing and clarity, <code class="language-plaintext highlighter-rouge">witDetail</code> elements should come immediately after the <code class="language-plaintext highlighter-rouge">rdg</code> with which it is associated.</li>
+  <li><code class="language-plaintext highlighter-rouge">witDetail</code> <strong>SHOULD</strong> include an <code class="language-plaintext highlighter-rouge">@xml:lang</code>.</li>
+  <li><code class="language-plaintext highlighter-rouge">witDetail</code> <strong>SHOULD NOT</strong> be longer than 100 words, since it is expected that this note will be included in a printed <em>apparatus criticus</em>. Longer notes should be included in an <code class="language-plaintext highlighter-rouge">app/note</code>.</li>
+</ol>
+
+<h3 id="example-6">Example</h3>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;app&gt;</span>
+  <span class="nt">&lt;lem</span> <span class="na">type=</span><span class="s">"conjecture-correction"</span><span class="nt">&gt;</span>quae<span class="nt">&lt;/lem&gt;</span>
+  <span class="nt">&lt;rdg</span> <span class="na">wit=</span><span class="s">"#V"</span><span class="nt">&gt;</span>q<span class="nt">&lt;/rdg&gt;</span>
+  <span class="nt">&lt;witDetail</span> <span class="na">wit=</span><span class="s">"#V"</span> <span class="na">xml:lang=</span><span class="s">"la"</span><span class="nt">&gt;</span>cum 3 litteris rasibus<span class="nt">&lt;/witDetail&gt;</span>
+<span class="nt">&lt;/app&gt;</span>
+</code></pre></div></div>
+<p>A processor could render this as follows:</p>
+
+<blockquote>
+  <p>quae ] conj., q <em>cum 3 litteris rasibus</em> <em>V</em></p>
+</blockquote>
+
+<h2 id="appnote">App/Note</h2>
+
+<h3 id="description-36">Description</h3>
+
+<p>The <code class="language-plaintext highlighter-rouge">note</code> element used within the <code class="language-plaintext highlighter-rouge">app</code> is the appropriate place for an extended prose discussion of the apparatus entry as a whole. Generally, a traditional print rendering of the apparatus does not have room for such notes, and it is not expected that such a note would appear directly in the apparatus. More likely, in a print rendering, these notes would appear in an appendix. Digital representations can offer alternative ways of displaying these notes. For example, see <a href="http://lombardpress.org/conceiving-the-digital-critical-apparatus/">http://lombardpress.org/conceiving-the-digital-critical-apparatus/</a>.</p>
+
+<h3 id="rules-34">Rules</h3>
+
+<ol>
+  <li><code class="language-plaintext highlighter-rouge">note</code> <strong>SHOULD</strong> be placed in the last position within the <code class="language-plaintext highlighter-rouge">app</code> entry, after all other <code class="language-plaintext highlighter-rouge">rdgs</code> and <code class="language-plaintext highlighter-rouge">witDetail</code>.</li>
+  <li><code class="language-plaintext highlighter-rouge">note</code> <strong>SHOULD</strong> include an <code class="language-plaintext highlighter-rouge">@xml:lang</code> attribute.</li>
+  <li><code class="language-plaintext highlighter-rouge">note</code> <strong>MUST</strong> include either text nodes or <code class="language-plaintext highlighter-rouge">ab</code> elements as direct children.</li>
+  <li>Within <code class="language-plaintext highlighter-rouge">note</code>, in order to segment the text into 2 or more conceptual parts, the <code class="language-plaintext highlighter-rouge">ab</code> element <strong>MUST</strong> be used.</li>
+  <li><code class="language-plaintext highlighter-rouge">note</code> <strong>MAY NOT</strong> include <code class="language-plaintext highlighter-rouge">p</code> or <code class="language-plaintext highlighter-rouge">div</code> elements within it descendant nodes.</li>
+</ol>
+
+<h3 id="examples-21">Examples</h3>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;app&gt;</span>
+  <span class="nt">&lt;lem&gt;</span>quae<span class="nt">&lt;/lem&gt;</span>
+  <span class="nt">&lt;rdg</span> <span class="na">wit=</span><span class="s">"#V"</span><span class="nt">&gt;</span>qod<span class="nt">&lt;/rdg&gt;</span>
+  <span class="nt">&lt;note</span> <span class="na">xml:lang=</span><span class="s">"la"</span><span class="nt">&gt;</span>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+      tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+      veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+      commodo consequat.
+  <span class="nt">&lt;/note&gt;</span>
+<span class="nt">&lt;/app&gt;</span>
+```xml
+
+Or
+
+```xml
+<span class="nt">&lt;app&gt;</span>
+  <span class="nt">&lt;lem&gt;</span>quae<span class="nt">&lt;/lem&gt;</span>
+  <span class="nt">&lt;rdg</span> <span class="na">wit=</span><span class="s">"#V"</span><span class="nt">&gt;</span>qod<span class="nt">&lt;/rdg&gt;</span>
+  <span class="nt">&lt;note</span> <span class="na">xml:lang=</span><span class="s">"la"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;ab&gt;</span>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+      tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+      veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+      commodo consequat.
+    <span class="nt">&lt;/ab&gt;</span>
+    <span class="nt">&lt;ab&gt;</span>
+      Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
+      dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+      proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+    <span class="nt">&lt;ab&gt;</span>
+  <span class="nt">&lt;/note&gt;</span>
+<span class="nt">&lt;/app&gt;</span>
+</code></pre></div></div>
+
+<h1 id="apparatus-fontium">Apparatus Fontium</h1>
+
+<h2 id="cit">cit</h2>
+
+<h3 id="description-37">Description</h3>
+
+<p>Any entry to the <em>apparatus fontium</em> is created with the <code class="language-plaintext highlighter-rouge">&lt;cit&gt;</code> element.</p>
+
+<p><code class="language-plaintext highlighter-rouge">&lt;ref&gt;</code> encodes the reference made by the original author. <code class="language-plaintext highlighter-rouge">&lt;quote&gt;</code> encodes the original quotation. <code class="language-plaintext highlighter-rouge">&lt;bibl&gt;</code> is reserved for the modern editor’s attempt to encode a modern reference identification for the quotation. <code class="language-plaintext highlighter-rouge">&lt;bibl&gt;</code> is only allowed inside a <code class="language-plaintext highlighter-rouge">&lt;cit&gt;</code> wrapper. <code class="language-plaintext highlighter-rouge">&lt;bibl&gt;</code> should only contain one reference, as it is considered <em>the</em> reference object for the <code class="language-plaintext highlighter-rouge">&lt;cit&gt;</code> entry. <code class="language-plaintext highlighter-rouge">&lt;note&gt;</code> tag can be used for writing explanatory notes for the apparatus.</p>
+
+<p>In this way, the following scenarios are fairly simple to encode:</p>
+
+<ol>
+  <li>A reference to a passage that is not quoted.</li>
+  <li>A quotation without any original reference.</li>
+  <li>A quotation with an original reference.</li>
+</ol>
+
+<p>In the following sections, examples of those scenarios are given.</p>
+
+<h3 id="rules-35">Rules</h3>
+
+<ol>
+  <li><code class="language-plaintext highlighter-rouge">cit</code> <strong>MUST</strong> contain either a <code class="language-plaintext highlighter-rouge">quote</code> or <code class="language-plaintext highlighter-rouge">ref</code>.</li>
+  <li><code class="language-plaintext highlighter-rouge">cit</code> <strong>MAY</strong> contain a <code class="language-plaintext highlighter-rouge">bibl</code> element.</li>
+  <li><code class="language-plaintext highlighter-rouge">cit</code> <strong>MAY</strong> contain a <code class="language-plaintext highlighter-rouge">note</code> element.</li>
+  <li><code class="language-plaintext highlighter-rouge">bibl</code> <strong>MUST</strong> contain a reference to exactly one bibliographical object.</li>
+</ol>
+
+<h3 id="examples-22">Examples</h3>
+
+<p>A <code class="language-plaintext highlighter-rouge">cit</code> element with a <code class="language-plaintext highlighter-rouge">ref</code> and the reference in a <code class="language-plaintext highlighter-rouge">bibl</code> element:</p>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Pater per
+<span class="nt">&lt;cit&gt;</span>
+  <span class="nt">&lt;ref&gt;&lt;name&gt;</span>Augustinum<span class="nt">&lt;name&gt;</span> in libro X <span class="nt">&lt;title&gt;</span>de Civitate<span class="nt">&lt;/title&gt;&lt;/ref&gt;</span>
+  <span class="nt">&lt;bibl&gt;&lt;author&gt;</span>Augustinus<span class="nt">&lt;/author&gt;</span>, <span class="nt">&lt;title&gt;</span>De civitate Dei<span class="nt">&lt;/title&gt;</span>, X, c. 1 (PL XX:XX)<span class="nt">&lt;/bibl&gt;</span>
+<span class="nt">&lt;/cit&gt;</span>
+</code></pre></div></div>
+
+<p>A <code class="language-plaintext highlighter-rouge">cit</code> element that has a <code class="language-plaintext highlighter-rouge">quote</code> as well as a <code class="language-plaintext highlighter-rouge">bibl</code> and <code class="language-plaintext highlighter-rouge">note</code>:</p>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;cit&gt;</span>
+  <span class="nt">&lt;quote&gt;</span>In the beginning God created a world<span class="nt">&lt;/quote&gt;</span>
+  <span class="nt">&lt;bibl&gt;</span>Genesis 1:1<span class="nt">&lt;/bibl&gt;</span>
+  <span class="nt">&lt;note&gt;</span>This reference to <span class="nt">&lt;title&gt;</span>Genesis<span class="nt">&lt;/title&gt;</span> is ...<span class="nt">&lt;/note&gt;</span>
+<span class="nt">&lt;/cit&gt;</span>
+</code></pre></div></div>
+
+<h2 id="quote">quote</h2>
+
+<h3 id="description-38">Description</h3>
+
+<p>A quote, following the TEI guidelines, is intended to identify anything that is considered a quotation of another source or text. The value of quotation is most often rendered within quotation marks, i.e. “This is a quote”.</p>
+
+<h3 id="rules-36">Rules</h3>
+
+<ol>
+  <li><code class="language-plaintext highlighter-rouge">quote</code> <strong>MAY</strong> stand alone, i.e. it <strong>MAY</strong> not be a child of a <code class="language-plaintext highlighter-rouge">cit</code> element. In such a case it is generally expected that it would not appear in the <em>apparatus fontium</em>.</li>
+  <li><code class="language-plaintext highlighter-rouge">quote</code> <strong>MAY</strong> be the immediate child of a <code class="language-plaintext highlighter-rouge">cit</code> element. In such a case, the quote is expected to appear in the <em>apparatus fontium</em>.</li>
+  <li><code class="language-plaintext highlighter-rouge">quote</code> <strong>MAY</strong> contain <code class="language-plaintext highlighter-rouge">seg</code> elements.
+    <ul>
+      <li>This would be used to indicate segments of a quote that are interrupted by an <em>inquit</em>.</li>
+      <li>Note that this can also be encoded by use of the <code class="language-plaintext highlighter-rouge">@next</code> and <code class="language-plaintext highlighter-rouge">@prev</code> attributes. See the examples below.</li>
+    </ul>
+  </li>
+  <li><code class="language-plaintext highlighter-rouge">quote</code> <strong>MAY</strong> take an <code class="language-plaintext highlighter-rouge">@type</code> attribute, the values of which can be:
+    <ul>
+      <li>direct (this is the same as simply not declaring an <code class="language-plaintext highlighter-rouge">@type</code>)</li>
+      <li>paraphrase</li>
+    </ul>
+  </li>
+  <li><code class="language-plaintext highlighter-rouge">quote</code> <strong>MAY</strong> take an <code class="language-plaintext highlighter-rouge">@ana</code> attribute, used to indicate a canonical reference for the quote.</li>
+</ol>
+
+<h3 id="examples-23">Examples</h3>
+
+<p>The following example will not generate an apparatus fontium entry:</p>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;quote&gt;</span>In principio<span class="nt">&lt;/quote&gt;</span> etc.
+</code></pre></div></div>
+
+<p>The following example will generate an <em>apparatus fontium</em> entry</p>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;cit&gt;</span>
+  <span class="nt">&lt;quote</span> <span class="na">xml:id=</span><span class="s">"quote1"</span> <span class="na">ana=</span><span class="s">"#gen1_1"</span><span class="nt">&gt;</span>In principio creavit Deus caelum<span class="nt">&lt;/quote&gt;</span>
+  <span class="nt">&lt;note&gt;</span>I can't find this.<span class="nt">&lt;/note&gt;</span>
+<span class="nt">&lt;/cit&gt;</span>
+</code></pre></div></div>
+
+<p>A <code class="language-plaintext highlighter-rouge">cit</code> element with just a <code class="language-plaintext highlighter-rouge">quote</code> tag, but where the quote consists of two quote segments and an <em>inquit</em>:</p>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;cit&gt;</span>
+  <span class="nt">&lt;quote&gt;</span>
+    <span class="nt">&lt;seg</span> <span class="na">type=</span><span class="s">"qs"</span><span class="nt">&gt;</span>lorum<span class="nt">&lt;/seg&gt;</span>, <span class="c">&lt;!-- Is @type="qs" the best way to do this? --&gt;</span>
+    inquit,
+    <span class="nt">&lt;seg</span> <span class="na">type=</span><span class="s">"qs"</span><span class="nt">&gt;</span>ipsum<span class="nt">&lt;/seg&gt;</span>
+  <span class="nt">&lt;/quote&gt;</span>
+  <span class="nt">&lt;bibl&gt;</span>Sample text<span class="nt">&lt;/bibl&gt;</span>
+<span class="nt">&lt;cit&gt;</span>
+</code></pre></div></div>
+
+<p>The following is another, equivalent way, of doing the same thing:</p>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;cit&gt;</span>
+  <span class="nt">&lt;quote</span> <span class="na">xml:id=</span><span class="s">"quote-part-1"</span> <span class="na">next=</span><span class="s">"#quote-part-2"</span> <span class="na">ana=</span><span class="s">"#gen1_1"</span> <span class="na">n=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+    In principio creavit Deus caelum
+  <span class="nt">&lt;/quote&gt;</span>
+  <span class="nt">&lt;bibl&gt;</span>Genesis 1_1<span class="nt">&lt;/bibl&gt;</span>
+<span class="nt">&lt;/cit&gt;</span>
+scilicet angelicam naturam, sed adhuc informem, ut quibusdam placet:
+<span class="nt">&lt;quote</span> <span class="na">xml:id=</span><span class="s">"quote-part-2"</span> <span class="na">prev=</span><span class="s">"#quote-part-1"</span> <span class="na">n=</span><span class="s">"2"</span><span class="nt">&gt;</span>
+  et terram
+<span class="nt">&lt;/quote&gt;</span>
+</code></pre></div></div>
+
+<h2 id="ref">ref</h2>
+
+<h3 id="description-39">Description</h3>
+
+<p>A reference, following the TEI guidelines, is intended to identify anything that is considered a reference to another source.</p>
+
+<h3 id="rules-37">Rules</h3>
+
+<ol>
+  <li><code class="language-plaintext highlighter-rouge">ref</code> <strong>MAY</strong> stand alone, i.e. it <strong>MAY</strong> not be a child of an <code class="language-plaintext highlighter-rouge">cit</code> element and thus not appear in the <em>apparatus fontium</em>.</li>
+  <li><code class="language-plaintext highlighter-rouge">ref</code> <strong>MAY</strong> be the immediate child of a <code class="language-plaintext highlighter-rouge">cit</code> element and thus appear in the <em>apparatus fontium</em>.</li>
+  <li><code class="language-plaintext highlighter-rouge">ref</code> <strong>MAY</strong> contain an <code class="language-plaintext highlighter-rouge">@ana</code> attribute, used to indicate a canonical reference for the reference.</li>
+  <li><code class="language-plaintext highlighter-rouge">ref</code> <strong>MAY</strong> contain a <code class="language-plaintext highlighter-rouge">title</code>, <code class="language-plaintext highlighter-rouge">name</code>, and <code class="language-plaintext highlighter-rouge">num</code> element.</li>
+  <li><code class="language-plaintext highlighter-rouge">ref</code> <strong>MAY</strong> contain a <code class="language-plaintext highlighter-rouge">seg</code> with <code class="language-plaintext highlighter-rouge">@type="incipit"</code> for references that include an incipit for the referenced section.</li>
+</ol>
+
+<h3 id="examples-24">Examples</h3>
+
+<p>The following example is not expected to generate an <em>apparatus fontium</em>:</p>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;ref</span> <span class="na">corresp=</span><span class="s">"#quote-id"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;name&gt;</span>Ockham<span class="nt">&lt;/name&gt;</span> dicit in prologo
+<span class="nt">&lt;/ref&gt;</span>
+</code></pre></div></div>
+
+<p>The following example is expected to generate an <em>apparatus fontium</em> entry:</p>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;cit&gt;</span>
+  <span class="nt">&lt;ref</span> <span class="na">xml:id=</span><span class="s">"ref1"</span> <span class="na">ana=</span><span class="s">"#gen1_1"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;title</span> <span class="na">ref=</span><span class="s">"#gen"</span><span class="nt">&gt;</span>Genesis<span class="nt">&lt;/title&gt;</span>
+    1:1
+  <span class="nt">&lt;/ref&gt;</span>
+  <span class="nt">&lt;bibl&gt;</span>Genesis 1:1<span class="nt">&lt;/bibl&gt;</span>
+<span class="nt">&lt;/cit&gt;</span>
+</code></pre></div></div>
+
+<h2 id="citnote">cit/note</h2>
+
+<h3 id="description-40">Description</h3>
+
+<p>The <code class="language-plaintext highlighter-rouge">&lt;note&gt;</code> element is available for cases where the editor finds it necessary to give a prose discussion of the passage or sources. A limited set of inline elements are available for markup of the text. They can be used to give bibliographical references (<code class="language-plaintext highlighter-rouge">bibl</code>), quotes from the sources (<code class="language-plaintext highlighter-rouge">quote</code>), refer to words in the established text (<code class="language-plaintext highlighter-rouge">mentioned</code>) and references to other parts of the established text (<code class="language-plaintext highlighter-rouge">ref</code>). The <code class="language-plaintext highlighter-rouge">ab</code> can be used for separating the text into paragraph-like blocks.</p>
+
+<h3 id="rules-38">Rules</h3>
+
+<ol>
+  <li><code class="language-plaintext highlighter-rouge">note</code> <strong>SHOULD</strong> be placed in the last position within the <code class="language-plaintext highlighter-rouge">cit</code> entry.</li>
+  <li><code class="language-plaintext highlighter-rouge">note</code> <strong>SHOULD</strong> include an <code class="language-plaintext highlighter-rouge">@xml:lang</code> attribute.</li>
+  <li><code class="language-plaintext highlighter-rouge">note</code> <strong>MUST</strong> include either text nodes or <code class="language-plaintext highlighter-rouge">ab</code> elements as direct children.</li>
+  <li><code class="language-plaintext highlighter-rouge">note</code> <strong>MAY</strong> include the following elements: <code class="language-plaintext highlighter-rouge">bibl</code>, <code class="language-plaintext highlighter-rouge">quote</code>, <code class="language-plaintext highlighter-rouge">mentioned</code>, <code class="language-plaintext highlighter-rouge">ref</code>.</li>
+  <li><code class="language-plaintext highlighter-rouge">note</code> <strong>MAY NOT</strong> include <code class="language-plaintext highlighter-rouge">p</code> or <code class="language-plaintext highlighter-rouge">div</code> elements within it descendant nodes.</li>
+</ol>
+
+<h3 id="examples-25">Examples</h3>
+
+<p>Here is a simple examples with a short note:</p>
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;cit&gt;</span>
+  <span class="nt">&lt;quote</span> <span class="na">xml:id=</span><span class="s">"quote1"</span> <span class="na">ana=</span><span class="s">"#gen1_1"</span><span class="nt">&gt;</span>In principio creavit Deus caelum<span class="nt">&lt;/quote&gt;</span>
+  <span class="nt">&lt;note</span> <span class="na">xml:lang=</span><span class="s">"en"</span><span class="nt">&gt;</span>I can't find this.<span class="nt">&lt;/note&gt;</span>
+<span class="nt">&lt;/cit&gt;</span>
+</code></pre></div></div>
+
+<p>A more complex example where most of the allowed elements are used could look like this:</p>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sic, cum <span class="nt">&lt;name</span> <span class="na">ref=</span><span class="s">"#Aristotle"</span><span class="nt">&gt;</span>Philosophus<span class="nt">&lt;/name&gt;</span> ponit
+<span class="nt">&lt;cit&gt;</span>
+  <span class="nt">&lt;quote</span> <span class="na">type=</span><span class="s">"paraphrase"</span><span class="nt">&gt;</span>
+    species abstractas a phantasmatibus intelligibiles
+  <span class="nt">&lt;/quote&gt;</span>
+  <span class="nt">&lt;note</span> <span class="na">xml:lang=</span><span class="s">"en"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;ab&gt;</span>
+      This is probably based on <span class="nt">&lt;bibl&gt;&lt;title</span> <span class="na">ref=</span><span class="s">"#Arist.DA"</span><span class="nt">&gt;</span>De anima<span class="nt">&lt;/title&gt;</span>
+      III.8 432a8-9<span class="nt">&lt;/bibl&gt;</span> cf. <span class="nt">&lt;bibl&gt;&lt;name</span> <span class="na">ref=</span><span class="s">"#Aquinas"</span><span class="nt">&gt;</span>Aquinas<span class="nt">&lt;/name&gt;</span>, <span class="nt">&lt;title</span>
+      <span class="na">ref=</span><span class="s">"#Aquin.SentDA"</span><span class="nt">&gt;</span>Sent. de anima<span class="nt">&lt;/title&gt;</span> lib. 3, cap. 7, p.
+      236, ll. 72--89<span class="nt">&lt;/bibl&gt;</span>. See also <span class="nt">&lt;bibl&gt;&lt;title</span> <span class="na">ref=</span><span class="s">"#Aquin.SentDA"</span><span class="nt">&gt;</span>ibid.<span class="nt">&lt;/title&gt;</span>
+      lib. 3, cap. 4, p. 218, ll. 8--23 and p. 220, ll. 101--121.<span class="nt">&lt;/bibl&gt;</span>
+    <span class="nt">&lt;/ab&gt;</span>
+    <span class="nt">&lt;ab&gt;</span>
+      This statement is not reflected directly in the Aristotelian text ...
+    <span class="nt">&lt;/ab&gt;</span>
+  <span class="nt">&lt;/note&gt;</span>
+<span class="nt">&lt;/cit&gt;</span>
+</code></pre></div></div>
+<h2 id="complex-cases">Complex cases</h2>
+
+<p>When a text contains both a reference and a quotation, both a <code class="language-plaintext highlighter-rouge">ref</code> and a <code class="language-plaintext highlighter-rouge">quote</code> are encoded, but often only the <code class="language-plaintext highlighter-rouge">ref</code> or the <code class="language-plaintext highlighter-rouge">quote</code> should be wrapped in a <code class="language-plaintext highlighter-rouge">cit</code> element and not both. In many cases the reference is separated from the quotation by some amount of words which do not belong in the <code class="language-plaintext highlighter-rouge">cit</code> element. We recommend citing the <code class="language-plaintext highlighter-rouge">quote</code> since we see this as primary. We would then associate the <code class="language-plaintext highlighter-rouge">ref</code> with the <code class="language-plaintext highlighter-rouge">quote</code> it is related to via the <code class="language-plaintext highlighter-rouge">@corresp</code> attribute. An representative example follows:</p>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;p&gt;</span>Patet per
+  <span class="nt">&lt;ref</span> <span class="na">corresp=</span><span class="s">"#quote1"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;name&gt;</span>Augustinum<span class="nt">&lt;name&gt;</span> in libro X <span class="nt">&lt;title&gt;</span>de Civitate<span class="nt">&lt;/title&gt;</span>
+  <span class="nt">&lt;/ref&gt;</span>
+  dicit quod:
+  <span class="nt">&lt;cit&gt;</span>
+    <span class="nt">&lt;quote</span> <span class="na">xml:id=</span><span class="s">"quote1"</span> <span class="na">ana=</span><span class="s">"#aug-cd-10_1"</span><span class="nt">&gt;</span>lorum ipsum lorum ipsum<span class="nt">&lt;/quote&gt;</span>
+    <span class="nt">&lt;bibl&gt;&lt;author&gt;</span>Augustinus<span class="nt">&lt;/author&gt;</span>, <span class="nt">&lt;title&gt;</span>De civitate Dei<span class="nt">&lt;/title&gt;</span>, X, c. 1 (PL XX:XX)<span class="nt">&lt;/bibl&gt;</span>
+  <span class="nt">&lt;/cit&gt;</span>
+<span class="nt">&lt;/p&gt;</span>
+</code></pre></div></div>
+
+<h1 id="milestones">Milestones</h1>
+
+<h2 id="cb">cb</h2>
+
+<h3 id="description-41">Description</h3>
+
+<p><code class="language-plaintext highlighter-rouge">cb</code> is a milestone element to mark column breaks in a material witness to the edition in question. <code class="language-plaintext highlighter-rouge">cb</code> elements are used to indicate the <em>start</em> of a new column.</p>
+
+<h3 id="rules-39">Rules</h3>
+
+<ol>
+  <li><code class="language-plaintext highlighter-rouge">@ed</code> <strong>MUST</strong> indicate the source text in which the column break occurs.</li>
+  <li><code class="language-plaintext highlighter-rouge">@n</code> <strong>MUST</strong> be used indicate the start of the column in question, e.g. “a” or “b”</li>
+</ol>
+
+<h3 id="examples-26">Examples</h3>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;cb</span> <span class="na">ed=</span><span class="s">"#W"</span> <span class="na">n=</span><span class="s">"a"</span><span class="nt">/&gt;</span>
+</code></pre></div></div>
+
+<h2 id="pb">pb</h2>
+
+<h3 id="description-42">Description</h3>
+
+<p><code class="language-plaintext highlighter-rouge">pb</code> is a milestone element to mark page breaks in a material witness to the edition in question. <code class="language-plaintext highlighter-rouge">pb</code> elements are used to indicate the <em>start</em> of a new page.</p>
+
+<h3 id="rules-40">Rules</h3>
+
+<ol>
+  <li><code class="language-plaintext highlighter-rouge">@ed</code> <strong>MUST</strong> indicate the source text in which the page break occurs.</li>
+  <li><code class="language-plaintext highlighter-rouge">@n</code> <strong>MUST</strong> indicate the page or folio number (determined by <code class="language-plaintext highlighter-rouge">@type</code>). In the case of <code class="language-plaintext highlighter-rouge">type="folio"</code>, the side of the folio is delimited by a <code class="language-plaintext highlighter-rouge">-</code>.
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">@type</code> <strong>MAY</strong> explicitly indicate the type of numbering as either paginated (“page”) or foliated (“folio”). If none is given, <code class="language-plaintext highlighter-rouge">@type="folio"</code> is assumed.</li>
+      <li>If an <code class="language-plaintext highlighter-rouge">-</code> is used in the value of <code class="language-plaintext highlighter-rouge">@n</code>, <code class="language-plaintext highlighter-rouge">folio</code> is assumed.</li>
+      <li>If no <code class="language-plaintext highlighter-rouge">-</code> appears in the value of <code class="language-plaintext highlighter-rouge">@n</code>, type <code class="language-plaintext highlighter-rouge">page</code> is assumed.</li>
+    </ul>
+  </li>
+</ol>
+
+<h3 id="examples-27">Examples</h3>
+
+<p>Page break in folio format</p>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;pb</span> <span class="na">ed=</span><span class="s">"#W"</span> <span class="na">n=</span><span class="s">"15-v"</span><span class="nt">/&gt;</span>
+</code></pre></div></div>
+
+<p>Page break in paged format</p>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;pb</span> <span class="na">ed=</span><span class="s">"#W"</span> <span class="na">n=</span><span class="s">"15"</span> <span class="na">type=</span><span class="s">"page"</span> <span class="nt">/&gt;</span>
+</code></pre></div></div>
+:ET

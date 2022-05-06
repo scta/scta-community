@@ -1,0 +1,35 @@
+I"»<h1 id="instructions">Instructions</h1>
+<ul>
+  <li>Go to Visual Studio Code</li>
+  <li>Open Up the Venice Manuscript File for the Rubric File you want
+    <ul>
+      <li>Venice Code is cod-pu6y7</li>
+    </ul>
+  </li>
+  <li>Command Shift S
+    <ul>
+      <li>then Rename the file with the code for the manuscript you want</li>
+      <li>Rename the file as
+        <ul>
+          <li>_bHY6yh with the corresponding number</li>
+          <li>Save it</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>Open the file you edit; you will need to edit these aspects right away, keep the tags as 
+they are, <code class="language-plaintext highlighter-rouge">&lt;tag/&gt;</code></li>
+  <li>Edit the title to include the manuscript you are using
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">&lt;title&gt;Rubrica 3&lt;/title&gt;</code></li>
+      <li>When it was edited it should look something like this, but with the corresponding 
+title to your manuscripts
+        <ul>
+          <li><code class="language-plaintext highlighter-rouge">&lt;title&gt;Rubrica 3 [Krakow, lat 700 III Transcription]&lt;/title&gt;</code></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>The Name</li>
+</ul>
+:ET
