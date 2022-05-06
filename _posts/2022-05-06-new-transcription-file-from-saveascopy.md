@@ -22,17 +22,9 @@ they are, `<tag/>`
   * When it was edited it should look something like this, but with the corresponding 
 title to your manuscripts 
     * `<title>Rubrica 3 [Krakow, lat 700 III Transcription]</title>`
-* The Name 
-
-```
-<respStmt>
-<name ref="#jeffreycwitt">Jeffrey C. Witt</name>
-  <resp>Transcription Editor</resp>
-  <resp>TEI Encoder</resp>
-  </respStmt>
-```
-* Add your own name but keep Dr. Witt’s as well, like so
-
+* The Name block
+  * Add your own name to the list of contributors, like so
+  
 ```
 <respStmt>
    <name ref="#jeffreycwitt">Jeffrey C. Witt</name>
