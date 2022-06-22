@@ -7,10 +7,22 @@ description: "A running list of members and other acknowledgements"
 permalink: members
 ---
 
+# SCTA International Association Members
+
+(Membership Status: [SCTA International Association Member](policy/membership#association-member))
+
+* [Loyola Notre Dame Library](https://www.lndl.org/)
+  * 2022-Present
+  * A Founding Member
+
 # Contributing Projects (Past and Present) 
 
-(Membership Status: Supporting Contributor (Group))
+(Membership Status: [Supporting Contributor (Group)](policy/membership#contributor-group-member))
 
+* Rara Magnetica
+  * 2022-Present
+  * Focused on Scientific Texts and Scientific Figures
+  * Led by Christoph Sander
 * The Digital Auctores Project 
   * 2021-2026
   * Studying Medieval Florilegia

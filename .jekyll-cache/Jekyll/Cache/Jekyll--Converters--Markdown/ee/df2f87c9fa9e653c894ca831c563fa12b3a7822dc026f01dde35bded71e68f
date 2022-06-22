@@ -1,4 +1,4 @@
-I"Ç<h1 id="instructions">Instructions</h1>
+I" <h1 id="instructions">Instructions</h1>
 <ul>
   <li>Go to Visual Studio Code</li>
   <li>Open Up the Venice Manuscript File for the Rubric File you want
@@ -30,17 +30,11 @@ title to your manuscripts
       </li>
     </ul>
   </li>
-  <li>The Name</li>
-</ul>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;respStmt&gt;
-&lt;name ref="#jeffreycwitt"&gt;Jeffrey C. Witt&lt;/name&gt;
-  &lt;resp&gt;Transcription Editor&lt;/resp&gt;
-  &lt;resp&gt;TEI Encoder&lt;/resp&gt;
-  &lt;/respStmt&gt;
-</code></pre></div></div>
-<ul>
-  <li>Add your own name but keep Dr. Wittâ€™s as well, like so</li>
+  <li>The Name block
+    <ul>
+      <li>Add your own name to the list of contributors, like so</li>
+    </ul>
+  </li>
 </ul>
 
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;respStmt&gt;

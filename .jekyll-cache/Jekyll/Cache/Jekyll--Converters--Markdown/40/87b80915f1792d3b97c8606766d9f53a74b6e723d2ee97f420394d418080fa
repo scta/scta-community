@@ -1,4 +1,4 @@
-I"n<h1 id="scta-membership-categories">SCTA Membership Categories</h1>
+I"¼<h1 id="scta-membership-categories">SCTA Membership Categories</h1>
 
 <ul>
   <li><strong>Friend of the SCTA (Simple donation)</strong>
@@ -34,6 +34,9 @@
       </li>
     </ul>
   </li>
+</ul>
+
+<ul id="contributor-group-member">
   <li><strong>Supporting Contributor (Group)</strong>
     <ul>
       <li>Supporting Contributor (Groups) function like Open Access Subvention fees or Article Processing Charge (APC) usually supported or requested through a large grant or collaborative project</li>
@@ -48,6 +51,9 @@
       </li>
     </ul>
   </li>
+</ul>
+
+<ul id="association-member">
   <li><strong>SCTA International Association Member</strong>
     <ul>
       <li>Association membership is intended for institution consumers of SCTA data (libraries, museums etc.)</li>

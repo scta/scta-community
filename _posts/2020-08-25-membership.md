@@ -29,6 +29,7 @@ permalink: "policy/membership"
     * Automatic membership status
     * Privileged Technology Support
 
+{:#contributor-group-member}
 * **Supporting Contributor (Group)**
   * Supporting Contributor (Groups) function like Open Access Subvention fees or Article Processing Charge (APC) usually supported or requested through a large grant or collaborative project
   * A standard subvention would be roughly $500 per 100 pages of traditional printed text. Or a negotiable fee of $4,000 dollars (rate negotiable/adjusted according to the size of the grant and project) for every year of the lifetime of the grant.
@@ -38,6 +39,7 @@ permalink: "policy/membership"
     * Voting rights on pull requests related to contributed texts during the lifetime of the grant
     * Privileged Technology Support
 
+{:#association-member}
 * **SCTA International Association Member**
   * Association membership is intended for institution consumers of SCTA data (libraries, museums etc.)
   * As opposed to requiring a subscription costs to pay-walled database, SCTA makes its data open to libraries and other institutional consumers, with the expectation that libraries will recognize that open data is replacing pay-walled data, but still needs to be financially supported (See for example the Stanford Encyclopedia of Philosophy Model) [https://plato.stanford.edu/support/sepia.html](https://plato.stanford.edu/support/sepia.html)).
