@@ -1,6 +1,6 @@
-I"È<h1 id="scta-international-association-members">SCTA International Association Members</h1>
+I"ç<h1 id="scta-international-association-members">SCTA International Association Members</h1>
 
-<p>(Membership Status: [SCTA International Association Member])</p>
+<p>(Membership Status: <a href="policy/membership#association-member">SCTA International Association Member</a>)</p>
 
 <ul>
   <li><a href="https://www.lndl.org/">Loyola Notre Dame Library</a>
@@ -13,9 +13,16 @@
 
 <h1 id="contributing-projects-past-and-present">Contributing Projects (Past and Present)</h1>
 
-<p>(Membership Status: Supporting Contributor (Group))</p>
+<p>(Membership Status: <a href="policy/membership#contributor-group-member">Supporting Contributor (Group)</a>)</p>
 
 <ul>
+  <li>Rara Magnetica
+    <ul>
+      <li>2022-Present</li>
+      <li>Focused on Scientific Texts and Scientific Figures</li>
+      <li>Led by Christoph Sander</li>
+    </ul>
+  </li>
   <li>The Digital Auctores Project
     <ul>
       <li>2021-2026</li>
