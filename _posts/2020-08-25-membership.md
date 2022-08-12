@@ -13,6 +13,7 @@ permalink: "policy/membership"
 
 * **Friend of the SCTA (Simple donation)**
   * Simple donation, anyone should be able to quickly and seamlessly contribute a small amount of money $1, $5, etc.
+  * [Donate Here](https://secure.qgiv.com/for/givescta/)
   * Benefits
     * Names of the Friends of the SCTA will be listed and thanked on the SCTA website.
 
@@ -43,8 +44,9 @@ permalink: "policy/membership"
 * **SCTA International Association Member**
   * Association membership is intended for institution consumers of SCTA data (libraries, museums etc.)
   * As opposed to requiring a subscription costs to pay-walled database, SCTA makes its data open to libraries and other institutional consumers, with the expectation that libraries will recognize that open data is replacing pay-walled data, but still needs to be financially supported (See for example the Stanford Encyclopedia of Philosophy Model) [https://plato.stanford.edu/support/sepia.html](https://plato.stanford.edu/support/sepia.html)).
-  For other similar kinds of membership see the "Programming Historian" Institutional Partner Program [https://programminghistorian.org/en/ipp](https://programminghistorian.org/en/ipp)[]
+  For other similar kinds of membership see the "Programming Historian" Institutional Partner Program [https://programminghistorian.org/en/ipp](https://programminghistorian.org/en/ipp)
   * Membership in the SCTA International Association is an adjusted rate depending on institutional size (usually between $50 and $250 a year)
+  * One time contributions can also be accepted/invoiced and will be treated as the equivalent of a one-year membership
   * Benefits
     * Access and support in using the SCTA OAI-PMH API (and other APIs of interest).
     * SCTA-IA Membership acknowledgement on the SCTA webpage
