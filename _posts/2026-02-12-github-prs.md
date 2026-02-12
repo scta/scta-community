@@ -1,3 +1,11 @@
+---
+layout: post
+title:  Creating Pull Requests
+date:   2026-02-12
+author: Jeffrey C. Witt
+category: tutorial
+---
+
 # How to Contribute to **scta-texts**: An Introduction to Pull Requests
 
 The *scta-texts* repository is a collaborative, open scholarly edition of XML-encoded texts.
