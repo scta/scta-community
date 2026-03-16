@@ -65,7 +65,7 @@ permalink: "policy/membership"
     * An annual breakdown of expenditure.
 
 
-# Example of membership fees would be used to support operational costs
+# Example of how membership fees would be used to support operational costs
 
 Grossly simplified, the SCTA is a non-commercial, open access, community driven "data publisher" of medieval and modern texts from that scholastic tradition. By focusing on data publication rather than print or simple web publication, we help make machine actionable texts available so that text data can be linked together (via Linked data) and made available for free and open downstream publication in print or on the web in a plurality of forms. (One such downstream visual presentation can be found here https://scta.lombardpress.org). 
 
