@@ -19,6 +19,10 @@ permalink: members
 
 (Membership Status: [Supporting Contributor (Group)](policy/membership#contributor-group-member))
 
+* [The Bartolomé de Las Casas Society](https://www.lascasianstudies.org/)
+  * 2025-Present
+  * Focused on developing the Opera Omnia of Bartolomé de las Casas
+  * Providence College, Rhode Island, USA
 * Rara Magnetica
   * 2022-Present
   * Focused on Scientific Texts and Scientific Figures
@@ -32,10 +36,10 @@ permalink: members
   * 2020-2025
   * Studying Protestant Reception of Scholastic Thought 
   * Funder: SNF
-  * University of Geneva, Geneva, Switzerland)
+  * University of Geneva, Geneva, Switzerland
 * [Early Franciscan Project](https://www.earlyfranciscans.com/)  
   * 2018-2022
-  * Funder: ERC (grant agreement No714427))
+  * Funder: ERC (grant agreement No714427)
   * King's College, London, UK
 * [Thesis Project](http://thesis-project.ro/)
   * 2015-2018
