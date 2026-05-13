@@ -51,10 +51,10 @@ The signed certificate can be accessed on the web:
 
 It has also been indexed and can be discovered at the DLL Review Registry:
 
-[https://dll-review-registry.digitallatin.org/reviews/c545780f-a457-48a0-9cdd-ad12318dd1b2.html](https://dll-review-registry.digitallatin.org/reviews/c545780f-a457-48a0-9cdd-ad12318dd1b2.html).
+[https://dll-review-registry.scta.info/reviews/c545780f-a457-48a0-9cdd-ad12318dd1b2.html](https://dll-review-registry.scta.info/reviews/c545780f-a457-48a0-9cdd-ad12318dd1b2.html).
 
 The authenticity of the review can be verified use `gpg` verification steps as described
-here in these [self verification steps](https://dll-review-registry.digitallatin.org/verify#verify-for-self)
+here in these [self verification steps](https://dll-review-registry.scta.info/verify#verify-for-self)
 
 Likewise, any publication presentation can query the DLL registry to see if a review exists for the underlying data. If a review does exist, it can communicate to the end user that the presented text has been peer-reviewed.
 

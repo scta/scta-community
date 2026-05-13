@@ -1,13 +1,13 @@
 ---
 layout: page
-title:  "SCTA data management"
+title:  "SCTA Data Management"
 date:   2026-05-13
 category: policy
 description: "A description of basic data management practices"
 permalink: "policy/data-management"
 ---
 
-# SCTA Data Management Practices
+# SCTA Data Management Policies and Practices
 
 ## Introduction
 
@@ -15,13 +15,12 @@ The Scholastic Commentaries and Texts Archive (SCTA) is a collaborative open-acc
 
 The SCTA’s data management practices are designed to ensure transparency, reproducibility, long-term preservation, and continuous scholarly improvement through open collaborative workflows and community stewardship.
 
----
 
-# Data Collection and Re-Use
+## Data Collection and Re-Use
 
 The SCTA primarily works with public domain texts and scholarly transcriptions of historical sources. New data is produced through:
 
-* Automated Text Recognition* 
+* Automated Text Recognition
 * Manual transcription and encoding of historical texts
 * Scholarly editing and annotation
 * Metadata creation and enrichment
@@ -30,25 +29,23 @@ The SCTA primarily works with public domain texts and scholarly transcriptions o
 
 All textual data and metadata are maintained in open, machine-readable formats and are continuously improved through community contributions and scholarly review.
 
----
+## Data
 
-# Data
-
-Primary textual data is encoded in XML following the [TEI](https://www.tei-c.org/) compliant [LombardPress Transcription Guidelines](https://community.scta.info/pages/lombardpress-schema-critical.html) designed for encoding scholarly scholastic editions
+Primary textual data is encoded in XML following the [TEI](https://www.tei-c.org/) compliant [LombardPress Transcription Guidelines](https://community.scta.info/pages/lombardpress-schema-critical.html) designed for encoding scholarly scholastic editions.
 
 SCTA textual data is accompanied by open and publically accessible metadata files recording necessary metadata (e.g. authors, manuscript witnesses, etc.)
 
-Because the SCTA assigns identifiers at extremely granular levels—including structural divisions, paragraphs, quotations, and individual words—the resulting datasets can be highly detailed and interconnected.
+Documentation for data models and encoding conventions can be found on the [SCTA Documentation Page](https://community.scta.info/pages/docs)
 
-Documentation for data models, encoding conventions, APIs, and workflows is can be found on the [SCTA Documentation Page](https://community.scta.info/pages/docs)
+## Data Citation
 
-The SCTA’s identifier system provides persistent and granular references for every textual component, allowing precise citation and interoperability across datasets and external scholarly systems.
+Because the SCTA assigns identifiers at all levels of the textual hierarchy (including structural divisions, paragraphs, quotations, and individual words across all witnesses) the resulting corpus can be accessed and interconnected with extremely granular precision.
 
 In addition, Git-based version control ensures that every historical state of the data is permanently addressable through unique content hashes and commit histories.
 
 This combination of persistent SCTA identifiers and immutable Git versioning provides strong support for reproducible scholarship, citation stability, and long-term interoperability.
 
-# Data Quality Control
+## Data Quality Control
 
 The SCTA employs automated and community-based quality control processes.
 
@@ -66,9 +63,9 @@ These workflows ensure that malformed or inconsistent data cannot be merged into
 
 Because all revisions are preserved in Git history, the provenance and evolution of every change remains transparent and reproducible.
 
----
+At specific milestones, editorial work is peer reviewed in collaboration with the Medieval Academy of America. Peer reviewed versions of any text are tagged and verifiable using signed certificates. See our [peer review policy](https://community.scta.info/policy/peer-review) and [2019 "Decoupling Quality Control and Publication: The Digital Latin Library and the Traveling Imprimatur," Co-authored with Sam Huskey, Digital Humanities Quarterly, 13:4 (2019)](https://digitalhumanities.org/dhq/vol/13/4/000438/000438.html).
 
-# Storage, Backup, and Preservation During Research
+## Storage, Backup, and Preservation During Research
 
 All SCTA repositories are publicly hosted on GitHub under open-access licenses.
 
@@ -78,13 +75,11 @@ In addition to GitHub’s distributed infrastructure, SCTA data is redundantly b
 * Offsite encrypted backups via Backblaze
 * Apple Time Machine backups on external drives
 * On-premises institutional servers hosted at Loyola University Maryland
-* Institutional snapshot and redundancy systems maintained according to industry-standard backup practices
+* Institutional snapshots and redundancy systems maintained according to industry-standard backup practices
 
 These overlapping systems provide resilience against accidental loss, corruption, or service interruption.
 
----
-
-# Security and Sensitive Data
+## Security and Sensitive Data
 
 The SCTA primarily works with historical public-domain texts and open scholarly metadata. Consequently, privacy concerns and sensitive personal data issues are minimal.
 
@@ -92,15 +87,11 @@ No protected personal information, medical information, or confidential human su
 
 Access controls for repository administration and deployment infrastructure follow standard institutional and GitHub security practices.
 
----
-
-# Publication and Data Sharing
+## Publication and Data Sharing
 
 The SCTA follows an open-access and progressive publication model.
 
-All repositories are publicly accessible and licensed under the Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License:
-
-[CC BY-NC-SA 4.0 License](https://creativecommons.org/licenses/by-nc-sa/4.0/?utm_source=chatgpt.com)
+All repositories are publicly accessible and licensed under the [Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License]((https://creativecommons.org/licenses/by-nc-sa/4.0/)):
 
 Rather than delaying publication until the completion of a grant cycle or editorial project, SCTA data is published continuously as improvements are merged into public repositories.
 
@@ -116,9 +107,7 @@ When pull requests are accepted and merged:
 
 This progressive publication model ensures rapid dissemination while maintaining full version transparency.
 
----
-
-# Long-Term Preservation and Sustainability
+## Long-Term Preservation and Sustainability
 
 A core feature of the SCTA model is long-term community stewardship.
 
@@ -137,11 +126,9 @@ SCTA sustainability is funded through a consortium-style membership model in whi
 
 Financial administration and stewardship are managed through the SCTA’s fiscal sponsor, [Council on Library and Information Resources (CLIR)](https://www.clir.org)
 
----
+## Governance and Responsibility
 
-# Governance and Responsibility
-
-Responsibility for SCTA data stewardship is coordinated by the Director and General Editor (Jeffrey C. Witt) and distributed across the SCTA community, project editors, repository maintainers, and affiliated institutional partners.
+Responsibility for SCTA data stewardship is coordinated by the Director and General Editor (Jeffrey C. Witt) and distributed across the SCTA community, [member projects](https://community.scta.info/members), repository maintainers, and affiliated institutional partners.
 
 
 
